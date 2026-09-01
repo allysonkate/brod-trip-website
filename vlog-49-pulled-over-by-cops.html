@@ -9,12 +9,15 @@
   body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.8}
   a{text-decoration:none;color:inherit} a:hover{color:var(--accent)}
   .site-wrapper{background:var(--white);max-width:1200px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,0.07)}
-  .top-rule{border-top:3px solid var(--black)}
-  .site-header{padding:32px 50px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
-  .nav-left{display:flex;justify-content:flex-start} .nav-right{display:flex;justify-content:flex-end}
-  .nav-left a,.nav-right a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);padding:4px 14px;white-space:nowrap;transition:color 0.2s}
-  .nav-left a:first-child{padding-left:0} .nav-right a:last-child{padding-right:0}
-  .nav-left a:hover,.nav-right a:hover{color:var(--accent)}
+  .top-rule { display:none; }
+  .site-header { padding:32px 50px 0; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
+   
+  .nav-left { display:flex; justify-content:flex-start; }
+  .nav-right { display:flex; justify-content:flex-end; }
+  .nav-left a,.nav-right a { font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--black); padding:4px 14px; white-space:nowrap; transition:color 0.2s; }
+  .nav-left a:first-child { padding-left:0; }
+  .nav-right a:last-child { padding-right:0; }
+  .nav-left a:hover,.nav-right a:hover { color:var(--accent); }
   .logo-center{text-align:center}
   .nav-second{display:flex;justify-content:center;padding:10px 50px 0}
   .nav-second a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);padding:4px 20px;transition:color 0.2s}
@@ -72,8 +75,7 @@
   .footer-note{font-family:'Raleway',sans-serif;font-size:11px;color:var(--meta);text-align:right}
   @media(max-width:820px){
     .site-header{grid-template-columns:1fr;padding:20px 24px 0;text-align:center}
-    .nav-left,.nav-right{justify-content:center;flex-wrap:wrap}
-    .nav-second,.header-rule{padding-left:24px;padding-right:24px}
+    .header-rule{padding-left:24px;padding-right:24px}
     .site-body{grid-template-columns:1fr;padding:0 24px 40px}
     .article{border-right:none;padding-right:0}
     .sidebar{padding-left:0}
@@ -99,7 +101,6 @@
     <nav class="nav-left">
       <a href="the-brothers.html">The Brothers</a>
       <a href="index.html">The Road</a>
-      <a href="#">Contact</a>
     </nav>
     <div class="logo-center">
       <a href="index.html"><img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px;height:auto;display:block;margin:0 auto"></a>
@@ -107,10 +108,8 @@
     <nav class="nav-right">
       <a href="in-the-news.html">In The News</a>
       <a href="sponsors.html">Sponsors</a>
-      <a href="#">Store</a>
     </nav>
   </div>
-  <nav class="nav-second"><a href="index.html">Through the Lens</a></nav>
   <hr class="header-rule">
 </header>
 <div class="site-body">
