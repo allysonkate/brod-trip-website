@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Birth of the Bro’d Trip – The Bro'd Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff;
+    --bg: #f8f8f8;
+    --light-gray: #f0f0f0;
+    --rule: #d8d8d8;
+    --text: #333333;
+    --meta: #999999;
+    --black: #111111;
+    --sidebar-header-bg: #1a1a1a;
+    --accent: #c0392b;
+    --border: #e5e5e5;
+  }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.8; }
+  a { text-decoration: none; color: inherit; }
+  a:hover { color: var(--accent); }
+
+  .site-wrapper { background: var(--white); max-width: 1200px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.07); }
+  .top-rule { border-top: 3px solid var(--black); }
+
+  /* HEADER */
+  .site-header { padding: 32px 50px 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; }
+  .nav-left { display: flex; justify-content: flex-start; }
+  .nav-right { display: flex; justify-content: flex-end; }
+  .nav-left a, .nav-right a {
+    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--black);
+    padding: 4px 14px; white-space: nowrap; transition: color 0.2s;
+  }
+  .nav-left a:first-child { padding-left: 0; }
+  .nav-right a:last-child { padding-right: 0; }
+  .nav-left a:hover, .nav-right a:hover { color: var(--accent); }
+  .logo-center { text-align: center; }
+  .nav-second { display: flex; justify-content: center; padding: 10px 50px 0; }
+  .nav-second a {
+    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--black);
+    padding: 4px 20px; transition: color 0.2s;
+  }
+  .nav-second a:hover { color: var(--accent); }
+  .header-rule { margin: 16px 50px 0; border: none; border-top: 1px solid var(--rule); }
+
+  /* BODY */
+  .site-body { display: grid; grid-template-columns: 1fr 290px; padding: 0 50px 60px; align-items: start; }
+
+  /* ARTICLE */
+  .article { padding-top: 50px; border-right: 1px solid var(--border); padding-right: 52px; }
+
+  .post-title {
+    font-family: 'Raleway', sans-serif; font-size: 26px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; text-align: center;
+    color: var(--black); line-height: 1.3; margin-bottom: 12px;
+  }
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author { color: var(--text); font-weight: 700; } .post-byline .sep {margin:0 5px;}
+
+  .post-hero {
+    width: 100%; height: auto; display: block;
+    margin-bottom: 36px;
+  }
+  .post-img { width:100%; height:auto; display:block; margin:28px 0; border-radius:2px; }
+
+  .post-body { font-family: 'Lato', sans-serif; font-size: 17px; line-height: 1.85; color: var(--text); }
+  .post-body p { margin-bottom: 22px; }
+  .post-body p:last-child { margin-bottom: 0; }
+  .post-body em { font-style: italic; }
+  .post-body strong { font-weight: 700; }
+
+  .post-tagline {
+    margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rule);
+    font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--black);
+    text-align: center;
+  }
+
+  .post-meta-footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule);
+    font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: #aaa; line-height: 2;
+  }
+  .post-meta-footer b { color: var(--text); }
+
+  /* POST NAV */
+  .post-nav {
+    margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+  }
+  .post-nav a {
+    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+    border-bottom: 2px solid var(--black); padding-bottom: 2px; transition: all 0.2s;
+  }
+  .post-nav a:hover { color: var(--accent); border-color: var(--accent); }
+  .post-nav .nav-label { font-size: 9px; letter-spacing: 0.18em; color: var(--meta); display: block; margin-bottom: 4px; font-family: 'Raleway', sans-serif; text-transform: uppercase; }
+  .post-nav .nav-title { font-size: 12px; }
+  .post-nav-next { text-align: right; }
+
+  /* SIDEBAR */
+  .sidebar { padding-top: 50px; padding-left: 40px; }
+  .sw { margin-bottom: 32px; }
+  .sw-head {
+    background: var(--sidebar-header-bg); color: #fff;
+    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; padding: 13px 16px; text-align: center;
+  }
+  .sw-body { border: 1px solid var(--border); border-top: none; padding: 20px; }
+  .sw-body img { width: 100%; height: auto; display: block; margin-bottom: 14px; }
+  .sw-body p { font-size: 14px; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+  .sw-link {
+    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--black);
+    border-bottom: 2px solid var(--black); padding-bottom: 1px; transition: all 0.2s;
+  }
+  .sw-link:hover { color: var(--accent); border-color: var(--accent); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .stat-cell { background: var(--white); padding: 16px 8px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--black); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-lbl { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--meta); }
+  .recent-ul { list-style: none; }
+  .recent-ul li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5; }
+  .recent-ul li:last-child { border-bottom: none; padding-bottom: 0; }
+  .recent-ul a { color: var(--text); transition: color 0.2s; }
+  .recent-ul a:hover { color: var(--accent); }
+
+  /* FOOTER */
+  .site-footer { border-top: 3px solid var(--black); padding: 28px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--black); }
+  .footer-sub { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-top: 3px; }
+  .footer-note { font-family: 'Raleway', sans-serif; font-size: 11px; color: var(--meta); text-align: right; }
+  .footer-note a { color: var(--text); text-decoration: underline; }
+
+  @media (max-width: 820px) {
+    .site-header { grid-template-columns: 1fr; padding: 20px 24px 0; text-align: center; }
+    .nav-left, .nav-right { justify-content: center; flex-wrap: wrap; }
+    .nav-second, .header-rule { padding-left: 24px; padding-right: 24px; }
+    .site-body { grid-template-columns: 1fr; padding: 0 24px 40px; }
+    .article { border-right: none; padding-right: 0; }
+    .sidebar { padding-left: 0; }
+    .site-footer { padding: 24px; }
+  }
+
+  .author-bio {
+    margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--rule);
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+  .author-bio img {
+    width: 80px; height: 80px; object-fit: cover; border-radius: 50%;
+    flex-shrink: 0; border: 2px solid var(--border);
+  }
+  .author-bio-text { flex: 1; }
+  .author-bio-name {
+    font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 700;
+    letter-spacing: 0.08em; color: var(--black); margin-bottom: 6px;
+  }
+  .author-bio-quote { font-style: italic; font-size: 15px; color: var(--text); margin-bottom: 8px; line-height: 1.6; }
+  .author-bio-desc { font-size: 14px; color: var(--meta); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+<div class="top-rule"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="the-brothers.html">The Brothers</a>
+      <a href="index.html">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="logo-center">
+      <a href="index.html">
+        <img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px; height:auto; display:block; margin:0 auto;">
+      </a>
+    </div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="#">Store</a>
+    </nav>
+  </div>
+  <nav class="nav-second">
+    <a href="index.html">Get in the Van</a>
+    <a href="index.html">Through the Lens</a>
+  </nav>
+  <hr class="header-rule">
+</header>
+
+<!-- BODY -->
+<div class="site-body">
+  <article class="article">
+
+    <h1 class="post-title">The Birth of the Bro’d Trip</h1>
+    <div class="post-byline">
+      10.24.2015
+      <span class="sep">by</span>
+      <span class="by-author">Justin Fricke</span>
+      <span class="sep">//</span>
+      Leave a Comment
+    </div>
+
+    <img class="post-hero" src="images/birth-of-bro-trip.jpg" alt="Justin and Adam Fricke standing in front of their Sprinter van">
+
+    <div class="post-body">
+      <p>Everything happens for a reason; at least that's what I believe. People come into our lives and play a role in our life story and sometimes they play a BIG role in our life story.</p>
+
+      <p>A couple years ago I was in a serious relationship. The kind of relationship where the two of you just mesh from the get-go. You see, my girlfriend and I loved to spend time outside doing things we love; one of which is climbing. We'd climb together at the climbing gym a few nights a week, watch climbing flicks together, and dream up cool weekend trips to crags in the winter. I even took her on her first outdoor climbing trip, just the two of us. We had only been dating a month or two and she was fairly new to the sport, but she handled it like a champ so I knew we'd be looking forward to a lot more climbing trips.</p>
+
+      <p>Fast forward about a year to October 2012. I work in the banking industry so I get bank holidays including Columbus Day. We planned a 9 day road trip to Tennessee and both of the Carolinas that was filled with climbing, hiking, and music.</p>
+
+      <p>Our first stop was Chattanooga, Tennessee. I had started a blog of my own 6 months earlier and we were meeting up to climb with a friend I had met through the blogging community. Katie and her then boyfriend, Niko, were at the tail end of their year-long road trip. They were living in a yellow Sprinter Van and after two days of climbing with them my girlfriend wanted nothing more than for the two of us to go on a year-long road trip.</p>
+
+      <p>The idea sounded farfetched. "People who only live in the present and never plan for the future are the only people that do that sort of thing," was my initial thought. I was (and still am) planning for the future and if I wanted to do a big road trip I'd have to be financially stable and retired. Then, and only then, would I have the time to do something like that.</p>
+
+      <p>I hadn't been out of college a full year yet, had landed a solid full time job (the kind of job thousands of college students across the country hope to get when they graduate), and just started stashing money into my 401K. By most standards I was doing everything right. I was playing by the rules and I didn't want to break those rules. She, on the other hand, had other plans and after endless conversations I was finally on board.</p>
+
+      <p>From that moment in January 2013 I started saving every extra penny and dime I had to put towards this road trip I was taking with my girlfriend. The plan was to wait a couple years for her to graduate college which would give us enough time to save up some money to buy a house on wheels and to live off of for a year. We'd travel the entire country hopping from climbing crag to climbing crag, hitting some hiking trails and surf spots along the way. I'd try to land some freelance writing gigs to help cover expenses and when the year (or money) was up, we'd set down roots back in Orlando and get "real jobs."</p>
+
+      <p>It was the perfect plan and perfect situation. For the first time in my life I was going to be a rebel, an outlaw of society; living a life of uncertainty for a year. Going wherever I wanted with my girl.</p>
+
+      <p>If there's one thing I've learned in my 25 years on this Earth, it's that the only constant in life is change. My plans changed just a couple months later when my heart and world were shattered. Things hadn't seemed the way they were for a little while and truth be told, I saw it coming. I got dumped. And when you get dumped, you start to come up with irrational ideas. After taking a look at my bank account I decided it'd be best to hold off for a while, keep working my day job, and save everything I could so I could go on an epic road trip anyway.</p>
+
+      <p>I remember talking with a friend over tacos the next day about what had happened and my plan going forward. One of the things I told him is that the best part about being in such a low place and feeling like shit is that up is the only way to go.</p>
+
+      <p>My younger brother, Adam, took me to Applebee's the night before my 24th birthday. I was still bummed from this failed relationship and 2 for 1 drinks is a pretty good cure. I told him my plan and that I was still going on this road trip. At this point I wasn't sure what it was going to look like and it finally hit me. After years of fighting we'd finally become friends and this would be the perfect thing for the two of us to do together.</p>
+
+      <p>Although we're two separate, individual, people with different strengths and weaknesses, we realized that we could be unstoppable as a team. Adam would be the photographer and videographer and I'd be the writer. I'd write about what's going on with us while we're on the road, Adam would be snapping photos and recording videos, and we'd help each other do our part. At the end of the trip we'd have a ton of content to produce a movie about our year on the road and I'd have enough material and experience to write a book. Maybe if we were lucky enough we wouldn't have to get "real jobs" ever again.</p>
+
+      <p>I like to think that Adam and I are forward thinking, smart, guys. We knew that in order for this journey of ours to be marketable, it not only had to be interesting, it had to sound interesting. It'd need a name, something that would stick and spark conversation. Calling this journey "the trip" or "our road trip" would just be following what's been done before. After a lot of dynamic conversations on a beach in Mexico, we decided to call it–</p>
+
+      <p><strong>The Bro'd Trip</strong></p>
+
+      <p>Things happen when you have a dream. You go at it full force and do everything in your power to make it better than you had originally planned. I started helping Adam on his photo and video shoots and he started teaching me how to frame shots, get the camera settings dialed in, and edit in post production. I started picking up more writing gigs which helped me fund my own camera gear purchases. Adam got more comfortable with writing consistently, plugging away with more updated content on his photography website, and even started writing for other sources.</p>
+
+      <p>This dream of a road trip was birthed over two years ago and it's changed a lot. I ended up trading a pretty girl as my partner for my not-so-pretty brother with photo and video skills. Our "jobs" and skill sets for The Bro'd Trip have evolved. What started as a way to have fun for a year has turned into the potential for new careers for the two of us.</p>
+
+      <p>One thing that can't change is that we're brothers. Brothers that can't wait for this epic story to get underway on January 1, 2016.</p>
+    </div>
+
+    <div class="post-tagline">2 Brothers &nbsp;&nbsp; 4 Wheels &nbsp;&nbsp; 50 States &nbsp;&nbsp; 1 Year</div>
+
+    <div class="post-meta-footer">
+      <b>CATEGORIES</b> // THE ROAD<br><b>TAGS</b> // JUSTIN FRICKE, THE BRO'D TRIP, FAMILY, ROAD TRIP, VAN LIFE
+    </div>
+
+
+    <!-- AUTHOR BIO -->
+    <div class="author-bio">
+      <img src="images/justin-fricke-bio-b.jpg" alt="Justin Fricke">
+      <div class="author-bio-text">
+        <div class="author-bio-name">About Justin Fricke</div>
+        <div class="author-bio-quote">Hi I’m Justin! I’m a 25 year old millennial that’s trading in his cool downtown office job that comes with all the benefits for a life on the road. I may not know my destination, but I’m strapped in and ready for the journey. Follow me @JustinLFricke</div>
+      </div>
+    </div>
+
+    <nav class="post-nav">
+      <div>
+        <span class="nav-label">← Previous</span>
+        <a href="index.html" class="nav-title">Back to All Posts</a>
+      </div>
+      <div class="post-nav-next">
+        <span class="nav-label">Next →</span>
+        <a href="im-taking-a-year-off-to-work.html" class="nav-title">I’m Taking a Year Off to Work</a>
+      </div>
+    </nav>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sw">
+      <div class="sw-head">What is the Bro'd Trip?</div>
+      <div class="sw-body">
+        <img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van">
+        <p>We're two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we're seeking meaningful work that we love.</p>
+        <a class="sw-link" href="the-brothers.html">Read more...</a>
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Trip Stats</div>
+      <div class="stats-grid">
+        <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+        <div class="stat-cell"><span class="stat-num">366</span><span class="stat-lbl">Days</span></div>
+        <div class="stat-cell"><span class="stat-num">240</span><span class="stat-lbl">Posts</span></div>
+        <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Recent Posts</div>
+      <div class="sw-body" style="padding:14px 20px;">
+        <ul class="recent-ul">
+          <li><a href="#">The Bro'd Trip's Favorite States</a></li>
+          <li><a href="#">Rearview Mirror: The Bro'd Trip 2016</a></li>
+          <li><a href="#">Rearview Mirror: December</a></li>
+          <li><a href="#">Crossing the Finish Line</a></li>
+          <li><a href="#">Modern Tradition</a></li>
+          <li><a href="the-birth-of-the-brod-trip.html">The Birth of the Bro'd Trip</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Fueled By:</div>
+      <div class="sw-body" style="text-align:center; padding:24px 20px;">
+        <img src="images/MRL-LOGO-Horizontal-Orange_WhiteM-300x50.jpg" alt="Merrell" style="max-width:180px; height:auto; display:block; margin:0 auto 20px;">
+        <hr style="border:none; border-top:1px solid #eee; margin-bottom:20px;">
+        <img src="images/Enerplex-Always-in-Charge-Orange-300x77.png" alt="EnerPlex — Always in Charge" style="max-width:180px; height:auto; display:block; margin:0 auto;">
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro'd Trip</div>
+    <div class="footer-sub">2 Brothers · 4 Wheels · 50 States · 1 Year · 2015–2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

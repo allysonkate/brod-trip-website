@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brothers – The Bro'd Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff; --bg: #f8f8f8; --light-gray: #f0f0f0; --rule: #d8d8d8;
+    --text: #333333; --meta: #999999; --black: #111111;
+    --sidebar-header-bg: #1a1a1a; --accent: #c0392b; --border: #e5e5e5;
+  }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.8; }
+  a { text-decoration: none; color: inherit; }
+  a:hover { color: var(--accent); }
+  .site-wrapper { background: var(--white); max-width: 1200px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.07); }
+  .top-rule { border-top: 3px solid var(--black); }
+  .site-header { padding: 32px 50px 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; }
+  .nav-left { display: flex; justify-content: flex-start; }
+  .nav-right { display: flex; justify-content: flex-end; }
+  .nav-left a, .nav-right a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 4px 14px; white-space: nowrap; transition: color 0.2s; }
+  .nav-left a:first-child { padding-left: 0; }
+  .nav-right a:last-child { padding-right: 0; }
+  .nav-left a:hover, .nav-right a:hover { color: var(--accent); }
+  .logo-center { text-align: center; }
+  .nav-second { display: flex; justify-content: center; padding: 10px 50px 0; }
+  .nav-second a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 4px 20px; transition: color 0.2s; }
+  .nav-second a:hover { color: var(--accent); }
+  .header-rule { margin: 16px 50px 0; border: none; border-top: 1px solid var(--rule); }
+
+  /* PAGE CONTENT */
+  .page-content { max-width: 900px; margin: 0 auto; padding: 60px 50px 80px; }
+
+  .page-title {
+    font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase; text-align: center;
+    color: var(--black); margin-bottom: 50px;
+  }
+
+  /* INTRO */
+  .page-intro {
+    text-align: center; font-size: 17px; line-height: 1.85; color: var(--text);
+    max-width: 680px; margin: 0 auto 70px;
+  }
+  .page-intro p { margin-bottom: 18px; }
+  .page-intro p:last-child { margin-bottom: 0; }
+
+  /* BROTHER SECTION */
+  .brother { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--rule); }
+  .brother:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .brother-name {
+    font-family: 'Raleway', sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
+    margin-bottom: 28px;
+  }
+
+  /* Justin layout: text left, photo right */
+  .brother-layout-right { display: grid; grid-template-columns: 1fr 320px; gap: 44px; align-items: start; }
+  /* Adam layout: photo left, text right */
+  .brother-layout-left { display: grid; grid-template-columns: 240px 1fr; gap: 44px; align-items: start; }
+
+  .brother-photo { width: 100%; height: auto; display: block; }
+  .brother-photo-right { border-radius: 2px; }
+
+  .brother-bio { font-size: 16px; line-height: 1.85; color: var(--text); }
+  .brother-bio p { margin-bottom: 20px; }
+  .brother-bio p:last-child { margin-bottom: 0; }
+
+  .brother-links {
+    margin-top: 32px; display: flex; flex-direction: column; align-items: center;
+    gap: 14px;
+  }
+  .brother-link {
+    font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--black);
+    border-bottom: 1px solid var(--black); padding-bottom: 2px;
+    transition: all 0.2s; text-align: center;
+  }
+  .brother-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* FOOTER */
+  .site-footer { border-top: 3px solid var(--black); padding: 28px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--black); }
+  .footer-sub { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-top: 3px; }
+  .footer-note { font-family: 'Raleway', sans-serif; font-size: 11px; color: var(--meta); text-align: right; }
+  .footer-note a { color: var(--text); text-decoration: underline; }
+
+  @media (max-width: 820px) {
+    .site-header { grid-template-columns: 1fr; padding: 20px 24px 0; text-align: center; }
+    .nav-left, .nav-right { justify-content: center; flex-wrap: wrap; }
+    .nav-second, .header-rule { padding-left: 24px; padding-right: 24px; }
+    .page-content { padding: 40px 24px 60px; }
+    .brother-layout-right,
+    .brother-layout-left { grid-template-columns: 1fr; }
+    .brother-layout-right .brother-photo { order: -1; max-width: 280px; margin: 0 auto; }
+    .site-footer { padding: 24px; }
+  }
+  .post-meta-footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule);
+    font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: #aaa; line-height: 2;
+  }
+  .post-meta-footer b { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+<div class="top-rule"></div>
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="the-brothers.html">The Brothers</a>
+      <a href="index.html">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="logo-center">
+      <a href="index.html"><img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px;height:auto;display:block;margin:0 auto;"></a>
+    </div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="#">Store</a>
+    </nav>
+  </div>
+  <nav class="nav-second">
+    <a href="index.html">Get in the Van</a>
+    <a href="index.html">Through the Lens</a>
+  </nav>
+  <hr class="header-rule">
+</header>
+
+<div class="page-content">
+
+  <h1 class="page-title">The Brothers</h1>
+
+  <div class="page-intro">
+    <p>We're two Floridian brothers fighting society's natural pull to the post-college desk life. Who says you can't do meaningful work that you love and have fun doing it? We say you can.</p>
+    <p>We've set out on a year-long road trip, exploring all 50 U.S. states to prove just that. Teaming up with like-minded companies, we are on a mission to show you what life is like beyond the cubicle. Come join us, won't you?</p>
+  </div>
+
+  <!-- JUSTIN -->
+  <div class="brother">
+    <div class="brother-name">Justin Fricke</div>
+    <div class="brother-layout-right">
+      <div>
+        <div class="brother-bio">
+          <p>For 25 years, I've played it safe. Before I even graduated from college, I started holding down a full-time desk job. For the longest time I wanted a job like this: a downtown office, decent and consistent pay, benefits, and paid time off for vacation, holidays, and sick days. To be honest, I didn't even know paid holidays and sick days were a thing until I landed this job.</p>
+          <p>I felt like I made it, but the truth is that we never really make it. We should always be learning, getting out of our comfort zones, and progressing. I got comfortable, settled for mediocrity in everything I did, and then I started dreaming. Dreaming of doing my own thing climbing, surfing, writing, taking photos and videos, doing what I love. The Bro'd Trip is my way of getting comfortable being uncomfortable and taking a risk. I've turned in a pretty cool corporate job for a life of uncertainty, and I'm looking forward to it.</p>
+        </div>
+        <div class="brother-links">
+          <a href="https://www.instagram.com/JustinLFricke" target="_blank" class="brother-link">Instagram: @JustinLFricke</a>
+          <a href="https://www.twitter.com/JustinLFricke" target="_blank" class="brother-link">Twitter: @JustinLFricke</a>
+          <a href="https://www.facebook.com/JustinTheWeekendWarrior" target="_blank" class="brother-link">Facebook.com/JustinTheWeekendWarrior</a>
+          <a href="http://www.JustinTheWeekendWarrior.com" target="_blank" class="brother-link">Website: www.JustinTheWeekendWarrior.com</a>
+        </div>
+      </div>
+      <img class="brother-photo brother-photo-right" src="images/brod-trip-logo.png" alt="Justin Fricke with camera in the woods">
+    </div>
+  </div>
+
+  <!-- ADAM -->
+  <div class="brother">
+    <div class="brother-name">Adam Fricke</div>
+    <div class="brother-layout-left">
+      <img class="brother-photo" src="images/brod-trip-logo.png" alt="Adam Fricke">
+      <div>
+        <div class="brother-bio">
+          <p>In my 23 years of life, I've never really had any direction in terms of a career path. I was a B+ student in school, a run-of-the-mill athlete, and have never had any interest in the jobs you hear about from your advisor or at a job fair. I don't need to sit at a computer, twiddling my thumbs and tapping my feet anxiously under a desk from IKEA to know that the cubicle life isn't for me. Does that mean that I have to spend 40 hours every week doing something I hate? I don't think so.</p>
+          <p>By going on The Bro'd Trip, I'm freeing myself to do the kind of work I want to do. That consists of writing, photography, and videography. And the best part about it is that I get to center all of my work around things I love: surfing, music, and travel to name a few. I have no idea where The Bro'd Trip will take me past our year on the road, but I'm excited to find out.</p>
+        </div>
+        <div class="brother-links">
+          <a href="https://www.instagram.com/AdamFricke" target="_blank" class="brother-link">Instagram: @AdamFricke</a>
+          <a href="https://www.twitter.com/AdamFricke" target="_blank" class="brother-link">Twitter: @AdamFricke</a>
+          <a href="https://www.facebook.com/AdamFrickePhotography" target="_blank" class="brother-link">Facebook.com/AdamFrickePhotography</a>
+          <a href="http://www.AdamFricke.com" target="_blank" class="brother-link">Website: www.AdamFricke.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-content -->
+
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro'd Trip</div>
+    <div class="footer-sub">2 Brothers · 4 Wheels · 50 States · 1 Year · 2015–2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

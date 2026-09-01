@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"><title>3 Guys, 1 Van | The Bro'd Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--white:#ffffff;--bg:#f8f8f8;--light-gray:#f0f0f0;--rule:#d8d8d8;--text:#333333;--meta:#999999;--black:#111111;--sidebar-header-bg:#1a1a1a;--accent:#c0392b;--border:#e5e5e5}
+  body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.8}
+  a{text-decoration:none;color:inherit} a:hover{color:var(--accent)}
+  .site-wrapper{background:var(--white);max-width:1200px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,0.07)}
+  .top-rule{border-top:3px solid var(--black)}
+  .site-header{padding:32px 50px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+  .nav-left{display:flex;justify-content:flex-start} .nav-right{display:flex;justify-content:flex-end}
+  .nav-left a,.nav-right a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);padding:4px 14px;white-space:nowrap;transition:color 0.2s}
+  .nav-left a:first-child{padding-left:0} .nav-right a:last-child{padding-right:0}
+  .nav-left a:hover,.nav-right a:hover{color:var(--accent)}
+  .logo-center{text-align:center}
+  .nav-second{display:flex;justify-content:center;padding:10px 50px 0}
+  .nav-second a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);padding:4px 20px;transition:color 0.2s}
+  .nav-second a:hover{color:var(--accent)}
+  .header-rule{margin:16px 50px 0;border:none;border-top:1px solid var(--rule)}
+  .site-body{display:grid;grid-template-columns:1fr 290px;padding:0 50px 60px;align-items:start}
+  .article{padding-top:50px;border-right:1px solid var(--border);padding-right:52px}
+  .post-series{text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .post-title{font-family:'Raleway',sans-serif;font-size:26px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-align:center;color:var(--black);line-height:1.3;margin-bottom:12px}
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author{color:var(--text);font-weight:700}
+  .post-body{font-size:17px;line-height:1.85;color:var(--text)}
+  .post-body p{margin-bottom:22px} .post-body p:last-child{margin-bottom:0}
+  .post-img{width:100%;height:auto;display:block;margin:28px 0;border-radius:2px}
+  .pic-specs{margin-top:36px;padding:24px 28px;border:1px solid var(--border);background:#fafafa}
+  .pic-specs-title{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);margin-bottom:14px}
+  .pic-specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 20px}
+  .spec-label{font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);display:block;margin-bottom:2px}
+  .spec-value{font-family:'Lato',sans-serif;font-size:15px;font-weight:700;color:var(--black)}
+  .post-pullquote{font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-align:center;color:var(--black);border-top:2px solid var(--black);border-bottom:2px solid var(--black);padding:20px 0;margin:32px 0;line-height:1.4}
+  .yt-thumb{position:relative;display:block;margin:0 0 28px;cursor:pointer;text-decoration:none}
+  .yt-thumb img{width:100%;height:auto;display:block;border-radius:2px}
+  .yt-thumb:hover img{opacity:0.85;transition:opacity 0.2s}
+  .yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(0,0,0,.72);border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .yt-play::after{content:'';border-style:solid;border-width:14px 0 14px 26px;border-color:transparent transparent transparent #fff;margin-left:4px}
+  .author-bio{margin-top:36px;padding-top:30px;border-top:1px solid var(--rule);display:flex;gap:20px;align-items:flex-start}
+  .author-bio img{width:80px;height:80px;object-fit:cover;border-radius:50%;flex-shrink:0;border:2px solid var(--border)}
+  .author-bio-text{flex:1}
+  .author-bio-name{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;color:var(--black);margin-bottom:6px}
+  .author-bio-quote{font-style:italic;font-size:15px;color:var(--text);line-height:1.6}
+  .post-nav{margin-top:40px;padding-top:28px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+  .post-nav .nav-label{font-size:9px;letter-spacing:0.18em;color:var(--meta);display:block;margin-bottom:4px;font-family:'Raleway',sans-serif;text-transform:uppercase}
+  .post-nav a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--black);padding-bottom:2px;transition:all 0.2s;display:inline-block}
+  .post-nav a:hover{color:var(--accent);border-color:var(--accent)}
+  .post-nav-next{text-align:right}
+  .sidebar{padding-top:50px;padding-left:40px}
+  .sw{margin-bottom:32px}
+  .sw-head{background:var(--sidebar-header-bg);color:#fff;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:13px 16px;text-align:center}
+  .sw-body{border:1px solid var(--border);border-top:none;padding:20px}
+  .sw-body img{width:100%;height:auto;display:block;margin-bottom:14px}
+  .sw-body p{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:12px}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+  .stat-cell{background:var(--white);padding:16px 8px;text-align:center}
+  .stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--black);display:block;line-height:1;margin-bottom:4px}
+  .stat-lbl{font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--meta)}
+  .site-footer{border-top:3px solid var(--black);padding:28px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .footer-brand{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--black)}
+  .footer-sub{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);margin-top:3px}
+  .footer-note{font-family:'Raleway',sans-serif;font-size:11px;color:var(--meta);text-align:right}
+  @media(max-width:820px){
+    .site-header{grid-template-columns:1fr;padding:20px 24px 0;text-align:center}
+    .nav-left,.nav-right{justify-content:center;flex-wrap:wrap}
+    .nav-second,.header-rule{padding-left:24px;padding-right:24px}
+    .site-body{grid-template-columns:1fr;padding:0 24px 40px}
+    .article{border-right:none;padding-right:0}
+    .sidebar{padding-left:0}
+  }
+  
+  .comments-section{margin-top:48px;padding-top:36px;border-top:1px solid var(--rule);}
+  .comments-heading{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--black);margin-bottom:28px;}
+  .comment{padding:20px 0;border-bottom:1px solid var(--light-gray);}
+  .comment:last-child{border-bottom:none;}
+  .comment-meta{display:block;margin-bottom:8px;}
+  .comment-author{display:block;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);}
+  .comment-date{display:block;font-family:'Lato',sans-serif;font-size:11px;color:var(--meta);margin-top:2px;}
+  .comment-body{font-size:15px;line-height:1.75;color:var(--text);}
+  .comment-reply{margin-left:32px;border-left:2px solid var(--border);padding-left:20px;}
+  .trackback{padding:16px 0;border-bottom:1px solid var(--light-gray);font-size:14px;color:var(--meta);font-style:italic;}
+  .trackback-title{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);display:block;margin-bottom:4px;}
+  .post-meta-footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule);
+    font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: #aaa; line-height: 2;
+  }
+  .post-meta-footer b { color: var(--text); }
+</style>
+</head>
+<body><div class="site-wrapper">
+<div class="top-rule"></div>
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="the-brothers.html">The Brothers</a>
+      <a href="index.html">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="logo-center">
+      <a href="index.html"><img src="images/brod-trip-logo.png" alt="The Bro’d Trip" style="max-width:240px;height:auto;display:block;margin:0 auto"></a>
+    </div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="#">Store</a>
+    </nav>
+  </div>
+  <nav class="nav-second"><a href="index.html">Through the Lens</a></nav>
+  <hr class="header-rule">
+</header>
+<div class="site-body">
+  <article class="article">    <div class="post-series">The Road</div>
+    <h1 class="post-title">3 Guys, 1 Van</h1>
+    <div class="post-byline"><span class="sep">12.08.2016</span> &bull; <span class="by-author">Adam Fricke</span></div>
+    <div class="post-body">
+      <p>Tanner is the brother we never had. Sure, Justin and I each have a brother. But not a Tanner. Tanner is the outspoken, goofy, fearless (or so he seems), slightly hipster, brother from another mother. We&rsquo;ve known Tanner our whole lives. He and Justin have been best friends since kindergarten and he&rsquo;s spent a lot of time with our family over the years. A lot of that time, I spent trying to be part of their friend group. It was frowned upon for cool 8th graders like them to hang out with puny 6th graders like me, but Tanner was always kind to me even though a two year age gap meant a lot more back then. I also looked up to him (still do) for his basketball skills, ability to make people laugh, and willingness to start a conversation with anyone about anything.</p>
+      <p>In the last few years, we&rsquo;ve all gotten older (duh) and Tanner&rsquo;s done some of the things that come with age. College. Jobs. Moving. We&rsquo;ve seen less of Tanner the past few years but he&rsquo;s always been super supportive of our trip and has told us since the beginning that he&rsquo;d take some time to come live van life with us for a bit. A lot of our friends have told us that. But Tanner actually did.</p>
+      <p>On a chilly afternoon, we picked Tanner up from the Manchester airport in New Hampshire. He introduced us to his new/old friend that he&rsquo;d made on the plane (go figure), named Lorette. Apparently he offended her when he proclaimed that he didn&rsquo;t even know Manchester was a place and she put an ice cube down his back. Or something like that, he tells the story better. We went to a little brewery for flights of IPAs and stouts and had cheap Mexican food while we caught up on life and planned our attack on the next 10 days we&rsquo;d spend together.</p>
+      <p>The next morning we drove to Acadia National Park &ndash; basically the only thing we knew existed in Maine. We tackled a couple fun hikes, including an exposed, and rather vertical, stroll called Bee Hive. Tanner&rsquo;s a talker, but not when he&rsquo;s scared. We found the end of Tanner&rsquo;s comfort zone on the Bee Hive Trail as he was pretty silent the whole way up. But after a family photo on the peak, he was back to his usual silly self.</p>
+      <p>The next day in Acadia, we didn&rsquo;t have much of an agenda. We ended up exploring a beach we&rsquo;d stumbled on the day before, took pictures that make us look cooler than we are, peed off of high places, pretended to fly, and kicked our feet over some cliff edges. You know, guy stuff.</p>
+      <p>We even spent Thanksgiving together! We ate Denny&rsquo;s pancake breakfasts, threw snowballs at each other (while working on a video project for Tanner&rsquo;s spoken word project), and washed down a thankful day with none other than Chinese food from a little spot that also doubled as a gas station.</p>
+      <img src="images/3_Guys_1_Van.jpg" alt="3 Guys, 1 Van" class="post-img">
+      <p>Night time for the 3 of us starts when the sun goes down at about 4pm. Harry Potter showings on my laptop begin around 8, and Justin and Tanner are usually unconscious by about 8:17. By far, my favorite night of the trip was freezing our butts off in Vermont as Tanner showed us his fire-building skills he&rsquo;d picked up while working at a camp in northern Wisconsin. The fire didn&rsquo;t last long so we started a fire in our bellies with whiskey. We talked about life, cracked jokes on each other, and Justin and I asked Tanner for girl advice. After all, he&rsquo;s getting married to a pretty wonderful gal in a few short weeks, so he must know something about the female species that we don&rsquo;t!</p>
+      <p>One of the reasons Tanner wanted to visit us at this time of year was to be able to see Boston with us. Justin and I aren&rsquo;t really city folk but we couldn&rsquo;t deny him a trip to Beantown. Our time in Boston was straight out of a movie. The first guy we wished a good morning to responded with &ldquo;Hey, how ya doin&rsquo;?&rdquo; in that beautifully annoying Bostonian accent. Tanner led the charge as we explored the Freedom Trail, a couple of breweries, and even a Boston Celtics game (Go Magic!).</p>
+      <p>I was concerned bringing another person into our already cramped living space, but having another brother around wasn&rsquo;t so bad. In fact it was the opposite. So good. I guess you could say we gave Tanner an unofficial 10-day bachelor party!</p>
+    </div>
+    <div class="post-meta-footer"><b>CATEGORIES</b> // THE ROAD<br><b>TAGS</b> // Adam Fricke, brother, Road Trip, tanner olson, The Bro'd Trip, written to speak</div>
+    <div class="author-bio">
+      <img src="images/adam-fricke-bio-b.jpg" alt="Adam Fricke" style="width:80px;height:80px;object-fit:cover;border-radius:50%;flex-shrink:0;border:2px solid var(--border)">
+      <div class="author-bio-text">
+        <div class="author-bio-name">About Adam Fricke</div>
+        <div class="author-bio-quote">Although my destination may be uncertain, my direction is Always Forward. Photography, Videography, Writing, Music, Surfing, Beer. Not necessarily in that order. Follow me @AdamFricke</div>
+      </div>
+    </div>
+    <div class="comments-section">
+      <div class="comments-heading">1 Comment</div>
+      <div class="comment">
+        <div class="comment-meta">
+          <span class="comment-author">Karen</span>
+          <span class="comment-date">December 9, 2016</span>
+        </div>
+        <div class="comment-body">I loved this post&hellip;..because you went to two of my favorite places&hellip;..Acadia National Park&hellip;..and Boston! I love the Beehive Trail! Next time you visit New Hampshire, you have to climb Mt. Monadnock, the second most climbed mountain in the world after Mt. Fuji. Your adventure is coming to an end&hellip;..this year flew by! Enjoy your last few weeks.</div>
+      </div>
+    </div>
+    <nav class="post-nav">
+      <div><span class="nav-label">&larr; Previous</span><a href="pick-of-the-week-56-kickin-it.html" class="nav-title">Pic(k) of the Week #56 | Kickin’ It</a></div>
+      <div class="post-nav-next"><span class="nav-label">Next &rarr;</span><a href="rearview-mirror-november.html" class="nav-title">Rearview Mirror: November</a></div>
+    </nav>
+  </article>
+<aside class="sidebar">
+    <div class="sw">
+      <div class="sw-head">What Is The Bro&#8217;d Trip?</div>
+      <div class="sw-body">
+        <img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van">
+        <p>We&#8217;re two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we&#8217;re seeking meaningful work that we love.</p>
+        <a href="index.html" class="back-link">&#8592; Back to All Posts</a>
+      </div>
+    </div>
+    <div class="sw"><div class="sw-head">The Stats</div>
+      <div class="sw-body">
+        <div class="stats-grid">
+          <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+          <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+          <div class="stat-cell"><span class="stat-num">1</span><span class="stat-lbl">Van</span></div>
+          <div class="stat-cell"><span class="stat-num">365</span><span class="stat-lbl">Days</span></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro’d Trip</div>
+    <div class="footer-sub">2 Brothers &middot; 4 Wheels &middot; 50 States &middot; 1 Year &middot; 2015&ndash;2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div></body></html>

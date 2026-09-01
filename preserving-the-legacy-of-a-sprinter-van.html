@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preserving the Legacy of a Sprinter Van – The Bro'd Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff; --bg: #f8f8f8; --light-gray: #f0f0f0; --rule: #d8d8d8;
+    --text: #333333; --meta: #999999; --black: #111111;
+    --sidebar-header-bg: #1a1a1a; --accent: #c0392b; --border: #e5e5e5;
+  }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.8; }
+  a { text-decoration: none; color: inherit; }
+  a:hover { color: var(--accent); }
+  .site-wrapper { background: var(--white); max-width: 1200px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.07); }
+  .top-rule { border-top: 3px solid var(--black); }
+  .site-header { padding: 32px 50px 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; }
+  .nav-left { display: flex; justify-content: flex-start; }
+  .nav-right { display: flex; justify-content: flex-end; }
+  .nav-left a, .nav-right a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 4px 14px; white-space: nowrap; transition: color 0.2s; }
+  .nav-left a:first-child { padding-left: 0; }
+  .nav-right a:last-child { padding-right: 0; }
+  .nav-left a:hover, .nav-right a:hover { color: var(--accent); }
+  .logo-center { text-align: center; }
+  .nav-second { display: flex; justify-content: center; padding: 10px 50px 0; }
+  .nav-second a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 4px 20px; transition: color 0.2s; }
+  .nav-second a:hover { color: var(--accent); }
+  .header-rule { margin: 16px 50px 0; border: none; border-top: 1px solid var(--rule); }
+  .site-body { display: grid; grid-template-columns: 1fr 290px; padding: 0 50px 60px; align-items: start; }
+  .article { padding-top: 50px; border-right: 1px solid var(--border); padding-right: 52px; }
+  .post-title { font-family: 'Raleway', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; color: var(--black); line-height: 1.3; margin-bottom: 12px; }
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author { color: var(--text); font-weight: 700; } .post-byline .sep {margin:0 5px;}
+  .post-hero { width: 100%; height: auto; display: block; margin-bottom: 36px; }
+  .post-img { width:100%; height:auto; display:block; margin:28px 0; border-radius:2px; }
+
+  .post-body { font-size: 17px; line-height: 1.85; color: var(--text); }
+  .post-body p { margin-bottom: 22px; }
+  .post-body p:last-child { margin-bottom: 0; }
+  .post-body em { font-style: italic; }
+  .post-body strong { font-weight: 700; }
+  .post-meta-footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #aaa; line-height: 2.2; }
+  .post-meta-footer b { color: var(--text); }
+  .author-bio { margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--rule); display: flex; gap: 20px; align-items: flex-start; }
+  .author-bio img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--border); }
+  .author-bio-text { flex: 1; }
+  .author-bio-name { font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: var(--black); margin-bottom: 6px; }
+  .author-bio-quote { font-style: italic; font-size: 15px; color: var(--text); margin-bottom: 8px; line-height: 1.6; }
+  .author-bio-desc { font-size: 14px; color: var(--meta); line-height: 1.6; }
+  .post-nav { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+  .post-nav .nav-label { font-size: 9px; letter-spacing: 0.18em; color: var(--meta); display: block; margin-bottom: 4px; font-family: 'Raleway', sans-serif; text-transform: uppercase; }
+  .post-nav a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); border-bottom: 2px solid var(--black); padding-bottom: 2px; transition: all 0.2s; display: inline-block; }
+  .post-nav a:hover { color: var(--accent); border-color: var(--accent); }
+  .post-nav-next { text-align: right; }
+  .sidebar { padding-top: 50px; padding-left: 40px; }
+  .sw { margin-bottom: 32px; }
+  .sw-head { background: var(--sidebar-header-bg); color: #fff; font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 13px 16px; text-align: center; }
+  .sw-body { border: 1px solid var(--border); border-top: none; padding: 20px; }
+  .sw-body img { width: 100%; height: auto; display: block; margin-bottom: 14px; }
+  .sw-body p { font-size: 14px; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+  .sw-link { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--black); border-bottom: 2px solid var(--black); padding-bottom: 1px; transition: all 0.2s; }
+  .sw-link:hover { color: var(--accent); border-color: var(--accent); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .stat-cell { background: var(--white); padding: 16px 8px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--black); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-lbl { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--meta); }
+  .recent-ul { list-style: none; }
+  .recent-ul li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5; }
+  .recent-ul li:last-child { border-bottom: none; padding-bottom: 0; }
+  .recent-ul a { color: var(--text); transition: color 0.2s; }
+  .recent-ul a:hover { color: var(--accent); }
+  .site-footer { border-top: 3px solid var(--black); padding: 28px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--black); }
+  .footer-sub { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-top: 3px; }
+  .footer-note { font-family: 'Raleway', sans-serif; font-size: 11px; color: var(--meta); text-align: right; }
+  .footer-note a { color: var(--text); text-decoration: underline; }
+  @media (max-width: 820px) {
+    .site-header { grid-template-columns: 1fr; padding: 20px 24px 0; text-align: center; }
+    .nav-left, .nav-right { justify-content: center; flex-wrap: wrap; }
+    .nav-second, .header-rule { padding-left: 24px; padding-right: 24px; }
+    .site-body { grid-template-columns: 1fr; padding: 0 24px 40px; }
+    .article { border-right: none; padding-right: 0; }
+    .sidebar { padding-left: 0; }
+    .site-footer { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+<div class="top-rule"></div>
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="the-brothers.html">The Brothers</a>
+      <a href="index.html">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="logo-center"><a href="index.html"><img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px; height:auto; display:block; margin:0 auto;"></a></div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="#">Store</a>
+    </nav>
+  </div>
+  <nav class="nav-second">
+    <a href="index.html">Get in the Van</a>
+    <a href="index.html">Through the Lens</a>
+  </nav>
+  <hr class="header-rule">
+</header>
+
+<div class="site-body">
+  <article class="article">
+    <h1 class="post-title">Preserving the Legacy of a Sprinter Van</h1>
+    <div class="post-byline">
+      11.01.2015
+      <span class="sep">by</span>
+      <span class="by-author">Justin Fricke</span>
+      <span class="sep">//</span>
+      Leave a Comment
+    </div>
+
+    
+
+    <div class="post-body">
+      <p>After sorting through vehicle options and deciding that a Sprinter Van would be our best fit, I began the daunting task of actually finding one within our price range. I started scouring the internet at the beginning of August, hoping to find something by the end of September at the latest. Everyone I know that's done something like this before told me I should start looking early and I should've listened. It was mid-October before I finally stumbled upon a solid lead on a 2008 Dodge Sprinter Van with a 170″ wheelbase.</p>
+
+      <img src="images/151024_VanPickup-justin-driver.jpg" alt="Justin Fricke in the Sprinter Van" class="post-img">
+
+      <p>I found the van listed on Sprinter Source for a little more than what I wanted to spend, but it was already built out and had just hit 80,000 miles on the odometer. I know that might sound like a lot for a regular car, but usually Sprinter Vans aren't fully broken in until around the 80,000-100,000 mile mark and their engines are tough. With regular maintenance these engines can keep a van rolling for 500,000 miles.</p>
+
+      <p>After a few phone calls with the seller, we came to an agreement on a price. It was a Thursday morning and within hours I had mine and Adam's airline tickets booked, a cashier's check printed for Jack (the seller), temporary vehicle insurance, and a temporary tag. It was finally happening: Adam and I were flying from Orlando, Florida to Providence, Rhode Island to buy a Sprinter Van, sight unseen, from someone I had only spoken to over the phone a hand full of times.</p>
+
+      <p><strong>Saturday morning at 4:00 am we were up&hellip;sort of.</strong> We kind of slept through our alarms and ended up leaving for the airport a little later than expected. Our mom got us to the OIA with enough time for us to say "see ya later" and "love you" to her and the dog before walking through TSA Pre-Check and to our gate, right after a breakfast stop at Wendy's. I wanted Qdoba, but neither of us wanted to risk a gastric emergency in the coach bathroom of the airplane.</p>
+
+      <p>For me, it felt like an eternity flying from Orlando, switching planes in Charlotte, and then onward to Providence. I'm the one on the hook for all of this. I'm the one who came up with this whole "live in a van for an entire year" idea, the one who did all the research on Sprinter Vans, the one who called dozens of sellers, and the one who found this Sprinter Van and had handled all the communication with Jack up to this point. If anything went wrong, it was on me and my nervous foot tapping was going all morning. All the while, Adam was sleeping next to me on the planes, cool as a cucumber, wondering why I was so nervous.</p>
+
+      <p>We walked out of the airport and there it was, our future home on wheels was sitting at the curb waiting for us. We were so anxious to check out our soon-to-be new van and meet Jack that we jumped in at the wrong spot. Apparently we jumped in five feet too early and held up traffic, or at least that's what the cop directing traffic yelled at us.</p>
+
+      <p><strong>The Sprinter Van community's small and unique.</strong> It's kind of like a brotherhood and when we met Jack for the first time, it was kind of like talking to a friend you haven't seen in forever. He told us war stories, work stories, some family stories, and told us where he and his wife had taken the van they had built out in 2009.</p>
+
+      <p>It took Jack a while to finally decide on a Sprinter Van as the perfect vehicle for he and his wife to camp in and see the country. Dodge and Mercedes made a change to the design of the Sprinter Van in 2007 and just like what our dad says, Jack said "You can't buy the first model. The first one always has problems and issues that need to get worked out. You always buy the second model of whatever it is you're buying." And that's why he went with a 2008. Jack and his wife were the first owners of the van and they built it out as a camper van to suit their living needs as they took it across the country.</p>
+
+      <p>We got to Jack's house and he gave us the full tour of his van. How he ran through the electrical, storage space, interior lights, cruise control, backup camera, everything. He covered every square inch of the van with us. Jack's a stand up guy that wanted us to know what we were getting and we both respect him for that.</p>
+
+      <p>His wife had prepared a sandwich lunch for us, we got to know them a little better, and we even added a few destinations to The Bro'd Trip after hearing some of their stories. It came time to sign the title transfer, hand over the cashier's check, and switch the license plates. As we were driving away from their house I had a sense of pride, along with terror. I was proud that Adam and I got to keep the legacy of this Sprinter Van going as a conversion van, as it should be. Oh and the terror I was feeling? I think everyone would be a little terrified sitting behind the wheel of a behemoth of a vehicle having never really driven anything that size before, facing a 22 hour drive, after having spent a lot of the money you had saved over the past two years.</p>
+
+      <p><strong>Fall's beautiful in the northeast and the long drive ahead wasn't going anywhere.</strong> We pulled over to snap a few pictures of the autumn trees with the grey sky as a background. Walking around taking photos and videos, the two of us couldn't help but think that this was going to be our lives in just a couple months.</p>
+
+      <p>We drove into Connecticut with no problem and then came New York. We hit the Bronx traffic and were at a stand still for hours. If you want to get comfortable driving any vehicle in a short period of time, drive it through New York and New Jersey and you'll feel like you can take on any highway in any traffic. I used to think that the wide open interstate in the middle of nowhere was boring and by the time I drove us into Maryland I was counting down the miles until I95 was out of the major metropolis cities.</p>
+
+      <p>After 12 hours of driving with only one stop for food and our first diesel fuel-up, I had to get some rest. I'm a terrible older brother and gave Adam the graveyard shift. He took over at 2:00 am and we had decided six hours earlier that it didn't make sense to grab a hotel for the night. We'd just push through, get home earlier than expected, and get to bed earlier on Sunday night.</p>
+
+      <p>Right before the sun started coming up I woke up from my slumber to hear Adam utter "Good you're awake. We need to switch." Even after trying to sing along to every song that came up on Pandora the poor kid was having a hard time staying awake, and I don't blame him. The graveyard shift sucks! We pulled over to switch drivers and I was back behind the steering wheel.</p>
+
+      <p>It wasn't until we were back in Florida in broad daylight that Adam woke up and had his freak out moment. When he woke up it finally hit him that this is it, it's really happening. He was sleeping in the van that's now ours and that we'll be living in for all of 2016.</p>
+
+      <p><strong>After 22 hours we were back home in Florida.</strong> We rolled into the driveway at 12:00 pm on Sunday and were greeted by our mom, dad, and dog, Max, all smiles that we made it home safely after 22 hours of driving. Driving 22 hours straight is something we're never going to do again, but that was the easy part. Even though it's already built out, it doesn't quite meet our needs. Now comes the hard part&hellip;building it out for The Bro'd Trip.</p>
+    </div>
+
+    <div class="post-meta-footer">
+      <b>CATEGORIES</b> // THE ROAD<br>
+      <b>TAGS</b> // ADAM FRICKE, FLORIDA, JUSTIN FRICKE, RHODE ISLAND, SPRINTER VAN
+    </div>
+
+    <div class="author-bio">
+      <img src="images/justin-fricke-bio-b.jpg" alt="Justin Fricke">
+      <div class="author-bio-text">
+        <div class="author-bio-name">About Justin Fricke</div>
+        <div class="author-bio-quote">Hi I’m Justin! I’m a 25 year old millennial that’s trading in his cool downtown office job that comes with all the benefits for a life on the road. I may not know my destination, but I’m strapped in and ready for the journey. Follow me @JustinLFricke</div>
+      </div>
+    </div>
+
+    <nav class="post-nav">
+        <div>
+        <span class="nav-label">&larr; Previous</span>
+        <a href="choosing-the-best-vehicle.html">Choosing the Best Vehicle for the Bro’d Trip</a>
+      </div>
+      <div class="post-nav-next">
+        <span class="nav-label">Next &rarr;</span>
+        <a href="pick-of-the-week-2-nails-and-screws.html">Pic(k) of the Week #2 | Nails and Screws</a>
+      </div>
+    </nav>
+  </article>
+
+  <aside class="sidebar">
+    <div class="sw">
+      <div class="sw-head">What is the Bro'd Trip?</div>
+      <div class="sw-body">
+        <img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van">
+        <p>We're two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we're seeking meaningful work that we love.</p>
+        <a class="sw-link" href="the-brothers.html">Read more...</a>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-head">Trip Stats</div>
+      <div class="stats-grid">
+        <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+        <div class="stat-cell"><span class="stat-num">366</span><span class="stat-lbl">Days</span></div>
+        <div class="stat-cell"><span class="stat-num">240</span><span class="stat-lbl">Posts</span></div>
+        <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-head">Recent Posts</div>
+      <div class="sw-body" style="padding:14px 20px;">
+        <ul class="recent-ul">
+          <li><a href="the-birth-of-the-brod-trip.html">The Birth of the Bro'd Trip</a></li>
+          <li><a href="im-taking-a-year-off-to-work.html">I'm Taking a Year Off to Work</a></li>
+          <li><a href="pick-of-the-week-1-the-22-hour-drive-home.html">Pic(k) of the Week #1</a></li>
+          <li><a href="choosing-the-best-vehicle.html">Choosing the Best Vehicle</a></li>
+          <li><a href="preserving-the-legacy-of-a-sprinter-van.html">Preserving the Legacy</a></li>
+          <li><a href="index.html">View all posts &rarr;</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-head">Fueled By:</div>
+      <div class="sw-body" style="text-align:center; padding:24px 20px;">
+                <img src="images/MRL-LOGO-Horizontal-Orange_WhiteM-300x50.jpg" alt="Merrell" style="max-width:180px; height:auto; display:block; margin:0 auto 20px;">
+        <hr style="border:none; border-top:1px solid #eee; margin-bottom:20px;">
+        <img src="images/Enerplex-Always-in-Charge-Orange-300x77.png" alt="EnerPlex — Always in Charge" style="max-width:180px; height:auto; display:block; margin:0 auto;">
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro'd Trip</div>
+    <div class="footer-sub">2 Brothers · 4 Wheels · 50 States · 1 Year · 2015–2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

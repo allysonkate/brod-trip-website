@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>River Life in Hells Canyon | Bro'd Trip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --white:#ffffff; --bg:#f8f8f8; --light-gray:#f0f0f0; --rule:#d8d8d8; --text:#333333; --meta:#999999; --black:#111111; --sidebar-header-bg:#1a1a1a; --accent:#c0392b; --border:#e5e5e5; }
+  body { font-family:'Lato',sans-serif; background:var(--bg); color:var(--text); font-size:17px; line-height:1.8; }
+  a { text-decoration:none; color:inherit; }
+  a:hover { color:var(--accent); }
+  .site-wrapper { background:var(--white); max-width:1200px; margin:0 auto; box-shadow:0 0 40px rgba(0,0,0,0.07); }
+  .top-rule { border-top:3px solid var(--black); }
+  .site-header { padding:32px 50px 0; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
+  .nav-left { display:flex; justify-content:flex-start; }
+  .nav-right { display:flex; justify-content:flex-end; }
+  .nav-left a,.nav-right a { font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--black); padding:4px 14px; white-space:nowrap; transition:color 0.2s; }
+  .nav-left a:first-child { padding-left:0; }
+  .nav-right a:last-child { padding-right:0; }
+  .nav-left a:hover,.nav-right a:hover { color:var(--accent); }
+  .logo-center { text-align:center; }
+  .nav-second { display:flex; justify-content:center; padding:10px 50px 0; }
+  .nav-second a { font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--black); padding:4px 20px; transition:color 0.2s; }
+  .nav-second a:hover { color:var(--accent); }
+  .header-rule { margin:16px 50px 0; border:none; border-top:1px solid var(--rule); }
+  .site-body { display:grid; grid-template-columns:1fr 290px; padding:0 50px 60px; align-items:start; }
+  .article { padding-top:50px; border-right:1px solid var(--border); padding-right:52px; }
+  .post-series { text-align:center; font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--meta); margin-bottom:8px; }
+  .post-title { font-family:'Raleway',sans-serif; font-size:26px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; text-align:center; color:var(--black); line-height:1.3; margin-bottom:12px; }
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author { color:var(--text); font-weight:700; } .post-byline .sep {margin:0 5px;}
+  .post-hero { width:100%; height:auto; display:block; margin-bottom:36px; }
+  .post-body { font-size:17px; line-height:1.85; color:var(--text); }
+  .post-body p { margin-bottom:22px; }
+  .missing-photo{border:2px dashed var(--border);border-radius:2px;padding:48px 20px;text-align:center;margin:28px 0;background:#fafafa}
+  .missing-photo svg{margin-bottom:14px;opacity:0.4}
+  .missing-photo p{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--meta);margin:0}
+  .missing-photo .missing-filename{margin-top:8px;font-family:'Lato',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.05em;text-transform:none;color:var(--accent)}
+  .post-body p:last-child { margin-bottom:0; }
+  .post-body img { width:100%; height:auto; display:block; margin-bottom:36px; }
+  .post-section-heading { font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--black); margin:32px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+  .rearview-stat { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:16px; }
+  .rearview-stat:last-child { border-bottom:none; }
+  .rearview-stat-label { color:var(--text); }
+  .rearview-stat-value { font-family:'Raleway',sans-serif; font-weight:700; color:var(--black); font-size:15px; }
+  .rearview-highlights { list-style:none; margin:20px 0; }
+  .rearview-highlights li { padding:9px 0 9px 24px; border-bottom:1px solid var(--border); font-size:16px; line-height:1.5; position:relative; }
+  .rearview-highlights li:last-child { border-bottom:none; }
+  .rearview-highlights li::before { content:"—"; position:absolute; left:0; color:var(--meta); }
+  .yt-thumb-link { display:block; margin-bottom:36px; text-decoration:none; }
+  .yt-thumb-wrap { position:relative; display:block; background:#000; }
+  .yt-thumb-wrap img { width:100%; height:auto; display:block; opacity:0.92; transition:opacity 0.2s; }
+  .yt-thumb-link:hover .yt-thumb-wrap img { opacity:0.75; }
+  .yt-play-btn { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:68px; height:48px; transition:transform 0.2s; }
+  .yt-thumb-link:hover .yt-play-btn { transform:translate(-50%,-50%) scale(1.1); }
+  .yt-watch-label { display:block; margin-top:10px; font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--meta); text-align:center; transition:color 0.2s; }
+  .yt-thumb-link:hover .yt-watch-label { color:var(--accent); }
+  .pic-specs { margin-top:36px; padding:24px 28px; border:1px solid var(--border); background:#fafafa; }
+  .pic-specs-title { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--meta); margin-bottom:14px; }
+  .pic-specs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px 20px; }
+  .spec-label { font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--meta); display:block; margin-bottom:2px; }
+  .spec-value { font-family:'Lato',sans-serif; font-size:15px; font-weight:700; color:var(--black); }
+  .post-meta-footer { margin-top:36px; padding-top:20px; border-top:1px solid var(--rule); font-family:'Raleway',sans-serif; font-size:10px; letter-spacing:0.13em; text-transform:uppercase; color:#aaa; line-height:2.2; }
+  .post-meta-footer b { color:var(--text); }
+  .author-bio { margin-top:36px; padding-top:30px; border-top:1px solid var(--rule); display:flex; gap:20px; align-items:flex-start; }
+  .author-bio img { width:80px; height:80px; object-fit:cover; border-radius:50%; flex-shrink:0; border:2px solid var(--border); }
+  .author-bio-text { flex:1; }
+  .author-bio-name { font-family:'Raleway',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.08em; color:var(--black); margin-bottom:6px; }
+  .author-bio-quote { font-style:italic; font-size:15px; color:var(--text); margin-bottom:8px; line-height:1.6; }
+  .author-bio-desc { font-size:14px; color:var(--meta); line-height:1.6; }
+  .post-nav { margin-top:40px; padding-top:28px; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+  .post-nav .nav-label { font-size:9px; letter-spacing:0.18em; color:var(--meta); display:block; margin-bottom:4px; font-family:'Raleway',sans-serif; text-transform:uppercase; }
+  .post-nav a { font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--black); border-bottom:2px solid var(--black); padding-bottom:2px; transition:all 0.2s; display:inline-block; }
+  .post-nav a:hover { color:var(--accent); border-color:var(--accent); }
+  .post-nav-next { text-align:right; }
+  .missing-photo { width:100%; padding:48px 20px; margin-bottom:36px; background:#f5f5f5; border:2px dashed #ddd; text-align:center; }
+  .missing-photo svg { display:block; margin:0 auto 14px; }
+  .missing-photo p { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--meta); }
+  .comments-section { margin-top:48px; padding-top:36px; border-top:1px solid var(--rule); }
+  .comments-heading { font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--black); margin-bottom:28px; }
+  .comment { padding:20px 0; border-bottom:1px solid var(--light-gray); }
+  .comment:last-child { border-bottom:none; }
+  .comment-reply { margin-left:32px; border-left:2px solid var(--border); padding-left:20px; }
+  .comment-meta { display:flex; align-items:baseline; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+  .comment-author { font-family:'Raleway',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--black); }
+  .comment-date { font-family:'Lato',sans-serif; font-size:11px; color:var(--meta); }
+  .comment-body { font-size:15px; line-height:1.75; color:var(--text); }
+  .sidebar { padding-top:50px; padding-left:40px; }
+  .sw { margin-bottom:32px; }
+  .sw-head { background:var(--sidebar-header-bg); color:#fff; font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; padding:13px 16px; text-align:center; }
+  .sw-body { border:1px solid var(--border); border-top:none; padding:20px; }
+  .sw-body img { width:100%; height:auto; display:block; margin-bottom:14px; }
+  .sw-body p { font-size:14px; color:var(--text); line-height:1.75; margin-bottom:12px; }
+  .sw-link { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--black); border-bottom:2px solid var(--black); padding-bottom:1px; transition:all 0.2s; }
+  .sw-link:hover { color:var(--accent); border-color:var(--accent); }
+  .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); }
+  .stat-cell { background:var(--white); padding:16px 8px; text-align:center; }
+  .stat-num { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--black); display:block; line-height:1; margin-bottom:4px; }
+  .stat-lbl { font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--meta); }
+  .site-footer { border-top:3px solid var(--black); padding:28px 50px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-brand { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--black); }
+  .footer-sub { font-family:'Raleway',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--meta); margin-top:3px; }
+  .footer-note { font-family:'Raleway',sans-serif; font-size:11px; color:var(--meta); text-align:right; }
+  @media (max-width:820px) {
+    .site-header { grid-template-columns:1fr; padding:20px 24px 0; text-align:center; }
+    .nav-left,.nav-right { justify-content:center; flex-wrap:wrap; }
+    .nav-second,.header-rule { padding-left:24px; padding-right:24px; }
+    .site-body { grid-template-columns:1fr; padding:0 24px 40px; }
+    .article { border-right:none; padding-right:0; }
+    .sidebar { padding-left:0; }
+  }
+
+  .post-series { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:#c0392b;
+    text-align:center; margin-bottom:10px; }
+  .post-img { width:100%; height:auto; display:block; margin:28px 0; border-radius:2px; }
+  .yt-thumb { position:relative; display:block; margin:28px 0; cursor:pointer; }
+  .yt-thumb img { width:100%; height:auto; display:block; border-radius:2px; }
+  .yt-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:68px; height:48px; background:rgba(0,0,0,.72); border-radius:10px;
+    display:flex; align-items:center; justify-content:center; }
+  .yt-play::after { content:''; border-style:solid; border-width:14px 0 14px 26px;
+    border-color:transparent transparent transparent #fff; margin-left:5px; }
+  .pic-specs { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:3px;
+    padding:18px 22px; margin:28px 0; font-family:'Raleway',sans-serif; font-size:11px; letter-spacing:.07em; }
+  .pic-specs h4 { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:#c0392b; margin-bottom:10px; }
+  .pic-specs ul { list-style:none; padding:0; }
+  .pic-specs ul li { margin-bottom:4px; color:#666; }
+  .post-body h3 { font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#111; margin:28px 0 10px; }
+  .post-body ul, .post-body ol { margin:0 0 22px 22px; }
+  .post-body ul li, .post-body ol li { font-size:16px; line-height:1.8; margin-bottom:6px; }
+  .post-body blockquote { border-left:3px solid #c0392b; padding-left:18px; margin:24px 0; font-style:italic; color:#666; }
+  .comments-section { margin-top:40px; padding-top:28px; border-top:1px solid #d8d8d8; }
+  .comments-section h3 { font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#111; margin-bottom:20px; }
+  .comment { margin-bottom:24px; padding-left:14px; border-left:3px solid #e5e5e5; }
+  .comment-reply { margin:14px 0 0 28px; padding-left:14px; border-left:3px solid #f0f0f0; }
+  .comment-meta { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#c0392b; margin-bottom:6px; }
+  .comment-body p { font-size:14px; line-height:1.7; color:#333; }
+</style>
+</head><body>
+<div class="site-wrapper">
+<div class="top-rule"></div>
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="index.html">The Brothers</a>
+      <a href="index.html">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="logo-center">
+      <a href="index.html">
+        <img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px; height:auto; display:block; margin:0 auto;">
+      </a>
+    </div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="index.html">Store</a>
+    </nav>
+  </div>
+  <nav class="nav-second">
+    <a href="index.html">Get in the Van</a>
+    <a href="index.html">Through the Lens</a>
+  </nav>
+  <hr class="header-rule">
+</header>
+<div class="site-body">
+  <article class="article">
+    <div class="post-series">The Road</div>
+    <h1 class="post-title">River Life in Hells Canyon</h1>
+    <div class="post-byline"><span class="sep">July 1, 2016</span> &nbsp;&bull;&nbsp; <span class="by-author">Justin Fricke</span></div>
+    <div class="post-body">
+      <p>On our last day in Boise we took a tour of the Payette Brewery. They were still in the process of moving to their new facility. Things were a little discombobulated because of the move, but production was still in full swing. This was our third brewery tour and every time we go on one of these tours, Adam and I realize how little we know about beer. Luckily, these folks know their stuff! This tour was different than previous tours we’ve taken. Rather than standing behind a glass wall seeing how things are done, we were right next to the action, watching the employees as they brewed, canned, and packaged the magical potion.</p>
+      <p>You read that right, I said canned. Payette cans all their beer, with the exception of some bigger bottles. Payette’s beer was born on the river and consumed by river rats. Glass bottles have no business on the river, or so I’m told, so cans were the most logical choice. I’ve begun to appreciate canned beer as well because we can fit more cans, evenly, in our little thermoelectric cooler (a full case to be exact).</p>
+      <p>After a peaceful sleep at The Modern Hotel and Bar, we took off up to Hells Canyon with a case of Rustler IPA from Payette Brewery chilling down in our little cooler. Adam and I rolled up to our campsite at the Hells Canyon Campground right before the sunset, just after 9:00pm. Have I mentioned how much I love these long summer days up north?</p>
+      <p>Riverlife has always been a mystery to me. Going into a river back in Florida usually meant flirting with the possibility of coming face to face with an alligator. I don’t mess with alligators. But I’ve heard great stories from friends up north telling me how awesome it is to hang out at the river during the warm summer months.</p>
+      <img src="images/River_Life.jpg" alt="River Life in Hells Canyon" class="post-img">
+      <p>We were a little sluggish the next morning without our morning coffee, but the chilly water of the Snake River woke us right up. Around 9:00am we were floating down the Snake River on a whitewater rafting trip with Hells Canyon Adventures. Adam and I have been whitewater rafting a few times before, but on paddle boats. This raft was a little different, our guide did all the paddling while the rest of us in the raft hung on for dear life.</p>
+      <p>As we floated down the river, our guide, Dylan, pointed out the differences between Idaho and Oregon’s geology. Oh yeah, on our right was Idaho and on our left was Oregon. How rad is that?! What intrigued me the most was when we told us about all the movies and shows that had been filmed on this portion of the Snake River.</p>
+      <p>If you’re like me, you’re probably always curious about the validity of shows like Man vs. Wild where Bear Grylls shows you how to get out of a precarious situation. And movies like Vacation where they were whitewater rafting down the Grand Canyon, even though obtaining a film permit for the Grand Canyon is near impossible. All I’ll say is that I went down the same Class 4 rapids that Bear Grylls did and that if you want to catch phony things on TV and in movies, just pay close attention to the surroundings.</p>
+      <p>This rafting trip was much different than what I’ve been accustomed to. Aside from having to hang on for dear life, the guides pulled us over sporadically to take a little hike to see old homesteads by settlers in the early 1900’s, pictographs from native peoples, and fed us lunch. After 4 hours of being on the rapids, a full spread of cold cuts to build wraps, pasta and fruit salads, coleslaw, and cookies were a welcomed treat.</p>
+      <p>At the end of the day we’ve been used to hopping on a bus to get back to the parking lot. If you had the choice between a bus ride on winding roads or riding a jet boat back up the same rapids you just floated down with the chance of seeing bears, what would you choose? I chose jet boat and I’m sure you’d do the same.</p>
+      <p>That ride was insane. I’ve seen them in YouTube videos before and the thrill of riding in one is way different than watching a video of a jet boat ride on a screen while flipping through videos at work on your lunch break.</p>
+      <p>Our rafting and jet boating excursion left us totally exhausted. It was a long day that was a total thrill and to be honest, I can’t think of a better way to cap off our stay in Idaho.</p>
+      <p><em>This post is sponsored by Visit Idaho. A huge thank you to them for hooking us up with a great experience during our stay. Check out their website to plan your visit to Idaho. If Idaho isn’t on your list of places to visit, that needs to change.</em></p>
+    </div>
+    <div class="post-meta-footer"><b>CATEGORIES</b> // THE ROAD<br><b>TAGS</b> // Adam Fricke, Boise, Hells Canyon, Idaho, Justin Fricke, Payette Brewery, Snake River, The Bro’d Trip, Visit Idaho</div>
+<div class="author-bio">
+      <img src="images/justin-fricke-bio-b.jpg" alt="Justin Fricke">
+      <div class="author-bio-text">
+        <div class="author-bio-name">About Justin Fricke</div>
+        <div class="author-bio-quote">Hi I’m Justin! I’m a 25 year old millennial that’s trading in his cool downtown office job that comes with all the benefits for a life on the road. I may not know my destination, but I’m strapped in and ready for the journey. Follow me @JustinLFricke</div>
+      </div>
+    </div><nav class="post-nav">
+    <div><span class="nav-label">&larr; Previous</span><a href="sliding-through-idaho.html" class="nav-title">Sliding Through Idaho</a></div>
+    <div class="post-nav-next"><span class="nav-label">Next &rarr;</span><a href="rv-life-vs-vanlife.html" class="nav-title">RV Life vs Van Life</a></div>
+  </nav>
+  </article>
+  <aside class="sidebar">
+    <div class="sw">
+      <div class="sw-head">What is the Bro'd Trip?</div>
+      <div class="sw-body">
+        <img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van"><p>We're two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we're seeking meaningful work that we love.</p>
+        <a class="sw-link" href="the-brothers.html">Read more...</a>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-head">Trip Stats</div>
+      <div class="stats-grid">
+        <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+        <div class="stat-cell"><span class="stat-num">366</span><span class="stat-lbl">Days</span></div>
+        <div class="stat-cell"><span class="stat-num">240</span><span class="stat-lbl">Posts</span></div>
+        <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-head">Recent Posts</div>
+      <div class="sw-body" style="padding:14px 20px;">
+        <ul class="recent-ul">
+          <li><a href="#">The Bro'd Trip's Favorite States</a></li>
+          <li><a href="#">Rearview Mirror: The Bro'd Trip 2016</a></li>
+          <li><a href="#">Rearview Mirror: December</a></li>
+          <li><a href="#">Crossing the Finish Line</a></li>
+          <li><a href="#">Modern Tradition</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-head">Fueled By:</div>
+      <div class="sw-body" style="text-align:center; padding:24px 20px;">
+        <img src="images/MRL-LOGO-Horizontal-Orange_WhiteM-300x50.jpg" alt="Merrell" style="max-width:180px; height:auto; display:block; margin:0 auto 20px;">
+        <hr style="border:none; border-top:1px solid #eee; margin-bottom:20px;">
+        <img src="images/Enerplex-Always-in-Charge-Orange-300x77.png" alt="EnerPlex — Always in Charge" style="max-width:180px; height:auto; display:block; margin:0 auto;">
+      </div>
+    </div>
+  </aside></div>
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro'd Trip</div>
+    <div class="footer-sub">2 Brothers · 4 Wheels · 50 States · 1 Year · 2015–2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Road Work – The Bro’d Trip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--white:#ffffff;--bg:#f8f8f8;--light-gray:#f0f0f0;--rule:#d8d8d8;--text:#333333;--meta:#999999;--black:#111111;--sidebar-header-bg:#1a1a1a;--accent:#c0392b;--border:#e5e5e5}
+  body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.8}
+  a{text-decoration:none;color:inherit} a:hover{color:var(--accent)}
+  .site-wrapper{background:var(--white);max-width:1200px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,0.07)}
+  .top-rule{border-top:3px solid var(--black)}
+  .site-header{padding:32px 50px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+  .nav-left{display:flex;justify-content:flex-start}
+  .nav-right{display:flex;justify-content:flex-end}
+  .nav-left a,.nav-right a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);padding:4px 14px;white-space:nowrap;transition:color 0.2s}
+  .nav-left a:first-child{padding-left:0} .nav-right a:last-child{padding-right:0}
+  .nav-left a:hover,.nav-right a:hover{color:var(--accent)}
+  .logo-center{text-align:center}
+  .nav-second{display:flex;justify-content:center;padding:10px 50px 0}
+  .nav-second a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);padding:4px 20px;transition:color 0.2s}
+  .nav-second a:hover{color:var(--accent)}
+  .header-rule{margin:16px 50px 0;border:none;border-top:1px solid var(--rule)}
+  .site-body{display:grid;grid-template-columns:1fr 290px;padding:0 50px 60px;align-items:start}
+  .article{padding-top:50px;border-right:1px solid var(--border);padding-right:52px}
+  .post-series{text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .post-title{font-family:'Raleway',sans-serif;font-size:26px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-align:center;color:var(--black);line-height:1.3;margin-bottom:12px}
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author{color:var(--text);font-weight:700}
+  .post-body{font-size:17px;line-height:1.85;color:var(--text)}
+  .post-body p{margin-bottom:22px} .post-body p:last-child{margin-bottom:0}
+  .post-img{width:100%;height:auto;display:block;margin:28px 0;border-radius:2px}
+  .pic-specs{margin-top:36px;padding:24px 28px;border:1px solid var(--border);background:#fafafa}
+  .pic-specs-title{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);margin-bottom:14px}
+  .pic-specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 20px}
+  .spec-label{font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);display:block;margin-bottom:2px}
+  .spec-value{font-family:'Lato',sans-serif;font-size:15px;font-weight:700;color:var(--black)}
+  .blurb-notice{background:#fffbe6;border-left:4px solid #f0c040;padding:14px 18px;margin-bottom:28px;font-size:15px;color:#7a6000}
+  .blurb-notice strong{font-weight:700}
+  .yt-thumb{position:relative;display:block;margin:0 0 28px;cursor:pointer;text-decoration:none}
+  .yt-thumb img{width:100%;height:auto;display:block;border-radius:2px}
+  .yt-thumb:hover img{opacity:0.85;transition:opacity 0.2s}
+  .yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(0,0,0,.72);border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .yt-play::after{content:'';border-style:solid;border-width:14px 0 14px 26px;border-color:transparent transparent transparent #fff;margin-left:4px}
+  .author-bio{margin-top:36px;padding-top:30px;border-top:1px solid var(--rule);display:flex;gap:20px;align-items:flex-start}
+  .author-bio img{width:80px;height:80px;object-fit:cover;border-radius:50%;flex-shrink:0;border:2px solid var(--border)}
+  .author-bio-text{flex:1}
+  .author-bio-name{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;color:var(--black);margin-bottom:6px}
+  .author-bio-quote{font-style:italic;font-size:15px;color:var(--text);line-height:1.6}
+  .post-nav{margin-top:40px;padding-top:28px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+  .post-nav .nav-label{font-size:9px;letter-spacing:0.18em;color:var(--meta);display:block;margin-bottom:4px;font-family:'Raleway',sans-serif;text-transform:uppercase}
+  .post-nav a{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--black);padding-bottom:2px;transition:all 0.2s;display:inline-block}
+  .post-nav a:hover{color:var(--accent);border-color:var(--accent)}
+  .post-nav-next{text-align:right}
+  .sidebar{padding-top:50px;padding-left:40px}
+  .sw{margin-bottom:32px}
+  .sw-head{background:var(--sidebar-header-bg);color:#fff;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:13px 16px;text-align:center}
+  .sw-body{border:1px solid var(--border);border-top:none;padding:20px}
+  .sw-body img{width:100%;height:auto;display:block;margin-bottom:14px}
+  .sw-body p{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:12px}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+  .stat-cell{background:var(--white);padding:16px 8px;text-align:center}
+  .stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--black);display:block;line-height:1;margin-bottom:4px}
+  .stat-lbl{font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--meta)}
+  .site-footer{border-top:3px solid var(--black);padding:28px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .footer-brand{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--black)}
+  .footer-sub{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);margin-top:3px}
+  .footer-note{font-family:'Raleway',sans-serif;font-size:11px;color:var(--meta);text-align:right}
+  @media(max-width:820px){
+    .site-header{grid-template-columns:1fr;padding:20px 24px 0;text-align:center}
+    .nav-left,.nav-right{justify-content:center;flex-wrap:wrap}
+    .nav-second,.header-rule{padding-left:24px;padding-right:24px}
+    .site-body{grid-template-columns:1fr;padding:0 24px 40px}
+    .article{border-right:none;padding-right:0}
+    .sidebar{padding-left:0}
+  }
+    .post-meta-footer {
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule);
+    font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: #aaa; line-height: 2;
+  }
+  .post-meta-footer b { color: var(--text); }
+  .missing-photo{width:100%;padding:48px 20px;margin-bottom:36px;background:#f5f5f5;border:2px dashed #ddd;text-align:center;}
+  .missing-photo svg{display:block;margin:0 auto 14px;}
+  .missing-photo p{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);}
+</style>
+</head>
+<body><div class="site-wrapper">
+<div class="top-rule"></div>
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="the-brothers.html">The Brothers</a>
+      <a href="index.html">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="logo-center">
+      <a href="index.html"><img src="images/brod-trip-logo.png" alt="The Bro’d Trip" style="max-width:240px;height:auto;display:block;margin:0 auto"></a>
+    </div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="#">Store</a>
+    </nav>
+  </div>
+  <nav class="nav-second"><a href="index.html">Through the Lens</a></nav>
+  <hr class="header-rule">
+</header>
+<div class="site-body">
+  <article class="article">
+  <h1 class="post-title">Road Work</h1>
+  <div class="post-byline">03.20.2016<span class="sep">by</span><span class="by-author">Adam Fricke</span><span class="sep">//</span>0 Comments</div>
+  <div class="post-body">
+    <p>When you hear of someone living in a van, what do you assume of that person?</p>
+    <ul style="padding-left:24px;margin-bottom:22px;">
+      <li style="margin-bottom:8px;">Suit and tie or swimsuit and flip-flops?</li>
+      <li style="margin-bottom:8px;">Crew cut or dreadlocks?</li>
+      <li style="margin-bottom:8px;">Working or napping?</li>
+    </ul>
+    <p>Chances are, you chose the latter of all of those options and I don&#8217;t blame you. Hell, I think the same thing and I live in a van myself!</p>
+    <p>That&#8217;s the power of stereotypes. Ever since the 70&#8217;s, and probably even before that, van dwellers have been known to go to concerts (ever heard of Woodstock?), sleep on beaches, and travel wherever they want on a whim.</p>
+    <div class="missing-photo">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="60" height="60" rx="6" fill="#e8e0d8"/><path d="M15 42l12-16 9 12 6-8 9 12H15z" fill="#c0b8b0"/><circle cx="42" cy="18" r="5" fill="#c0b8b0"/></svg>
+        <p class="missing-label">160219_Texas_CorpusChristi-115.jpg</p>
+      </div>
+    <p>Sounds good, huh? Perhaps even <em>irresponsible</em>.</p>
+    <p>Even though we still do all those things, we at The Bro&#8217;d Trip do them a little differently. We try to be as responsible as possible by sharing with you the ins and outs of our daily life. Perhaps even a little inspiration to create a life for yourself that you love even more than the one you&#8217;re currently living. In addition, we also do &#8220;real&#8221; work. It&#8217;s just different than the work you&#8217;re used to seeing.</p>
+    <p>You may remember us telling you a while back that we&#8217;re <a href="im-done-trading-hours-for-dollars.html">Taking the Year Off to Work</a>. And we are. Here&#8217;s what our work looks like.</p>
+    <p style="text-align:center;"><strong>(CAUTION: MIGHT MAKE WORKING LOOK FUN)</strong></p>
+    <h2 class="post-section-heading">We&#8217;re constantly filming our day-to-day lives.</h2>
+    <div class="yt-thumb" style="margin-bottom:32px;">
+      <a class="yt-thumb-link" href="https://www.youtube.com/watch?v=MdLvAsqctZI&list=PLW75AOYJOCPW7aHC5pcqONlCgQZIusWl5" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/MdLvAsqctZI/hqdefault.jpg" alt="YouTube video" loading="lazy">
+          <div class="yt-play">
+            <svg class="yt-play-btn" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <p>This footage turns into our weekly vlogs, and will be used to make our &#8220;docu-movie&#8221; at the end of the year.</p>
+    <h2 class="post-section-heading">Taking pictures of the places you only see in postcards.</h2>
+    <div class="missing-photo">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="60" height="60" rx="6" fill="#e8e0d8"/><path d="M15 42l12-16 9 12 6-8 9 12H15z" fill="#c0b8b0"/><circle cx="42" cy="18" r="5" fill="#c0b8b0"/></svg>
+        <p class="missing-label">160210_Oklahoma_WichitaMountains-079.jpg</p>
+      </div>
+    <p>Ever see a cool place on a postcard and wonder where the hell it is? We&#8217;ve found joy in finding those places (and proving it).</p>
+    <h2 class="post-section-heading">We maintain our own personal websites and take on individual freelance work in our spare time.</h2>
+    <div class="missing-photo">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="60" height="60" rx="6" fill="#e8e0d8"/><path d="M15 42l12-16 9 12 6-8 9 12H15z" fill="#c0b8b0"/><circle cx="42" cy="18" r="5" fill="#c0b8b0"/></svg>
+        <p class="missing-label">160112_NorthCarolina_RockyFaceParkClimbing-070.jpg</p>
+      </div>
+    <ul style="padding-left:24px;margin-bottom:22px;">
+      <li style="margin-bottom:8px;"><a href="http://justintheweekendwarrior.com/" target="_blank">Justin</a> has a few writing contracts that provide him a steady source of income</li>
+      <li style="margin-bottom:8px;"><a href="http://www.adamfricke.com/" target="_blank">Adam</a> maintains video editing projects for clients, remotely</li>
+    </ul>
+    <h2 class="post-section-heading">Making sponsors happy makes us happy.</h2>
+    <p>We are partnered with <a href="sponsors.html">amazing companies</a>. They see and believe in our vision and are instrumental in making our trip even better than it would be by ourselves. Being in contact with them and providing them with cool content for their use keeps them happy. They make us happy so we like making them happy too.</p>
+    <h2 class="post-section-heading">We team up and take on photography, videography, and writing jobs as we go.</h2>
+    <div class="yt-thumb" style="margin-bottom:32px;">
+      <a class="yt-thumb-link" href="https://www.youtube.com/watch?v=G0ou3zC-cnU" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/G0ou3zC-cnU/hqdefault.jpg" alt="YouTube video" loading="lazy">
+          <div class="yt-play">
+            <svg class="yt-play-btn" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <p><strong><em>That&#8217;s right, we&#8217;re available for hire! <a href="index.html">Contact us</a> and we&#8217;ll highlight you or your business when we come through your neck of the woods.</em></strong></p>
+    <h2 class="post-section-heading">We also take on passion projects.</h2>
+    <div class="yt-thumb" style="margin-bottom:32px;">
+      <a class="yt-thumb-link" href="https://www.youtube.com/watch?v=r21l-AuB04o" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/r21l-AuB04o/hqdefault.jpg" alt="YouTube video" loading="lazy">
+          <div class="yt-play">
+            <svg class="yt-play-btn" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <p>For example, this fun clip with our friends (<a href="http://myredandblue.com/" target="_blank">MY RED + BLUE</a> &amp; <a href="http://writtentospeak.com/" target="_blank">Written to Speak</a>) in Nashville.</p>
+    <h2 class="post-section-heading">You may be asking:</h2>
+    <p><em>&#8220;Where do you do all this work?!&#8221;</em></p>
+    <p><strong>We have a new office every day.</strong></p>
+    <p style="text-align:center;margin-bottom:36px;"><img src="images/AK8A7618.jpg" alt="Road Work" style="max-width:100%;height:auto;display:block;margin:0 auto;"></p>
+    <p>Instead of sitting in a cubicle from 9-5 or clocking in, we log a 6-8 hour day each week in a coffee shop. (Some weeks it&#8217;s more, some less. It all depends on what needs to get done and what resources we need.) Reliable wifi is hard to find on the road, so a couple small black coffees buys us hours of internet connection to post the videos, photos, and words you see before you.</p>
+    <p><em>&#8220;6-8 hours of work per week? How&#8217;s that considered a job?&#8221;</em></p>
+    <p>A.) We don&#8217;t claim to have a job, we have a lifestyle. It&#8217;s different. And it doesn&#8217;t suck.</p>
+    <p>B.) You&#8217;d be surprised at how much work gets done in 6 hours in an enjoyable space (i.e. local coffee shop) when we&#8217;re doing work that we&#8217;re excited about. You should try it sometime.</p>
+    <h2 class="post-section-heading">But keep in mind, we can&#8217;t leave our work at the office.</h2>
+    <div class="missing-photo">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="60" height="60" rx="6" fill="#e8e0d8"/><path d="M15 42l12-16 9 12 6-8 9 12H15z" fill="#c0b8b0"/><circle cx="42" cy="18" r="5" fill="#c0b8b0"/></svg>
+        <p class="missing-label">160113_NorthCarolina_RockyFaceParkClimbing-002.jpg</p>
+      </div>
+    <p>We take it home with us. In fact, our work is our home and home is our work. Sound trippy? It is.</p>
+    <p>Between daily activities such as grocery shopping, cooking, laundry, filling up the gas tank, trip planning, tracking down a garden hose to shower with, and finding a new place to sleep every night, we are always brainstorming new blog topics, new ways to attract <a href="https://www.youtube.com/c/thebrodtrip" target="_blank">viewers</a>/<a href="index.html">subscribers</a>, and nurturing our brotherly relationship so we don&#8217;t kill each other.</p>
+    <p>Imagine doing a full day of work, then going home with your coworker, cooking dinner together, sleeping on 5-inch-thick mattresses uncomfortably close together, waking up at the same time and doing it all over again.</p>
+    <p>This is van life. This is working on the road. This is <em>Road Work</em>.</p>
+    <p><strong>And I wouldn&#8217;t trade it for any job in the world.</strong></p>
+  </div>
+  <div class="post-meta-footer"><b>CATEGORIES</b> // THE ROAD<br><b>TAGS</b> // ADAM FRICKE, JUSTIN FRICKE, THE BRO'D TRIP, WORK</div>
+  <div class="author-bio"><img src="images/adam-fricke-bio-b.jpg" alt="Adam Fricke"><div class="author-bio-text"><div class="author-bio-name">About Adam Fricke</div><div class="author-bio-quote">Although my destination may be uncertain, my direction is Always Forward. Photography, Videography, Writing, Music, Surfing, Beer. Not necessarily in that order. Follow me @AdamFricke</div></div>
+    </div>
+    <nav class="post-nav">
+      <div><span class="nav-label">&larr; Previous</span><a href="embracing-inner-tourist-hueco-tanks.html" class="nav-title">Embracing My Inner Tourist | Hueco Tanks State Park</a></div>
+      <div class="post-nav-next"><span class="nav-label">Next &rarr;</span><a href="see-ya-later-never-gets-easier.html" class="nav-title">“See Ya Later” Never Gets Easier</a></div>
+    </nav>
+</article>
+  <aside class="sidebar">
+    <div class="sw">
+      <div class="sw-head">What Is The Bro&#8217;d Trip?</div>
+      <div class="sw-body">
+        <img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van">
+        <p>We&#8217;re two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we&#8217;re seeking meaningful work that we love.</p>
+        <a href="index.html" class="back-link">&#8592; Back to All Posts</a>
+      </div>
+    </div>
+    <div class="sw"><div class="sw-head">The Stats</div>
+      <div class="sw-body">
+        <div class="stats-grid">
+          <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+          <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+          <div class="stat-cell"><span class="stat-num">1</span><span class="stat-lbl">Van</span></div>
+          <div class="stat-cell"><span class="stat-num">365</span><span class="stat-lbl">Days</span></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro’d Trip</div>
+    <div class="footer-sub">2 Brothers &middot; 4 Wheels &middot; 50 States &middot; 1 Year &middot; 2015&ndash;2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div></body></html>

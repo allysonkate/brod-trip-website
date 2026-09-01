@@ -1,0 +1,1002 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bro'd Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff;
+    --bg: #f8f8f8;
+    --light-gray: #f0f0f0;
+    --rule: #d8d8d8;
+    --text: #333333;
+    --meta: #999999;
+    --black: #111111;
+    --sidebar-header-bg: #1a1a1a;
+    --sidebar-header-text: #ffffff;
+    --accent: #c0392b;
+    --tag-color: #888;
+    --border: #e5e5e5;
+  }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; }
+  a { text-decoration: none; color: inherit; }
+  a:hover { color: var(--accent); }
+
+  .site-wrapper { background: var(--white); max-width: 1200px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.07); }
+  .top-rule { border-top: 3px solid var(--black); }
+
+  /* HEADER */
+  .site-header { padding: 32px 50px 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; }
+  .nav-left { display: flex; justify-content: flex-start; }
+  .nav-right { display: flex; justify-content: flex-end; }
+  .nav-left a, .nav-right a {
+    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--black);
+    padding: 4px 14px; white-space: nowrap; transition: color 0.2s;
+  }
+  .nav-left a:first-child { padding-left: 0; }
+  .nav-right a:last-child { padding-right: 0; }
+  .nav-left a:hover, .nav-right a:hover { color: var(--accent); }
+
+  .logo-center { text-align: center; }
+  .logo-svg { display: block; margin: 0 auto; }
+
+  .nav-second { display: flex; justify-content: center; padding: 10px 50px 0; }
+  .nav-second a {
+    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--black);
+    padding: 4px 20px; transition: color 0.2s;
+  }
+  .nav-second a:hover { color: var(--accent); }
+
+  .header-rule { margin: 16px 50px 0; border: none; border-top: 1px solid var(--rule); }
+
+  /* CONTROLS */
+  .controls-bar {
+    padding: 14px 50px; display: flex; flex-wrap: wrap; align-items: center;
+    gap: 8px; border-bottom: 1px solid var(--rule); background: #fafafa;
+  }
+  .search-box {
+    flex: 1; min-width: 160px; padding: 8px 12px; border: 1px solid var(--border);
+    font-family: 'Lato', sans-serif; font-size: 13px; color: var(--text); background: var(--white);
+  }
+  .search-box:focus { outline: none; border-color: #999; }
+  .search-box::placeholder { color: #bbb; }
+  .filter-pill {
+    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; padding: 7px 13px;
+    border: 1px solid var(--border); background: var(--white); cursor: pointer;
+    color: var(--text); transition: all 0.2s;
+  }
+  .filter-pill:hover, .filter-pill.active { background: var(--black); color: var(--white); border-color: var(--black); }
+  .year-group { display: flex; }
+  .year-btn {
+    padding: 7px 10px; border: 1px solid var(--border); border-right: none;
+    background: var(--white); font-family: 'Raleway', sans-serif; font-size: 10px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    color: var(--text); transition: all 0.2s;
+  }
+  .year-btn:last-child { border-right: 1px solid var(--border); }
+  .year-btn:hover, .year-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
+  .results-label { font-size: 11px; color: var(--meta); font-style: italic; margin-left: auto; }
+
+  /* BODY */
+  .site-body { display: grid; grid-template-columns: 1fr 290px; padding: 0 50px 60px; align-items: start; }
+  .main-content { padding-top: 44px; border-right: 1px solid var(--border); padding-right: 52px; }
+
+  /* POST ENTRY */
+  .post-entry { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
+  .post-entry:last-child { border-bottom: none; margin-bottom: 0; }
+  .post-title {
+    font-family: 'Raleway', sans-serif; font-size: 21px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; text-align: center;
+    color: var(--black); line-height: 1.3; margin-bottom: 10px; cursor: default;
+  }
+  .post-type-badge {
+    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 3px 7px; border: 1px solid var(--border);
+    color: var(--meta); margin-left: 10px; vertical-align: middle;
+    font-family: 'Raleway', sans-serif;
+  }
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author { color: var(--text); font-weight: 700; } .post-byline .sep {margin:0 5px;}
+  .post-meta-tags {
+    font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--tag-color); line-height: 2;
+  }
+  .post-meta-tags b { color: var(--text); }
+  .wayback-link {
+    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--meta);
+    border-bottom: 1px solid var(--border); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
+  }
+  .wayback-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  .no-results {
+    text-align: center; padding: 80px 20px; color: var(--meta);
+    font-family: 'Raleway', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px;
+  }
+  .no-results strong { display: block; font-size: 16px; letter-spacing: 0.18em; margin-bottom: 10px; color: var(--black); }
+
+  /* SIDEBAR */
+  .sidebar { padding-top: 44px; padding-left: 40px; }
+  .sw { margin-bottom: 32px; }
+  .sw-head {
+    background: var(--sidebar-header-bg); color: var(--sidebar-header-text);
+    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; padding: 13px 16px;
+    text-align: center;
+  }
+  .sw-body { border: 1px solid var(--border); border-top: none; padding: 20px; }
+  .sw-body img { width: 100%; height: auto; display: block; margin-bottom: 14px; }
+  .sw-body p { font-size: 14px; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+  .sw-link {
+    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--black);
+    border-bottom: 2px solid var(--black); padding-bottom: 1px; transition: all 0.2s;
+  }
+  .sw-link:hover { color: var(--accent); border-color: var(--accent); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .stat-cell { background: var(--white); padding: 16px 8px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--black); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-lbl { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--meta); }
+  .recent-ul { list-style: none; }
+  .recent-ul li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5; }
+  .recent-ul li:last-child { border-bottom: none; padding-bottom: 0; }
+  .recent-ul a { color: var(--text); transition: color 0.2s; }
+  .recent-ul a:hover { color: var(--accent); }
+
+  /* FOOTER */
+  .site-footer { border-top: 3px solid var(--black); padding: 28px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--black); }
+  .footer-sub { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-top: 3px; }
+  .footer-note { font-family: 'Raleway', sans-serif; font-size: 11px; color: var(--meta); text-align: right; }
+  .footer-note a { color: var(--text); text-decoration: underline; }
+
+
+  .post-thumb {
+    width: 100%; max-height: 340px; object-fit: cover;
+    display: block; margin: 18px 0 20px;
+    transition: opacity 0.2s;
+  }
+  .post-thumb:hover { opacity: 0.92; }
+  .post-thumb-link { display: block; margin: 14px 0 6px; text-decoration: none; }
+  .post-thumb-wrap { position: relative; }
+  .post-thumb { width: 100%; max-height: 320px; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .post-thumb-link:hover .post-thumb { opacity: 0.88; }
+  .yt-play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+  .post-thumb-placeholder {
+    width: 100%; padding: 32px 20px; background: #f5f5f5; border: 1px solid #eee;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; transition: background 0.2s; margin: 14px 0 6px;
+  }
+  .post-thumb-link:hover .post-thumb-placeholder { background: #eee; }
+  .thumb-icon { font-size: 28px; opacity: 0.5; }
+  .thumb-cta { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--meta); }
+  .post-thumb-link:hover .thumb-cta { color: var(--accent); }
+  .hidden { display: none !important; }
+
+  @media (max-width: 820px) {
+    .site-header { grid-template-columns: 1fr; padding: 20px 24px 0; text-align: center; }
+    .nav-left, .nav-right { justify-content: center; flex-wrap: wrap; }
+    .nav-second, .header-rule, .controls-bar, .site-footer { padding-left: 24px; padding-right: 24px; }
+    .site-body { grid-template-columns: 1fr; padding: 0 24px 40px; }
+    .main-content { border-right: none; padding-right: 0; }
+    .sidebar { padding-left: 0; }
+  }
+
+  /* ── Pagination ── */
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;margin:48px 0 24px;flex-wrap:wrap;}
+  .page-btn{font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--border);background:#fff;color:var(--black);cursor:pointer;transition:all 0.15s;}
+  .page-btn:hover{background:var(--black);color:#fff;border-color:var(--black);}
+  .page-btn.active{background:var(--black);color:#fff;border-color:var(--black);}
+  .page-btn:disabled{opacity:0.35;cursor:default;background:#fff;color:var(--black);}
+  .page-info{font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--meta);padding:0 8px;}
+  .pagination-top{display:none;}
+
+  /* Post card grid (index page renderPage) */
+  .post-card { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
+  .post-card:last-child { border-bottom: none; margin-bottom: 0; }
+  .post-card-body { }
+  .post-meta-header { margin-bottom: 10px; }
+  .post-blurb { font-size: 15px; line-height: 1.7; color: var(--meta); margin-top: 12px; }
+  .built-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 6px; background: #4caf5022; color: #4caf50; border-radius: 2px; margin-left: 8px; vertical-align: middle; font-family: 'Raleway', sans-serif; }
+  </style>
+</head>
+<body>
+<div class="site-wrapper">
+<div class="top-rule"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="site-header">
+    <nav class="nav-left">
+      <a href="the-brothers.html">The Brothers</a>
+      <a href="#">The Road</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="logo-center">
+      <!-- SVG logo matching the hand-drawn original style -->
+      <img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px; height:auto; display:block; margin:0 auto;">
+    </div>
+
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="#">Store</a>
+    </nav>
+  </div>
+
+  <nav class="nav-second">
+    <a href="#">Get in the Van</a>
+    <a href="#">Through the Lens</a>
+  </nav>
+  <hr class="header-rule">
+</header>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <input class="search-box" id="searchInput" type="text" placeholder="Search posts…" oninput="currentPage=1;filterPosts()">
+  <button class="filter-pill active" id="btn-all" onclick="setAuthor('all',this)">All</button>
+  <button class="filter-pill" id="btn-justin" onclick="setAuthor('justin',this)">Justin</button>
+  <button class="filter-pill" id="btn-adam" onclick="setAuthor('adam',this)">Adam</button>
+  <div class="year-group">
+    <button class="year-btn active" onclick="setYear('all',this)">All</button>
+    <button class="year-btn" onclick="setYear('2015',this)">2015</button>
+    <button class="year-btn" onclick="setYear('2016',this)">2016</button>
+    <button class="year-btn" onclick="setYear('2017',this)">2017</button>
+  </div>
+  <span class="results-label" id="resultsCount"></span>
+</div>
+
+<!-- BODY -->
+<div class="site-body">
+  <main class="main-content">
+    <div id="pagination-top" class="pagination-top"></div>
+    <div id="postList"></div>
+    <div id="pagination-bottom"></div>
+    <div id="noResults" class="no-results hidden">
+      <strong>No Posts Found</strong>Try a different search or filter.
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sw">
+      <div class="sw-head">What is the Bro'd Trip?</div>
+      <div class="sw-body">
+        <img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van">
+        <p>We're two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we're seeking meaningful work that we love.</p>
+        <a class="sw-link" href="https://brodtrip.wordpress.com/sample-page-2/" target="_blank">Read more…</a>
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Trip Stats</div>
+      <div class="stats-grid">
+        <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+        <div class="stat-cell"><span class="stat-num">366</span><span class="stat-lbl">Days</span></div>
+        <div class="stat-cell"><span class="stat-num" id="statPosts">—</span><span class="stat-lbl">Posts</span></div>
+        <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Recent Posts</div>
+      <div class="sw-body" style="padding:14px 20px;">
+        <ul class="recent-ul" id="recentList"></ul>
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Fueled By:</div>
+      <div class="sw-body" style="text-align:center; padding:24px 20px;">
+        <img src="images/MRL-LOGO-Horizontal-Orange_WhiteM-300x50.jpg" alt="Merrell" style="max-width:180px; height:auto; display:block; margin:0 auto 20px;">
+        <hr style="border:none; border-top:1px solid #eee; margin-bottom:20px;">
+        <img src="images/Enerplex-Always-in-Charge-Orange-300x77.png" alt="EnerPlex — Always in Charge" style="max-width:180px; height:auto; display:block; margin:0 auto;">
+      </div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-head">Read the Original</div>
+      <div class="sw-body">
+        <p style="margin-bottom:14px;">The original brod-trip.com lives on at the Internet Archive.</p>
+        <a class="sw-link" href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">Browse on Wayback Machine →</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">The Bro'd Trip</div>
+    <div class="footer-sub">2 Brothers · 4 Wheels · 50 States · 1 Year · 2015–2017</div>
+  </div>
+  <div class="footer-note">
+    Site rebuilt with love &amp; preserved for posterity.<br>
+    Original posts: <a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">archive.org</a>
+  </div>
+</footer>
+</div>
+
+<script>
+const posts = [{"date":"10.24.2015","title":"THE BIRTH OF THE BRO\u2019D TRIP","author":"Justin"},{"date":"10.26.2015","title":"I\u2019M TAKING A YEAR OFF TO WORK","author":"Adam"},{"date":"10.28.2015","title":"PIC(K) OF THE WEEK #1 | THE 22 HOUR DRIVE HOME","author":"Justin"},{"date":"10.30.2015","title":"CHOOSING THE BEST VEHICLE FOR THE BRO\u2019D TRIP","author":"Justin"},{"date":"11.01.2015","title":"PRESERVING THE LEGACY OF A SPRINTER VAN","author":"Justin"},{"date":"11.04.2015","title":"PIC(K) OF THE WEEK #2 | NAILS AND SCREWS","author":"Adam"},{"date":"11.05.2015","title":"APPETITE FOR DESTRUCTION","author":"Adam"},{"date":"11.09.2015","title":"VLOG_01 | YELLED AT BY AN AIRPORT COP","author":"Adam"},{"date":"11.11.2015","title":"PIC(K) OF THE WEEK #3 | BLUE STEEL","author":"Adam"},{"date":"11.16.2015","title":"VLOG_02 | DEMOLISHING A VAN","author":"Adam"},{"date":"11.18.2015","title":"PIC(K) OF THE WEEK #4 | WET ELK","author":"Justin"},{"date":"11.19.2015","title":"A GETAWAY BEFORE WE GO AWAY","author":"Adam"},{"date":"11.22.2015","title":"LAYING THE FOUNDATION | VAN FLOORING INSTALL","author":"Justin"},{"date":"11.23.2015","title":"VLOG_03 | DIAMOND ENCRUSTED FLOORING","author":"Adam"},{"date":"11.25.2015","title":"FEELING ELECTRICITY COURSE THROUGH OUR VEINS","author":"Justin"},{"date":"11.25.2015","title":"PIC(K) OF THE WEEK #5 | STAY OUT OF THE SPOTLIGHT","author":"Adam"},{"date":"11.26.2015","title":"THANK(FUL FOR)YOU","author":"Adam"},{"date":"11.30.2015","title":"VLOG_04 | JUSTIN IS FUNEMPLOYED","author":"Justin"},{"date":"12.02.2015","title":"PIC(K) OF THE WEEK #6 | COVERED IN SAW DUST","author":"Justin"},{"date":"12.04.2015","title":"I\u2019M DONE TRADING HOURS FOR DOLLARS","author":"Justin"},{"date":"12.07.2015","title":"VLOG_05 | LOVING THE GRIND","author":"Adam"},{"date":"12.09.2015","title":"9 STEPS TO QUITTING YOUR JOB TO TAKE THE TRIP OF A LIFETIME","author":"Adam"},{"date":"12.09.2015","title":"PIC(K) OF THE WEEK #7 | OLDSCHOOL TOOLS","author":"Adam"},{"date":"12.12.2015","title":"FORWARD SPRINTER VAN BUILD PROGRESS","author":"Justin"},{"date":"12.14.2015","title":"VLOG_06 | VAN PROGRESS & WE HAVE T-SHIRTS!","author":"Adam"},{"date":"12.16.2015","title":"PIC(K) OF THE WEEK #8 | SKATING WAVES","author":"Justin"},{"date":"12.22.2015","title":"VLOG_07 | MOUNTED SOLAR PANELS WITH TAPE AND GLUE","author":"Adam"},{"date":"12.23.2015","title":"PIC(K) OF THE WEEK #9 | \u201cMY VAN\u2019S PRETTY COOL TOO\u2026\u201d","author":"Adam"},{"date":"12.28.2015","title":"SOLAR PANELS AND KITCHEN INSTALL","author":"Justin"},{"date":"12.28.2015","title":"VLOG_08 | PARTY AFTERMATH","author":"Adam"},{"date":"12.30.2015","title":"WHAT I LEARNED IN 2,008 DAYS OF COLLEGE, IN 598 WORDS","author":"Adam"},{"date":"12.30.2015","title":"PIC(K) OF THE WEEK #10 | WHAT\u2019S A PHOTOGRAPHER TO DO?","author":"Justin"},{"date":"01.01.2016","title":"OUR 82 SQUARE FEET OF \u201cLUXURY\u201d VAN LIVING","author":"Justin"},{"date":"01.04.2016","title":"VLOG_09 | RESOLUTIONS ARE STUPID","author":"Adam"},{"date":"01.04.2016","title":"LEAVING ROUTINE FOR THE OPEN ROAD","author":"Justin"},{"date":"01.06.2016","title":"PIC(K) OF THE WEEK #11 | FIRST MORNING VAN VIEW","author":"Justin"},{"date":"01.06.2016","title":"LEAVING HOME","author":"Adam"},{"date":"01.11.2016","title":"VLOG_10 | LIFE IS LIKE A BOX OF CHOCOLATES","author":"Adam"},{"date":"01.12.2016","title":"DIVING INTO VAN LIFE","author":"Justin"},{"date":"01.13.2016","title":"PIC(K) OF THE WEEK #12 | JUST KICKIN\u2019 IT","author":"Adam"},{"date":"01.14.2016","title":"\u201cWI-FI: LOOKING FOR NETWORKS\u201d","author":"Adam"},{"date":"01.14.2016","title":"STROLLING THROUGH SAVANNAH","author":"Adam"},{"date":"01.15.2016","title":"HOW A HALF DAY IN CHARLESTON TURNED THE TIDES","author":"Justin"},{"date":"01.15.2016","title":"SURFING THE CAROLINAS","author":"Adam"},{"date":"01.16.2016","title":"BEGINNERS GUIDE TO USING THE OUTER BANKS FERRY SYSTEM","author":"Justin"},{"date":"01.18.2016","title":"VLOG_11 | SIRI DROPS BEATS!","author":"Adam"},{"date":"01.20.2016","title":"PIC(K) OF THE WEEK #13 | SLIPPERY, ICY, SNOW COVERED WATERFALL","author":"Justin"},{"date":"01.21.2016","title":"BUILDING CLIMBING CONFIDENCE","author":"Justin"},{"date":"01.22.2016","title":"LISTEN TO YOUR GUT","author":"Adam"},{"date":"01.25.2016","title":"VLOG_12 | SNOWSKETBALL!","author":"Adam"},{"date":"01.28.2016","title":"PIC(K) OF THE WEEK #14 | MOONSET","author":"Adam"},{"date":"02.01.2016","title":"VLOG_13 | BOOTSTRAPPED BUSINESSES","author":"Adam"},{"date":"02.02.2016","title":"CHASING WATERFALLS IN DUPONT STATE FOREST","author":"Adam"},{"date":"02.02.2016","title":"BAGGING SENDS AT RUMBLING BALD","author":"Justin"},{"date":"02.03.2016","title":"PIC(K) OF THE WEEK #15 | SOUTHERN HOSPITALITY","author":"Adam"},{"date":"02.04.2016","title":"TAKING TURNS ON FRESH POWDER IN NORTH CAROLINA","author":"Justin"},{"date":"02.04.2016","title":"BEHIND THE BEER: SIERRA NEVADA BREWERY","author":"Adam"},{"date":"02.06.2016","title":"REARVIEW MIRROR: JANUARY","author":"Adam"},{"date":"02.09.2016","title":"VLOG_14 | EARNING MARDI GRAS BEADS","author":"Adam"},{"date":"02.09.2016","title":"NASHVILLE\u2026IT\u2019S MORE THAN MUSIC CITY","author":"Justin"},{"date":"02.10.2016","title":"PIC(K) OF THE WEEK #16 | EVENLY EXPOSED","author":"Justin"},{"date":"02.13.2016","title":"RACING TORNADOS THROUGH ALABAMA AND MISSISSIPPI","author":"Justin"},{"date":"02.15.2016","title":"VLOG_15 | SAT ON THE EDGE OF A CLIFF","author":"Adam"},{"date":"02.16.2016","title":"THE TWO FACES OF LOUISIANA","author":"Adam"},{"date":"02.17.2016","title":"PIC(K) OF THE WEEK #17 | ABOVE THE HORIZON","author":"Adam"},{"date":"02.19.2016","title":"HEALING WATER OF ARKANSAS","author":"Adam"},{"date":"02.21.2016","title":"WICHITA MOUNTAINS WILDLIFE REFUGE VISITOR\u2019S GUIDE","author":"Justin"},{"date":"02.23.2016","title":"VLOG_16 | WORKIN\u2019 ON THE BEACH!","author":"Adam"},{"date":"02.24.2016","title":"PIC(K) OF THE WEEK #18 | OH-EM-GEE, THAT SUNSET","author":"Justin"},{"date":"02.28.2016","title":"YOU CAN SURF IN TEXAS?","author":"Adam"},{"date":"02.29.2016","title":"VLOG_17 | WALKED 5 MILES FOR A STAMP","author":"Adam"},{"date":"03.02.2016","title":"PIC(K) OF THE WEEK #19 | AUSTIN INSTAFRIENDS","author":"Adam"},{"date":"03.09.2016","title":"PIC(K) OF THE WEEK #20 | PRADA MARFA","author":"Justin"},{"date":"03.03.2016","title":"AUSTIN: IT\u2019S NOT AS WEIRD AS YOU THINK","author":"Justin"},{"date":"03.04.2016","title":"GRABBING THE STAMP IN SAN ANTONIO, TX","author":"Justin"},{"date":"03.06.2016","title":"VALIDATION FROM MYSELF IN THE DESERT | BIG BEND NATIONAL PARK","author":"Justin"},{"date":"03.08.2016","title":"PHOTOGRAPHY GUIDE TO BIG BEND NATIONAL PARK","author":"Adam"},{"date":"03.10.2016","title":"VLOG_18 | WE SWAM TO MEXICO!","author":"Adam"},{"date":"03.11.2016","title":"REARVIEW MIRROR: FEBRUARY","author":"Adam"},{"date":"03.15.2016","title":"VLOG_19 | DON\u2019T HIGH-FIVE AT BORDER PATROL","author":"Adam"},{"date":"03.15.2016","title":"THE BIRTHDAY CHALLENGE | PUSHING LIMITS","author":"Justin"},{"date":"03.16.2016","title":"PIC(K) OF THE WEEK #21 | OLD CLIMBING FRIENDS UNITE!","author":"Justin"},{"date":"03.18.2016","title":"EMBRACING MY INNER TOURIST | HUECO TANKS STATE PARK","author":"Adam"},{"date":"03.20.2016","title":"ROAD WORK","author":"Adam"},{"date":"03.22.2016","title":"\u201cSEE YA LATER\u201d NEVER GETS EASIER","author":"Justin"},{"date":"03.22.2016","title":"VLOG_20 | BLOWN AWAY BY WHITE SANDS NATIONAL MONUMENT","author":"Adam"},{"date":"03.23.2016","title":"PIC(K) OF THE WEEK #22 | DOWN BUT NOT OUT","author":"Adam"},{"date":"03.23.2016","title":"THE BREAKING BAD TOUR","author":"Justin"},{"date":"03.24.2016","title":"SLEEPING AND SLEDDING AT WHITE SANDS NATIONAL MONUMENT","author":"Adam"},{"date":"03.25.2016","title":"VAN TROUBLES IN NEW MEXICO","author":"Justin"},{"date":"03.26.2016","title":"LUCK OF THE IRISH AT THE ROULETTE TABLE","author":"Adam"},{"date":"03.29.2016","title":"VLOG_21 | SURFING SOCAL","author":"Adam"},{"date":"03.29.2016","title":"INTERNET FRIENDS RULE!","author":"Justin"},{"date":"03.01.2016","title":"PIC(K) OF THE WEEK #23 | PICTURESQUE POSTCARDS","author":"Adam"},{"date":"03.31.2016","title":"ROCKY STARTS IN SOUTHERN CALIFORNIA","author":"Justin"},{"date":"04.02.2016","title":"TRI TIP BOWLS AT SEASIDE MARKET | CARDIFF, CALIFORNIA","author":"Adam"},{"date":"04.04.2016","title":"VLOG_22 | SHE SAID YES!","author":"Adam"},{"date":"04.05.2016","title":"EASTER IN CALIFORNIA","author":"Justin"},{"date":"04.06.2016","title":"PIC(K) OF THE WEEK #24 | AIRSTREAM ON A COUNTRY ROAD","author":"Adam"},{"date":"04.09.2016","title":"REVIVED IN DEATH VALLEY","author":"Adam"},{"date":"04.11.2016","title":"VLOG_23 | CHANGE OF PLANS!","author":"Adam"},{"date":"04.12.2016","title":"FREE BEACH HOUSE IN SANTA BARBARA!","author":"Justin"},{"date":"04.13.2016","title":"PIC(K) OF THE WEEK #25 | WASTING AWAY IN SANTA BARBARA","author":"Adam"},{"date":"04.14.2016","title":"REARVIEW MIRROR: MARCH","author":"Adam"},{"date":"04.15.2016","title":"BIG SUR-PRISE | CENTRAL CALIFORNIA COAST","author":"Adam"},{"date":"04.18.2016","title":"VLOG_24 | LIVING THE VEGAS HIGH LIFE","author":"Adam"},{"date":"04.20.2016","title":"PIC(K) OF THE WEEK #26 | BE CAREFUL OF YOUR KNEE!","author":"Justin"},{"date":"04.21.2016","title":"CLIMBING AND EXPLORING RED ROCK CANYON 3 YEARS LATER","author":"Adam"},{"date":"04.25.2016","title":"VLOG_25 | PROJECTS IN MOAB","author":"Adam"},{"date":"04.26.2016","title":"A MOAB WAY OF LIFE","author":"Justin"},{"date":"04.27.2016","title":"PIC(K) OF THE WEEK #27 | PICKING THE RIGHT ROUTE","author":"Adam"},{"date":"05.04.2016","title":"PIC(K) OF THE WEEK #28 | WE HAVE NO CHOICE","author":"Adam"},{"date":"05.05.2016","title":"WORKING WITH FRIENDS, ISN\u2019T WORKING","author":"Justin"},{"date":"05.09.2016","title":"VLOG_26 | STRANDED IN ARIZONA","author":"Adam"},{"date":"05.10.2016","title":"JOLENE\u2019S HURT!","author":"Justin"},{"date":"05.11.2016","title":"REARVIEW MIRROR: APRIL","author":"Adam"},{"date":"05.11.2016","title":"PIC(K) OF THE WEEK #29 | PRECISE TIMING AT DELICATE ARCH","author":"Justin"},{"date":"05.12.2016","title":"STUCK IN SCOTTSDALE, AZ","author":"Justin"},{"date":"05.14.2016","title":"BIRTHDAY SURFDAY","author":"Adam"},{"date":"05.15.2016","title":"VLOG_27 | OCEANSIDE SLIDING","author":"Adam"},{"date":"05.18.2016","title":"PIC(K) OF THE WEEK #30 | GOOD DAYS START WITH COFFEE","author":"Adam"},{"date":"05.19.2016","title":"HOW I WISH I HAD A FISH","author":"Justin"},{"date":"05.23.2016","title":"VLOG_28 | SLEEPLESS IN YOSEMITE","author":"Adam"},{"date":"05.24.2016","title":"THE YOSEMITE BLITZKRIEG","author":"Adam"},{"date":"05.25.2016","title":"PIC(K) OF THE WEEK #31 | CURVE SKATING YOSEMITE NATIONAL PARK","author":"Justin"},{"date":"05.27.2016","title":"THE UNSUNG HEROES OF OUR NATIONAL PARKS","author":"Justin"},{"date":"05.30.2016","title":"VLOG_29 | WE WON THE LOTTERY!","author":"Adam"},{"date":"05.30.2016","title":"WINNING AND LOSING THE LOTTERY \u2013 MOUNT WHITNEY & THE WAVE","author":"Justin"},{"date":"05.31.2016","title":"WELCOME TO THE WAVE","author":"Adam"},{"date":"06.01.2016","title":"PIC(K) OF THE WEEK #32 | JUST ADD WATER","author":"Adam"},{"date":"06.01.2016","title":"WALKING TO THE WAVE","author":"Adam"},{"date":"06.02.2016","title":"WE LOST THE LOTTERY BUT WON THE SLOTS","author":"Justin"},{"date":"06.03.2016","title":"ZION AND BRYCE CANYON NATIONAL PARKS \u2013 MEMORIAL DAY WEEKEND","author":"Justin"},{"date":"06.04.2016","title":"REARVIEW MIRROR: MAY","author":"Adam"},{"date":"06.06.2016","title":"VLOG_30 | DOWN BY THE RIVER","author":"Adam"},{"date":"06.07.2016","title":"CAREFUL STEPS IN THE NARROWS","author":"Justin"},{"date":"06.08.2016","title":"PIC(K) OF THE WEEK #33 | BATTLING ALTITUDE IN COLORADO","author":"Justin"},{"date":"06.09.2016","title":"SURFING IN THE MOUNTAINS","author":"Adam"},{"date":"06.13.2016","title":"VLOG_31 | 4 STATES IN 1 MINUTE!","author":"Adam"},{"date":"06.14.2016","title":"THE RIDGWAY WAY","author":"Adam"},{"date":"06.15.2016","title":"PIC(K) OF THE WEEK #34 | DON\u2019T TAKE PICTURES OF THE GRAND CANYON","author":"Adam"},{"date":"06.16.2016","title":"FINDING SOLITUDE AT THE GRAND CANYON","author":"Justin"},{"date":"06.20.2016","title":"VLOG_32 | SWINGING INTO SUMMER","author":"Adam"},{"date":"06.21.2016","title":"HOW ARE YOU WELCOMING SUMMER?","author":"Justin"},{"date":"06.22.2016","title":"PIC(K) OF THE WEEK #35 | CAMERA ANGLES","author":"Justin"},{"date":"06.23.2016","title":"WORKING WEEKENDS","author":"Adam"},{"date":"06.27.2016","title":"VLOG_33 | RAISING HELL IN IDAHO!","author":"Justin"},{"date":"06.28.2016","title":"HIKING ON WATER TO SHOSHONE FALLS","author":"Justin"},{"date":"06.29.2016","title":"PIC(K) OF THE WEEK #36 | THE LIFE OF LUXURY","author":"Adam"},{"date":"06.30.2016","title":"SLIDING THROUGH IDAHO","author":"Justin"},{"date":"07.01.2016","title":"RIVER LIFE IN HELLS CANYON","author":"Justin"},{"date":"07.04.2016","title":"VLOG_34 | BEND IS FOR MAN BUNS","author":"Adam"},{"date":"07.05.2016","title":"RV LIFE VS VAN LIFE","author":"Justin"},{"date":"07.06.2016","title":"PIC(K) OF THE WEEK #37 | DO A BACKFLIP!","author":"Justin"},{"date":"07.07.2016","title":"FINDING HAPPINESS IN OUR BACKYARD OF OREGON","author":"Justin"},{"date":"07.08.2016","title":"6 MONTHS ON THE ROAD: EXPECTATIONS VS REALITY","author":"Justin"},{"date":"07.11.2016","title":"VLOG_35 | ICE CAVES IN WASHINGTON!","author":"Justin"},{"date":"07.12.2016","title":"REMINISCENT OF FLORIDA IN THE PACIFIC NORTHWEST","author":"Justin"},{"date":"07.13.2016","title":"PIC(K) OF THE WEEK #38 | PIKE PLACE FISH MARKET","author":"Adam"},{"date":"07.14.2016","title":"FRICKE\u2019S FLIGHTS | CHUCKANUT BREWERY | BELLINGHAM, WA","author":"Adam"},{"date":"07.18.2016","title":"VLOG_36 | HERDING CATS IN CANADA","author":"Justin"},{"date":"07.19.2016","title":"\u201cWHAT BRINGS YOU TO CANADA, EH?\u201d","author":"Adam"},{"date":"07.20.2016","title":"PIC(K) OF THE WEEK #39 | LIGHT UP THE SKY","author":"Justin"},{"date":"07.21.2016","title":"REARVIEW MIRROR: JUNE","author":"Adam"},{"date":"07.25.2016","title":"VLOG_37 | SKATING THE ALASKA HIGHWAY!","author":"Justin"},{"date":"07.26.2016","title":"PIC(K) OF THE WEEK #40 | WILDLIFE CROSSING","author":"Adam"},{"date":"07.28.2016","title":"JOURNEY TO ALASKA | 5 DAYS ON THE $115 MILLION HIGHWAY","author":"Adam"},{"date":"08.01.2016","title":"VLOG_38 | 5 STAR RESTAURANT","author":"Justin"},{"date":"08.03.2016","title":"PIC(K) OF THE WEEK #41 | DODGING TOURISTS","author":"Adam"},{"date":"08.04.2016","title":"BACKPACKING BEAR COUNTRY | DENALI NATIONAL PARK","author":"Adam"},{"date":"08.08.2016","title":"VLOG_39 | GLACIER HIKING IN ALASKA!","author":"Justin"},{"date":"08.09.2016","title":"HIKING ON ANCIENT ICE WITH EXIT GLACIER GUIDES","author":"Adam"},{"date":"08.10.2016","title":"PIC(K) OF THE WEEK #42 | FAT PUFFIN DON\u2019T FLY","author":"Justin"},{"date":"08.11.2016","title":"BACKPACKING THROUGH SUN & RAIN","author":"Justin"},{"date":"08.12.2016","title":"CRUISING THE GULF OF ALASKA","author":"Adam"},{"date":"08.15.2016","title":"VLOG_40 | HAIRCUTS ON THE ALASKA HIGHWAY","author":"Justin"},{"date":"08.16.2016","title":"6 WAYS TO BE THE GREATEST TOURIST OF ALL TIME","author":"Adam"},{"date":"08.17.2016","title":"PIC(K) OF THE WEEK #43 | LATE NIGHT BY THE LAKE","author":"Adam"},{"date":"08.18.2016","title":"REARVIEW MIRROR: JULY","author":"Adam"},{"date":"08.22.2016","title":"VLOG_41 | BOTTOMED OUT!","author":"Justin"},{"date":"08.23.2016","title":"WHEN SH!T HITS THE FAN","author":"Adam"},{"date":"08.24.2016","title":"PIC(K) OF THE WEEK #44 | CANADIAN HOSPITALITY","author":"Adam"},{"date":"08.26.2016","title":"\u201cWAVE YOUR HANDS BACK AND FORTH IN PERFECT SYMMETRY\u201d","author":"Adam"},{"date":"08.30.2016","title":"UNCHARTED TERRITORY | PUERTO RICO","author":"Adam"},{"date":"08.31.2016","title":"PIC(K) OF THE WEEK #45 | ATTACK OF THE BIRDS!","author":"Justin"},{"date":"08.31.2016","title":"VLOG_42 | PHOTOSHOOT IN PUERTO RICO!","author":"Justin"},{"date":"09.01.2016","title":"WE DECIDED TO GO HOME","author":"Adam"},{"date":"09.06.2016","title":"FROM FLORIDA TO GLACIER NATIONAL PARK","author":"Justin"},{"date":"09.07.2016","title":"PIC(K) OF THE WEEK #46 | HIDING FROM HAIL","author":"Adam"},{"date":"09.08.2016","title":"REARVIEW MIRROR: AUGUST","author":"Adam"},{"date":"09.12.2016","title":"VLOG_43 | 3 NATIONAL PARKS IN ONE WEEK!","author":"Justin"},{"date":"09.14.2016","title":"PIC(K) OF TH WEEK #47 | MOULTON BARN CONSTRUCTION","author":"Justin"},{"date":"09.15.2016","title":"LOTS OF PATIENCE AND SLEEPLESS NIGHTS | YELLOWSTONE & GRAND TETONS","author":"Adam"},{"date":"09.19.2016","title":"VLOG_44 | CHASING ALPACA!","author":"Justin"},{"date":"09.20.2016","title":"SOUTH DAKOTA HAS CLIMBING AND ALPACAS?","author":"Justin"},{"date":"09.21.2016","title":"PIC(K) OF THE WEEK #48 | BADLANDS\u2019 BIGHORNS","author":"Adam"},{"date":"09.22.2016","title":"GOOD DAY IN SOUTH DAKOTA\u2019S BADLANDS","author":"Adam"},{"date":"09.26.2016","title":"VLOG_45 | SWITCHFOOT WHISTLE SOLO!","author":"Justin"},{"date":"09.27.2016","title":"FLOATING BY BISMARCK, NORTH DAKOTA","author":"Adam"},{"date":"09.28.2016","title":"PIC(K) OF THE WEEK #49 | LOSING CONTROL","author":"Justin"},{"date":"09.29.2016","title":"THE ENCHANTED HIGHWAY","author":"Adam"},{"date":"09.30.2016","title":"MOUNTAIN BIKING THE MAAH DAAH HEY TRAIL","author":"Justin"},{"date":"10.03.2016","title":"VLOG_46 | SPIDERMAN IN CHICAGO!","author":"Justin"},{"date":"10.04.2016","title":"MIDWESTERN HOSPITALITY","author":"Adam"},{"date":"10.05.2016","title":"PIC(K) OF THE WEEK #50 | GATEWAY TO THE EAST","author":"Adam"},{"date":"10.06.2016","title":"REARVIEW MIRROR: SEPTEMBER","author":"Adam"},{"date":"10.10.2016","title":"VLOG_47 | FALLING FOR FALL IN MICHIGAN\u2019S UPPER PENINSULA","author":"Adam"},{"date":"10.11.2016","title":"THE INTERNET BRINGS PEOPLE TOGETHER IN WISCONSIN","author":"Justin"},{"date":"10.12.2016","title":"PIC(K) OF THE WEEK #51 | CRAZY SHOE SHOT!","author":"Justin"},{"date":"10.13.2016","title":"EXPLORING THE BEST OF MICHIGAN\u2019S UP","author":"Justin"},{"date":"10.17.2016","title":"VLOG_48 | BTS AT MERRELL HQ!","author":"Justin"},{"date":"10.18.2016","title":"GETTING OUTSIDE WITH THE MERRELL TEAM","author":"Adam"},{"date":"10.19.2016","title":"PIC(K) OF THE WEEK #52 | CATCH OF THE DAY","author":"Adam"},{"date":"10.20.2016","title":"WORKING WITH THE MERRELL TEAM AT HQ","author":"Justin"},{"date":"10.25.2016","title":"CLEVELAND ROCKS","author":"Adam"},{"date":"11.11.2016","title":"THE MOTLIEST CLIMBING CREW AT THE RED RIVER GORGE","author":"Justin"},{"date":"11.14.2016","title":"REARVIEW MIRROR: OCTOBER","author":"Adam"},{"date":"11.14.2016","title":"VLOG_49 | PULLED OVER BY THE COPS!","author":"Justin"},{"date":"11.15.2016","title":"A HAWAIIAN FRICKE FAMILY VACATION","author":"Adam"},{"date":"11.16.2016","title":"PIC(K) OF THE WEEK #53 | PLEASE STAY INSIDE THE HELICOPTER","author":"Justin"},{"date":"11.17.2016","title":"REVISITING OAHU\u2019S SOUTH SHORE DECADES LATER","author":"Justin"},{"date":"11.18.2016","title":"SURFING AND MORE ON OAHU\u2019S NORTH SHORE","author":"Adam"},{"date":"11.20.2016","title":"VLOG_50 | THE HAWAII VLOG","author":"Adam"},{"date":"11.21.2016","title":"VLOG_51 | SPLITTING WOOD IN CONNECTICU","author":"Adam"},{"date":"11.22.2016","title":"BROTHERLY BONDING ON SENECA ROCKS","author":"Justin"},{"date":"11.23.2016","title":"PIC(K) OF THE WEEK #54 | IT\u2019S ALWAYS SUMMER","author":"Adam"},{"date":"11.24.2016","title":"UNITY IN D.C.","author":"Adam"},{"date":"11.25.2016","title":"FRICKE\u2019S FLIGHTS | DOGFISH HEAD BREWERY | MILTON, DE","author":"Adam"},{"date":"11.30.2016","title":"PIC(K) OF THE WEEK #55 | LEAVE YOUR COMFORT ZONE AT THE AIRPORT","author":"Justin"},{"date":"12.05.2016","title":"VLOG_52 | WE TOOK A FRIEND ON THE ROAD!","author":"Justin"},{"date":"12.07.2016","title":"PIC(K) OF THE WEEK #56 | KICKIN\u2019 IT","author":"Adam"},{"date":"12.08.2016","title":"3 GUYS, 1 VAN","author":"Adam"},{"date":"12.09.2016","title":"REARVIEW MIRROR: NOVEMBER","author":"Adam"},{"date":"12.12.2016","title":"VLOG_53 | STATE #50!","author":"Justin"},{"date":"12.13.2016","title":"MODERN TRADITION","author":"Adam"},{"date":"12.14.2016","title":"PIC(K) OF THE WEEK #57 | TOAST TO OUR 50TH STATE","author":"Justin"},{"date":"12.15.2016","title":"CROSSING THE FINISH LINE","author":"Adam"},{"date":"12.25.2016","title":"VLOG_54 | SOUTHEAST VICTORY LAP","author":"Justin"},{"date":"01.02.2017","title":"VLOG_55 | HEADING HOME!","author":"Justin"},{"date":"01.03.2017","title":"ALABAMA OUTDOOR ADVENTURES","author":"Adam"},{"date":"01.04.2017","title":"PIC(K) OF THE WEEK #58 | ATTENTION TO DETAIL","author":"Adam"},{"date":"01.06.2017","title":"REARVIEW MIRROR: DECEMBER","author":"Adam"},{"date":"01.10.2017","title":"REARVIEW MIRROR: THE BRO\u2019D TRIP 2016","author":"Adam"},{"date":"01.12.2017","title":"THE BRO\u2019D TRIP\u2019S FAVORITE STATES","author":"Adam"}];
+
+function parseDate(d) {
+  const c = d.replace(/\.{2,}/g, '.').split('.');
+  const m = parseInt(c[0])||1, day = parseInt(c[1])||1, yr = parseInt(c[2])||2016;
+  const year = yr < 100 ? 2000+yr : yr;
+  return { m, day, year, full: new Date(year, m-1, day) };
+}
+function getType(t) {
+  if (t.startsWith('PIC(K)')) return 'Photo';
+  if (/^VLOG_\d+/.test(t)) return 'Vlog';
+  if (t.startsWith('REARVIEW MIRROR')) return 'Monthly Recap';
+  if (t.includes("FRICKE\u2019S FLIGHTS") || t.includes("FRICKE'S FLIGHTS")) return 'Beer';
+  return '';
+}
+function getCat(t) {
+  if (t.startsWith('PIC(K)')) return 'THROUGH THE LENS';
+  if (/^VLOG_\d+/.test(t)) return 'GET IN THE VAN';
+  return 'THE ROAD';
+}
+
+const sorted = [...posts].sort((a,b)=>parseDate(b.date).full-parseDate(a.date).full);
+let activeAuthor='all', activeYear='all';
+let currentPage = 1;
+const POSTS_PER_PAGE = 20;
+
+function setAuthor(a,btn) {
+  activeAuthor=a;
+  document.querySelectorAll('#btn-all,#btn-justin,#btn-adam').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); currentPage=1; filterPosts();
+}
+function setYear(y,btn) {
+  activeYear=y;
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); currentPage=1; filterPosts();
+}
+function filterPosts() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const container = document.getElementById('postList');
+  const noR = document.getElementById('noResults');
+  // ── Two-pass: collect all matches, then paginate ──
+  const _matching = [];
+  for (const _p of sorted) {
+    const _d = parseDate(_p.date);
+    if (activeAuthor!=='all' && _p.author.toLowerCase()!==activeAuthor) continue;
+    if (activeYear!=='all' && String(_d.year)!==activeYear) continue;
+    if (q && !_p.title.toLowerCase().includes(q) && !_p.author.toLowerCase().includes(q)) continue;
+    _matching.push(_p);
+  }
+  const total = _matching.length;
+  const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
+  currentPage = Math.min(currentPage, totalPages);
+  const pageSlice = _matching.slice((currentPage-1)*POSTS_PER_PAGE, currentPage*POSTS_PER_PAGE);
+  container.innerHTML = ''; let count=0;
+  for (const p of pageSlice) {
+    const d = parseDate(p.date);
+    count++;
+    const type=getType(p.title), cat=getCat(p.title);
+    const ds=String(d.m).padStart(2,'0')+'.'+String(d.day).padStart(2,'0')+'.'+d.year;
+    // Map of post titles to their built HTML pages
+    const builtPages = {
+      "THE BIRTH OF THE BRO\u2019D TRIP": "the-birth-of-the-brod-trip.html",
+      "I\u2019M TAKING A YEAR OFF TO WORK": "im-taking-a-year-off-to-work.html",
+      "PIC(K) OF THE WEEK #1 | THE 22 HOUR DRIVE HOME": "pick-of-the-week-1-the-22-hour-drive-home.html",
+      "CHOOSING THE BEST VEHICLE FOR THE BRO\u2019D TRIP": "choosing-the-best-vehicle.html",
+      "PRESERVING THE LEGACY OF A SPRINTER VAN": "preserving-the-legacy-of-a-sprinter-van.html",
+      "PIC(K) OF THE WEEK #2 | NAILS AND SCREWS": "pick-of-the-week-2-nails-and-screws.html",
+      "APPETITE FOR DESTRUCTION": "appetite-for-destruction.html",
+      "VLOG_01 | YELLED AT BY AN AIRPORT COP": "vlog-01-yelled-at-by-an-airport-cop.html",
+      "PIC(K) OF THE WEEK #3 | BLUE STEEL": "pick-of-the-week-3-blue-steel.html",
+      "VLOG_02 | DEMOLISHING A VAN": "vlog-02-demolishing-a-van.html",
+      "PIC(K) OF THE WEEK #4 | WET ELK": "pick-of-the-week-4-wet-elk.html",
+      "A GETAWAY BEFORE WE GO AWAY": "a-getaway-before-we-go-away.html",
+      "LAYING THE FOUNDATION | VAN FLOORING INSTALL": "laying-the-foundation-van-flooring.html",
+      "VLOG_03 | DIAMOND ENCRUSTED FLOORING": "vlog-03-diamond-encrusted-flooring.html",
+      "FEELING ELECTRICITY COURSE THROUGH OUR VEINS": "feeling-electricity-course-through-our-veins.html",
+      "PIC(K) OF THE WEEK #5 | STAY OUT OF THE SPOTLIGHT": "pick-of-the-week-5-stay-out-of-the-spotlight.html",
+      "THANK(FUL FOR)YOU": "thankful-for-you.html",
+      "VLOG_04 | JUSTIN IS FUNEMPLOYED": "vlog-04-justin-is-funemployed.html",
+      "PIC(K) OF THE WEEK #6 | COVERED IN SAW DUST": "pick-of-the-week-6-covered-in-saw-dust.html",
+      "I’M DONE TRADING HOURS FOR DOLLARS": "im-done-trading-hours-for-dollars.html",
+      "VLOG_05 | LOVING THE GRIND": "vlog-05-loving-the-grind.html",
+      "9 STEPS TO QUITTING YOUR JOB TO TAKE THE TRIP OF A LIFETIME": "9-steps-to-quitting-your-job.html",
+      "PIC(K) OF THE WEEK #7 | OLDSCHOOL TOOLS": "pick-of-the-week-7-oldschool-tools.html",
+      "FORWARD SPRINTER VAN BUILD PROGRESS": "forward-sprinter-van-build-progress.html",
+      "VLOG_06 | VAN PROGRESS & WE HAVE T-SHIRTS!": "vlog-06-van-progress-t-shirts.html",
+      "PIC(K) OF THE WEEK #8 | SKATING WAVES": "pick-of-the-week-8-skating-waves.html",
+      "VLOG_07 | MOUNTED SOLAR PANELS WITH TAPE AND GLUE": "vlog-07-mounted-solar-panels.html",
+      "PIC(K) OF THE WEEK #9 | “MY VAN’S PRETTY COOL TOO…”": "pick-of-the-week-9-my-vans-pretty-cool.html",
+      "SOLAR PANELS AND KITCHEN INSTALL": "solar-panels-and-kitchen-install.html",
+      "WHAT I LEARNED IN 2,008 DAYS OF COLLEGE, IN 598 WORDS": "what-i-learned-in-2008-days-of-college.html",
+      "VLOG_08 | PARTY AFTERMATH": "vlog-08-party-aftermath.html",
+      "PIC(K) OF THE WEEK #10 | WHAT\u2019S A PHOTOGRAPHER TO DO?": "pick-of-the-week-10-whats-a-photographer-to-do.html",
+      "OUR 82 SQUARE FEET OF \u201cLUXURY\u201d VAN LIVING": "our-82-square-feet-of-luxury-van-living.html",
+      "LEAVING ROUTINE FOR THE OPEN ROAD": "leaving-routine-for-the-open-road.html",
+      "VLOG_09 | RESOLUTIONS ARE STUPID": "vlog-09-resolutions-are-stupid.html",
+      "PIC(K) OF THE WEEK #11 | FIRST MORNING VAN VIEW": "pick-of-the-week-11-first-morning-van-view.html",
+      "LEAVING HOME": "leaving-home.html",
+      "VLOG_10 | LIFE IS LIKE A BOX OF CHOCOLATES": "vlog-10-life-is-like-a-box-of-chocolates.html",
+      "DIVING INTO VAN LIFE": "diving-into-van-life.html",
+      "PIC(K) OF THE WEEK #12 | JUST KICKIN’ IT": "pick-of-the-week-12-just-kickin-it.html",
+      "“WI-FI: LOOKING FOR NETWORKS”": "wi-fi-looking-for-networks.html",
+      "STROLLING THROUGH SAVANNAH": "strolling-through-savannah.html",
+      "HOW A HALF DAY IN CHARLESTON TURNED THE TIDES": "how-a-half-day-in-charleston-turned-the-tides.html",
+      "SURFING THE CAROLINAS": "surfing-the-carolinas.html",
+      "BEGINNERS GUIDE TO USING THE OUTER BANKS FERRY SYSTEM": "beginners-guide-outer-banks-ferry.html",
+      "VLOG_11 | SIRI DROPS BEATS!": "vlog-11-siri-drops-beats.html",
+      "PIC(K) OF THE WEEK #13 | SLIPPERY, ICY, SNOW COVERED WATERFALL": "pick-of-the-week-13-snow-covered-waterfall.html",
+      "BUILDING CLIMBING CONFIDENCE": "building-climbing-confidence.html",
+      "LISTEN TO YOUR GUT": "listen-to-your-gut.html",
+      "VLOG_12 | SNOWSKETBALL!": "vlog-12-snowsketball.html",
+      "PIC(K) OF THE WEEK #14 | MOONSET": "pick-of-the-week-14-moonset.html",
+      "VLOG_13 | BOOTSTRAPPED BUSINESSES": "vlog-13-bootstrapped-businesses.html",
+      "CHASING WATERFALLS IN DUPONT STATE FOREST": "chasing-waterfalls-dupont-state-forest.html",
+      "BAGGING SENDS AT RUMBLING BALD": "bagging-sends-at-rumbling-bald.html",
+      "PIC(K) OF THE WEEK #15 | SOUTHERN HOSPITALITY": "pick-of-the-week-15-southern-hospitality.html",
+      "TAKING TURNS ON FRESH POWDER IN NORTH CAROLINA": "taking-turns-fresh-powder-north-carolina.html",
+      "BEHIND THE BEER: SIERRA NEVADA BREWERY": "behind-the-beer-sierra-nevada.html",
+      "REARVIEW MIRROR: JANUARY": "rearview-mirror-january.html",
+      "VLOG_14 | EARNING MARDI GRAS BEADS": "vlog-14-earning-mardi-gras-beads.html",
+      "NASHVILLE…IT’S MORE THAN MUSIC CITY": "nashville-its-more-than-a-city.html",
+      "PIC(K) OF THE WEEK #16 | EVENLY EXPOSED": "pick-of-the-week-16-evenly-exposed.html",
+      "RACING TORNADOS THROUGH ALABAMA AND MISSISSIPPI": "racing-tornados-alabama-mississippi.html",
+      "THE TWO FACES OF LOUISIANA": "two-faces-of-louisiana.html",
+      "PIC(K) OF THE WEEK #17 | ABOVE THE HORIZON": "pick-of-the-week-17-above-the-horizon.html",
+      
+      "HEALING WATER OF ARKANSAS": "healing-water-arkansas.html",
+      "WICHITA MOUNTAINS WILDLIFE REFUGE VISITOR’S GUIDE": "wichita-mountains-wildlife-refuge.html",
+      "VLOG_15 | SAT ON THE EDGE OF A CLIFF": "vlog-15-sat-on-the-edge-of-a-cliff.html",
+      "VLOG_16 | WORKIN’ ON THE BEACH!": "vlog-16-workin-on-the-beach.html",
+      "PIC(K) OF THE WEEK #18 | OH-EM-GEE, THAT SUNSET": "pick-of-the-week-18-oh-em-gee-sunset.html",
+      "YOU CAN SURF IN TEXAS?": "you-can-surf-in-texas.html",
+      "VLOG_17 | WALKED 5 MILES FOR A STAMP": "vlog-17-walked-5-miles-for-a-stamp.html",
+      "PIC(K) OF THE WEEK #19 | AUSTIN INSTAFRIENDS": "pick-of-the-week-19-austin-instafriends.html",
+      "AUSTIN: IT’S NOT AS WEIRD AS YOU THINK": "austin-keeping-it-weird.html",
+      "GRABBING THE STAMP IN SAN ANTONIO, TX": "grabbing-stamp-san-antonio.html",
+      "VALIDATION FROM MYSELF IN THE DESERT | BIG BEND NATIONAL PARK": "validation-desert-big-bend.html",
+      "PHOTOGRAPHY GUIDE TO BIG BEND NATIONAL PARK": "photography-guide-big-bend.html",
+      "PIC(K) OF THE WEEK #20 | PRADA MARFA": "pick-of-the-week-20-marfa.html",
+      "VLOG_18 | WE SWAM TO MEXICO!": "vlog-18-swam-to-mexico.html",
+      "REARVIEW MIRROR: FEBRUARY": "rearview-mirror-february.html",
+      "VLOG_19 | DON’T HIGH-FIVE AT BORDER PATROL": "vlog-19-border-patrol.html",
+      "THE BIRTHDAY CHALLENGE | PUSHING LIMITS": "birthday-challenge-pushing-limits.html",
+      "PIC(K) OF THE WEEK #21 | OLD CLIMBING FRIENDS UNITE!": "pick-of-the-week-21-old-climbing-friends.html",
+      "EMBRACING MY INNER TOURIST | HUECO TANKS STATE PARK": "embracing-inner-tourist-hueco-tanks.html",
+      "ROAD WORK": "road-work.html",
+      "“SEE YA LATER” NEVER GETS EASIER": "see-ya-later-never-gets-easier.html",
+      "PIC(K) OF THE WEEK #22 | DOWN BUT NOT OUT": "pick-of-the-week-22-down-but-not-out.html",
+      "THE BREAKING BAD TOUR": "breaking-bad-tour.html",
+      "SLEEPING AND SLEDDING AT WHITE SANDS NATIONAL MONUMENT": "sleeping-sledding-white-sands.html",
+      "VAN TROUBLES IN NEW MEXICO": "van-troubles-new-mexico.html",
+      "LUCK OF THE IRISH AT THE ROULETTE TABLE": "luck-of-the-irish-roulette.html",
+      "VLOG_21 | SURFING SOCAL": "vlog-21-surfing-socal.html",
+      "VLOG_20 | BLOWN AWAY BY WHITE SANDS NATIONAL MONUMENT": "vlog-20-blown-away-white-sands.html",
+      "INTERNET FRIENDS RULE!": "internet-friends-rule.html",
+      "PIC(K) OF THE WEEK #23 | PICTURESQUE POSTCARDS": "pick-of-the-week-23-picturesque-postcards.html",
+      "ROCKY STARTS IN SOUTHERN CALIFORNIA": "rocky-starts-southern-california.html",
+      "TRI TIP BOWLS AT SEASIDE MARKET | CARDIFF, CALIFORNIA": "seaside-market-cardiff-california.html",
+      "VLOG_22 | SHE SAID YES!": "vlog-22-she-said-yes.html",
+      "VLOG_23 | CHANGE OF PLANS!": "vlog_23-change-plans.html",
+      "EASTER IN CALIFORNIA": "easter-in-california.html",
+      "REVIVED IN DEATH VALLEY": "rejuvenation-death-valley.html",
+      "PIC(K) OF THE WEEK #24 | AIRSTREAM ON A COUNTRY ROAD": "pick-of-the-week-24-airstream.html",
+      "FREE BEACH HOUSE IN SANTA BARBARA!": "free-beach-house-santa-barbara.html",
+      "PIC(K) OF THE WEEK #25 | WASTING AWAY IN SANTA BARBARA": "potw25-wasting-away-santa-barbara.html",
+      "REARVIEW MIRROR: MARCH": "rearview-mirror-march.html",
+      "REARVIEW MIRROR: APRIL": "rearview-mirror-april.html",
+      "BIG SUR-PRISE | CENTRAL CALIFORNIA COAST": "big-sur-central-california.html",
+      "VLOG_24 | LIVING THE VEGAS HIGH LIFE": "vlog-24-living-the-vegas-high-life.html",
+      "PIC(K) OF THE WEEK #26 | BE CAREFUL OF YOUR KNEE!": "pick-of-the-week-26-be-careful-of-your-knee.html",
+      "CLIMBING AND EXPLORING RED ROCK CANYON 3 YEARS LATER": "red-rock-canyon-3-years-later.html",
+      "VLOG_25 | PROJECTS IN MOAB": "vlog-25-projects-moab.html",
+      "A MOAB WAY OF LIFE": "a-moab-way-of-life.html",
+      "PIC(K) OF THE WEEK #27 | PICKING THE RIGHT ROUTE": "pick-of-the-week-27-picking-right-route.html",
+      "PIC(K) OF THE WEEK #28 | WE HAVE NO CHOICE": "potw28-no-choice.html",
+      "WORKING WITH FRIENDS, ISN’T WORKING": "working-friends-isnt-working.html",
+      "VLOG_26 | STRANDED IN ARIZONA": "vlog-26-stranded-in-arizona.html",
+      "JOLENE’S HURT!": "jolenes-hurt.html",
+      "STUCK IN SCOTTSDALE, AZ": "stuck-in-scottsdale-az.html",
+      "BIRTHDAY SURFDAY": "birthday-surfday.html",
+      "VLOG_27 | OCEANSIDE SLIDING": "vlog-27-oceanside-sliding.html",
+      "PIC(K) OF THE WEEK #30 | GOOD DAYS START WITH COFFEE": "pick-of-the-week-30-good-days-coffee.html",
+      "PIC(K) OF THE WEEK #29 | PRECISE TIMING AT DELICATE ARCH": "precise-timing-delicate-arch.html",
+      "HOW I WISH I HAD A FISH": "how-i-wish-i-had-a-fish.html",
+      "PIC(K) OF THE WEEK #31 | CURVE SKATING YOSEMITE NATIONAL PARK": "potw31-curve-skating-yosemite-national-park.html",
+      "THE UNSUNG HEROES OF OUR NATIONAL PARKS": "unsung-heroes-of-our-national-parks.html",
+      "VLOG_28 | SLEEPLESS IN YOSEMITE": "vlog-28-sleepless-yosemite.html",
+      "THE YOSEMITE BLITZKRIEG": "yosemite-blitzkrieg.html",
+      "VLOG_29 | WE WON THE LOTTERY!": "vlog-29-won-lottery.html",
+      "WINNING AND LOSING THE LOTTERY – MOUNT WHITNEY & THE WAVE": "lottery-mount-whitney-wave.html",
+      "WELCOME TO THE WAVE": "welcome-wave.html",
+      "PIC(K) OF THE WEEK #32 | JUST ADD WATER": "pick-of-the-week-32-just-add-water.html",
+      "WALKING TO THE WAVE": "walking-wave.html",
+      "WE LOST THE LOTTERY BUT WON THE SLOTS": "we-lost-lottery-won-slots.html",
+      "ZION AND BRYCE CANYON NATIONAL PARKS \u2013 MEMORIAL DAY WEEKEND": "zion-bryce-canyon-national-parks-memorial-day-weekend.html",
+      "REARVIEW MIRROR: MAY": "rearview-mirror-may.html",
+      "VLOG_30 | DOWN BY THE RIVER": "vlog-30-down-by-the-river.html",
+      "CAREFUL STEPS IN THE NARROWS": "careful-steps-narrows.html",
+      "PIC(K) OF THE WEEK #33 | BATTLING ALTITUDE IN COLORADO": "pick-of-the-week-33-battling-altitude.html",
+      "SURFING IN THE MOUNTAINS": "surfing-in-the-mountains.html",
+      "VLOG_31 | 4 STATES IN 1 MINUTE!": "vlog-31-4-states-1-minute.html",
+      "THE RIDGWAY WAY": "the-ridgway-way.html",
+      "PIC(K) OF THE WEEK #34 | DON’T TAKE PICTURES OF THE GRAND CANYON": "pick-of-the-week-34-dont-take-pictures-grand-canyon.html",
+      "FINDING SOLITUDE AT THE GRAND CANYON": "finding-solitude-grand-canyon.html",
+      "VLOG_32 | SWINGING INTO SUMMER": "vlog-32-swinging-into-summer.html",
+      "HOW ARE YOU WELCOMING SUMMER?": "welcoming-summer.html",
+      "PIC(K) OF THE WEEK #35 | CAMERA ANGLES": "pick-of-the-week-35-camera-angles.html",
+      "WORKING WEEKENDS": "working-weekends.html",
+      "VLOG_33 | RAISING HELL IN IDAHO!": "vlog-33-raising-hell-idaho.html",
+      "HIKING ON WATER TO SHOSHONE FALLS": "hiking-on-water-shoshone-falls.html",
+      "PIC(K) OF THE WEEK #36 | THE LIFE OF LUXURY": "pick-of-the-week-36-life-of-luxury.html",
+      "SLIDING THROUGH IDAHO": "sliding-through-idaho.html",
+      "RIVER LIFE IN HELLS CANYON": "river-life-hells-canyon.html",
+      "VLOG_34 | BEND IS FOR MAN BUNS": "vlog-34-bend-man-buns.html",
+      "RV LIFE VS VAN LIFE": "rv-life-vs-vanlife.html",
+      "6 MONTHS ON THE ROAD: EXPECTATIONS VS REALITY": "6-months-expectations-vs-reality.html",
+      "VLOG_35 | ICE CAVES IN WASHINGTON!": "vlog-35-ice-caves-washington.html",
+      "PIC(K) OF THE WEEK #38 | PIKE PLACE FISH MARKET": "pick-of-the-week-38-pike-place.html",
+      "PIC(K) OF THE WEEK #40 | WILDLIFE CROSSING": "pick-of-the-week-40-wildlife-crossing.html",
+      "JOURNEY TO ALASKA | 5 DAYS ON THE $115 MILLION HIGHWAY": "journey-to-alaska.html",
+      "VLOG_38 | 5 STAR RESTAURANT": "vlog-38-5-star-restaurant.html",
+      "PIC(K) OF THE WEEK #41 | DODGING TOURISTS": "pick-of-the-week-41-dodging-tourists.html",
+      "BACKPACKING BEAR COUNTRY | DENALI NATIONAL PARK": "backpacking-bear-country-denali.html",
+      "HIKING ON ANCIENT ICE WITH EXIT GLACIER GUIDES": "hiking-ancient-ice.html",
+      "BACKPACKING THROUGH SUN & RAIN": "backpacking-through-sun-rain.html",
+      "CRUISING THE GULF OF ALASKA": "cruising-gulf-alaska.html",
+      "VLOG_40 | HAIRCUTS ON THE ALASKA HIGHWAY": "vlog_40-haircuts-alaska-highway.html",
+      "6 WAYS TO BE THE GREATEST TOURIST OF ALL TIME": "dont-be-that-tourist.html",
+      "PIC(K) OF THE WEEK #43 | LATE NIGHT BY THE LAKE": "potw43-late-night-lake.html",
+      "REARVIEW MIRROR: JULY": "rearview-mirror-july.html",
+      "VLOG_41 | BOTTOMED OUT!": "vlog_41-bottomed-out.html",
+      "WHEN SH!T HITS THE FAN": "when-sht-hits-the-fan.html",
+      "PIC(K) OF THE WEEK #44 | CANADIAN HOSPITALITY": "potw44-canadian-hospitality.html",
+      "“WAVE YOUR HANDS BACK AND FORTH IN PERFECT SYMMETRY”": "perfect-symmetry.html",
+      "VLOG_39 | GLACIER HIKING IN ALASKA!": "vlog-39-glacier-hiking-alaska.html",
+      "REARVIEW MIRROR: JUNE": "rearview-mirror-june.html",
+      "UNCHARTED TERRITORY | PUERTO RICO": "uncharted-territory-puerto-rico.html",
+      "PIC(K) OF THE WEEK #45 | ATTACK OF THE BIRDS!": "pick-of-the-week-45-attack-birds.html",
+      "VLOG_42 | PHOTOSHOOT IN PUERTO RICO!": "vlog-42-photoshoot-puerto-rico.html",
+      "VLOG_43 | 3 NATIONAL PARKS IN ONE WEEK!": "vlog_43-3-national-parks-in-one-week.html",
+      "WE DECIDED TO GO HOME": "we-decided-to-go-home.html",
+      "FROM FLORIDA TO GLACIER NATIONAL PARK": "florida-to-glacier.html",
+      "VLOG_54 | SOUTHEAST VICTORY LAP": "vlog-54-southeast-victory-lap.html",
+      "VLOG_55 | HEADING HOME!": "vlog-55-heading-home.html",
+      "ALABAMA OUTDOOR ADVENTURES": "alabama-outdoor-adventure.html",
+      "PIC(K) OF THE WEEK #58 | ATTENTION TO DETAIL": "pick-of-the-week-58-attention-detail.html",
+          "PIC(K) OF THE WEEK #54 | IT’S ALWAYS SUMMER": "pick-of-the-week-54-always-summer.html",
+          "UNITY IN D.C.": "unity-in-dc.html",
+          "FRICKE’S FLIGHTS | DOGFISH HEAD BREWERY | MILTON, DE": "frickes-flights-dogfish-head-brewery.html",
+    "CLEVELAND ROCKS": "cleveland-rocks.html",
+    "WORKING WITH THE MERRELL TEAM AT HQ": "working-with-the-merrell-team-at-hq.html",
+    "PIC(K) OF THE WEEK #52 | CATCH OF THE DAY": "potw52-catch-of-day.html",
+    "GETTING OUTSIDE WITH THE MERRELL TEAM": "getting-outside-merrell-team.html",
+    "VLOG_48 | BTS AT MERRELL HQ!": "vlog48-bts-merrell-hq.html",
+    "EXPLORING THE BEST OF MICHIGAN\u2019S UP": "michigans-up.html",
+    "PIC(K) OF THE WEEK #51 | CRAZY SHOE SHOT!": "potw51-crazy-shoe-shot.html",
+    "THE INTERNET BRINGS PEOPLE TOGETHER IN WISCONSIN": "internet-brings-people-together-wisconsin.html",
+    "VLOG_47 | FALLING FOR FALL IN MICHIGAN’S UPPER PENINSULA": "vlog47-michigans-upper-peninsula.html",
+    "REARVIEW MIRROR: SEPTEMBER": "rearview-mirror-september.html",
+    "PIC(K) OF THE WEEK #50 | GATEWAY TO THE EAST": "potw-50-gateway-east.html",
+    "MIDWESTERN HOSPITALITY": "midwestern-hospitality.html",
+    "VLOG_46 | SPIDERMAN IN CHICAGO!": "vlog-46-spiderman-chicago.html",
+    "MOUNTAIN BIKING THE MAAH DAAH HEY TRAIL": "mountain-biking-maah-daah-hey.html",
+    "THE ENCHANTED HIGHWAY": "enchanted-highway.html",
+    "PIC(K) OF THE WEEK #49 | LOSING CONTROL": "pick-week-49-losing-control.html",
+    "FLOATING BY BISMARCK, NORTH DAKOTA": "floating-bismarck-north-dakota.html",
+    "VLOG_45 | SWITCHFOOT WHISTLE SOLO!": "vlog_45-switchfoot-whistle-solo.html",
+    "GOOD DAY IN SOUTH DAKOTA’S BADLANDS": "good-day-badlands.html",
+    "PIC(K) OF THE WEEK #48 | BADLANDS’ BIGHORNS": "potw-48-badlands-bighorns.html",
+    "SOUTH DAKOTA HAS CLIMBING AND ALPACAS?": "south-dakota-climbing-alpacas.html",
+    "VLOG_44 | CHASING ALPACA!": "vlog_44-chasing-alpaca.html",
+      "PIC(K) OF THE WEEK #37 | DO A BACKFLIP!": "potw37-blue-backflip.html",
+      "FINDING HAPPINESS IN OUR BACKYARD OF OREGON": "happiness-backyard-oregon.html",
+      "REMINISCENT OF FLORIDA IN THE PACIFIC NORTHWEST": "reminiscent-florida-pacific-northwest.html",
+      "FRICKE’S FLIGHTS | CHUCKANUT BREWERY | BELLINGHAM, WA": "frickes-flights-chuckanut-brewery.html",
+      "VLOG_36 | HERDING CATS IN CANADA": "vlog-36-herding-cats-canada.html",
+      "“WHAT BRINGS YOU TO CANADA, EH?”": "what-brings-you-to-canada-eh.html",
+      "PIC(K) OF THE WEEK #39 | LIGHT UP THE SKY": "pick-of-the-week-39-light-up-sky.html",
+      "VLOG_37 | SKATING THE ALASKA HIGHWAY!": "vlog-37-skating-alaska-highway.html",
+      "PIC(K) OF THE WEEK #42 | FAT PUFFIN DON’T FLY": "pick-of-the-week-42-fat-puffin-dont-fly.html",
+    "LOTS OF PATIENCE AND SLEEPLESS NIGHTS | YELLOWSTONE & GRAND TETONS": "patience-sleepless-yellowstone-grandtetons.html",
+    "PIC(K) OF TH WEEK #47 | MOULTON BARN CONSTRUCTION": "pick-of-th-week-47-moulton-barn-construction.html",
+    "REARVIEW MIRROR: AUGUST": "rearview-mirror-august.html",
+    "PIC(K) OF THE WEEK #46 | HIDING FROM HAIL": "potw46-hiding-hail.html",
+          "PIC(K) OF THE WEEK #55 | LEAVE YOUR COMFORT ZONE AT THE AIRPORT": "pick-of-the-week-55-comfort-zone.html",
+          "VLOG_52 | WE TOOK A FRIEND ON THE ROAD!": "vlog-52-took-friend-road.html",
+    "PIC(K) OF THE WEEK #56 | KICKIN’ IT": "pick-of-the-week-56-kickin-it.html",
+    "3 GUYS, 1 VAN": "3-guys-1-van.html",
+    "REARVIEW MIRROR: NOVEMBER": "rearview-mirror-november.html",
+    "VLOG_53 | STATE #50!": "vlog-53-state-50.html",
+      "MODERN TRADITION": "modern-tradition.html",
+      "PIC(K) OF THE WEEK #57 | TOAST TO OUR 50TH STATE": "pick-of-the-week-57-toast-50th-state.html",
+      "CROSSING THE FINISH LINE": "crossing-the-finish-line.html",
+      "REARVIEW MIRROR: DECEMBER": "rearview-mirror-december.html",
+      "THE BRO’D TRIP’S FAVORITE STATES": "favorite-states.html",
+  "VLOG_50 | THE HAWAII VLOG": "vlog50-hawaii.html",
+  "VLOG_51 | SPLITTING WOOD IN CONNECTICU": "vlog_51-splitting-wood-connecticut.html",
+  "BROTHERLY BONDING ON SENECA ROCKS": "brotherly-bonding-seneca-rocks.html",
+  "A HAWAIIAN FRICKE FAMILY VACATION": "a-hawaiian-fricke-family-vacation.html",
+  "PIC(K) OF THE WEEK #53 | PLEASE STAY INSIDE THE HELICOPTER": "pick-of-the-week-53-please-stay-inside-helicopter.html",
+  "REVISITING OAHU’S SOUTH SHORE DECADES LATER": "revisiting-oahus-south-shore-decades-later.html",
+  "SURFING AND MORE ON OAHU’S NORTH SHORE": "surfing-and-more-oahu-north-shore.html",
+  "THE MOTLIEST CLIMBING CREW AT THE RED RIVER GORGE": "motliest-climbing-crew-red-river-gorge.html",
+  "REARVIEW MIRROR: OCTOBER": "rearview-mirror-october.html",
+  "VLOG_49 | PULLED OVER BY THE COPS!": "vlog-49-pulled-over-by-cops.html",
+      "REARVIEW MIRROR: THE BRO’D TRIP 2016": "rearview-mirror-brod-trip-2016.html"
+    };
+                            const postThumbs = {
+      "THE BIRTH OF THE BRO’D TRIP": "images/birth-of-bro-trip.jpg",
+      "I’M TAKING A YEAR OFF TO WORK": "images/Taking-a-year-off.jpg",
+      "PIC(K) OF THE WEEK #1 | THE 22 HOUR DRIVE HOME": "images/151025_Van-0402-1.jpg",
+      "CHOOSING THE BEST VEHICLE FOR THE BRO’D TRIP": "images/choosing-best-vehicle.jpg",
+      "PRESERVING THE LEGACY OF A SPRINTER VAN": "images/151024_VanPickup-justin-driver.jpg",
+      "PIC(K) OF THE WEEK #2 | NAILS AND SCREWS": "images/PoW2_Nails.jpg",
+      "APPETITE FOR DESTRUCTION": "images/appetite-for-destruction.jpg",
+      "PIC(K) OF THE WEEK #3 | BLUE STEEL": "images/pick-3-blue-steel.jpg",
+      "PIC(K) OF THE WEEK #4 | WET ELK": "images/pick-4-wet-elk.jpg",
+      "A GETAWAY BEFORE WE GO AWAY": "images/a-getaway-before-we-go-away.jpg",
+      "FEELING ELECTRICITY COURSE THROUGH OUR VEINS": "images/151115_Electrical-1283-1.jpg",
+      "PIC(K) OF THE WEEK #5 | STAY OUT OF THE SPOTLIGHT": "images/pick-5-spotlight.jpg",
+      "THANK(FUL FOR)YOU": "images/151107_GreatSmokyMountains-177.jpg",
+      "VLOG_01 | YELLED AT BY AN AIRPORT COP": "images/vlog-01-yelled-at-by-an-airport-cop.jpg",
+      "VLOG_02 | DEMOLISHING A VAN": "images/151029_VanDemo1-012.jpg",
+      "VLOG_03 | DIAMOND ENCRUSTED FLOORING": "images/151115_VanBuild_Ceiling-008.jpg",
+      "LAYING THE FOUNDATION | VAN FLOORING INSTALL": "images/151115_VanBuild_Ceiling-008.jpg",
+      "VLOG_04 | JUSTIN IS FUNEMPLOYED": "images/vlog-04-justin-is-funemployed.jpg"
+    ,
+      "VLOG_05 | LOVING THE GRIND": "images/vlog-05-loving-the-grind.jpg"
+    ,
+      "FORWARD SPRINTER VAN BUILD PROGRESS": "images/forward-sprinter-van-build-progress.jpg"
+    ,
+      "VLOG_06 | VAN PROGRESS & WE HAVE T-SHIRTS!": "images/vlog-06-van-progress-t-shirts.jpg"
+    ,
+      "VLOG_07 | MOUNTED SOLAR PANELS WITH TAPE AND GLUE": "images/vlog-07-mounted-solar-panels.jpg"
+    ,
+      "PIC(K) OF THE WEEK #9 | “MY VAN’S PRETTY COOL TOO…”": "images/pic-k-of-the-week-9-my-vans-pretty-cool-too.jpg"
+    ,
+      "WHAT I LEARNED IN 2,008 DAYS OF COLLEGE, IN 598 WORDS": "images/what-i-learned-in-2-008-days-of-college-in-598-wor.jpg",
+      "VLOG_08 | PARTY AFTERMATH": "images/vlog-08-party-aftermath.jpg"
+    ,
+      "OUR 82 SQUARE FEET OF \u201cLUXURY\u201d VAN LIVING": "images/our-82-square-feet-van-living.jpg"
+    ,
+      "VLOG_09 | RESOLUTIONS ARE STUPID": "images/vlog-09-resolutions-are-stupid.jpg"
+    ,
+      "VLOG_10 | LIFE IS LIKE A BOX OF CHOCOLATES": "images/vlog-10-life-is-like-a-box-of-chocolates.jpg"
+    ,
+      "VLOG_11 | SIRI DROPS BEATS!": "images/vlog-11-siri-drops-beats.jpg"
+    ,
+      "BUILDING CLIMBING CONFIDENCE": "images/building-climbing-confidence.jpg"
+    ,
+      "VLOG_12 | SNOWSKETBALL!": "images/vlog-12-snowsketball.jpg",
+      "VLOG_13 | BOOTSTRAPPED BUSINESSES": "images/vlog-13-bootstrapped-businesses.jpg",
+      "VLOG_14 | EARNING MARDI GRAS BEADS": "images/vlog-14-earning-mardi-gras-beads.jpg"
+    ,
+      "RACING TORNADOS THROUGH ALABAMA AND MISSISSIPPI": "images/racing-tornados-through-alabama-and-mississippi.jpg"
+    ,
+            "WICHITA MOUNTAINS WILDLIFE REFUGE VISITOR’S GUIDE": "images/wichita-mountains-wildlife-refuge-visitors-guide.jpg",
+      "VLOG_16 | WORKIN’ ON THE BEACH!": "images/vlog-16-workin-on-the-beach.jpg",
+      "VLOG_17 | WALKED 5 MILES FOR A STAMP": "images/vlog-17-walked-5-miles-for-a-stamp.jpg"
+    ,
+      "PIC(K) OF THE WEEK #20 | PRADA MARFA": "images/pic-k-of-the-week-20-prada-marfa.jpg",
+      "VLOG_18 | WE SWAM TO MEXICO!": "images/vlog-18-swam-to-mexico.jpg"
+    ,
+      "VLOG_19 | DON’T HIGH-FIVE AT BORDER PATROL": "images/vlog-19-border-patrol.jpg",
+      "THE BIRTHDAY CHALLENGE | PUSHING LIMITS": "images/the-birthday-challenge-pushing-limits.jpg"
+    ,
+      "VLOG_15 | SAT ON THE EDGE OF A CLIFF": "images/vlog-15-sat-on-the-edge-of-a-cliff.jpg",
+      "PIC(K) OF THE WEEK #21 | OLD CLIMBING FRIENDS UNITE!": "images/pic-k-of-the-week-21-old-climbing-friends-unite.jpg",
+      "EMBRACING MY INNER TOURIST | HUECO TANKS STATE PARK": "images/embracing-my-inner-tourist-hueco-tanks-state-park.jpg",
+    "ROAD WORK": "images/AK8A7618.jpg",
+      "“SEE YA LATER” NEVER GETS EASIER": "images/see-ya-later-never-gets-easier.jpg"
+    ,
+      "PIC(K) OF THE WEEK #22 | DOWN BUT NOT OUT": "images/pic-k-of-the-week-22-down-but-not-out.jpg",
+      "VAN TROUBLES IN NEW MEXICO": "images/van-troubles-in-new-mexico.jpg",
+      "VLOG_21 | SURFING SOCAL": "images/vlog-21-surfing-socal.jpg"
+    ,
+      "VLOG_20 | BLOWN AWAY BY WHITE SANDS NATIONAL MONUMENT": "images/vlog-20-blown-away-white-sands.jpg",
+      "VLOG_21 | SURFING SOCAL": "images/vlog-21-surfing-socal.jpg",
+      "VLOG_22 | SHE SAID YES!": "images/vlog-22-she-said-yes.jpg",
+      "VLOG_23 | CHANGE OF PLANS!": "images/vlog_23-change-plans.jpg"
+    ,
+      "VLOG_24 | LIVING THE VEGAS HIGH LIFE": "images/vlog-24-living-the-vegas-high-life.jpg",
+      "VLOG_25 | PROJECTS IN MOAB": "images/vlog-25-projects-moab.jpg",
+      "VLOG_26 | STRANDED IN ARIZONA": "images/vlog-26-stranded-in-arizona.jpg"
+    ,
+      "ZION AND BRYCE CANYON NATIONAL PARKS – MEMORIAL DAY WEEKEND": "images/160526_Utah_ZionNP-0981-2.jpg",
+      "STUCK IN SCOTTSDALE, AZ": "images/Stuck_In_Scottsdale.jpg",
+      "BIRTHDAY SURFDAY": "images/birthday-surfday.jpg",
+      "VLOG_27 | OCEANSIDE SLIDING": "images/vlog-27-oceanside-sliding.jpg",
+      "PIC(K) OF THE WEEK #30 | GOOD DAYS START WITH COFFEE": "images/pic-k-of-the-week-30-good-days-start-with-coffee.jpg",
+      "VLOG_28 | SLEEPLESS IN YOSEMITE": "images/vlog-28-sleepless-yosemite.jpg",
+      "VLOG_29 | WE WON THE LOTTERY!": "images/vlog-29-won-lottery.jpg",
+      "THE YOSEMITE BLITZKRIEG": "images/the-yosemite-blitzkrieg.jpg",
+      
+    "REARVIEW MIRROR: APRIL": "images/RM_April.png",
+    "REARVIEW MIRROR: MAY": "images/Rearview-Mirror_May.jpg",
+      "CAREFUL STEPS IN THE NARROWS": "images/Narrows.jpg",
+      "PIC(K) OF THE WEEK #33 | BATTLING ALTITUDE IN COLORADO": "images/Battling_Altitude.jpg",
+      "SURFING IN THE MOUNTAINS": "images/Surfing_Mountains.jpg",
+      "VLOG_30 | DOWN BY THE RIVER": "images/Vlog_30.jpg",
+      "VLOG_31 | 4 STATES IN 1 MINUTE!": "images/vlog-31-4-states-1-minute.jpg",
+      "THE RIDGWAY WAY": "images/Beth_Sprocket.jpg",
+      "PIC(K) OF THE WEEK #34 | DON’T TAKE PICTURES OF THE GRAND CANYON": "images/Grand_Canyon.jpg",
+      "FINDING SOLITUDE AT THE GRAND CANYON": "images/160608_Arizona_GrandCanyon-1902-1.jpg",
+      "VLOG_32 | SWINGING INTO SUMMER": "images/vlog-32-swinging-into-summer.jpg",
+      "VLOG_33 | RAISING HELL IN IDAHO!": "images/vlog-33-raising-hell-idaho.jpg",
+      "VLOG_34 | BEND IS FOR MAN BUNS": "images/vlog-34-bend-man-buns.jpg",
+      "PIC(K) OF THE WEEK #36 | THE LIFE OF LUXURY": "images/160623_Idaho_HellsCanyon-9573-1.jpg",
+      "RIVER LIFE IN HELLS CANYON": "images/River_Life.jpg",
+      "6 MONTHS ON THE ROAD: EXPECTATIONS VS REALITY": "images/6_Months_Road.jpg",
+      "VLOG_35 | ICE CAVES IN WASHINGTON!": "images/vlog-35-ice-caves-washington.jpg",
+      "PIC(K) OF THE WEEK #37 | DO A BACKFLIP!": "",
+      "FINDING HAPPINESS IN OUR BACKYARD OF OREGON": "images/MG_0159-1.jpg",
+      "REMINISCENT OF FLORIDA IN THE PACIFIC NORTHWEST": "images/Florida_Pacific_Northwest.jpg",
+      "PIC(K) OF THE WEEK #38 | PIKE PLACE FISH MARKET": "images/160706_Washington_Seattle-031.jpg",
+      "THE BRO’D TRIP’S FAVORITE STATES": "images/Favorite_State_Alaska.jpg",
+      "REARVIEW MIRROR: THE BRO’D TRIP 2016": "images/Rearview-Mirror_TheBrodTrip2016-e1484068386328.jpg",
+      "VLOG_54 | SOUTHEAST VICTORY LAP": "images/Vlog_54.jpg",
+      "VLOG_55 | HEADING HOME!": "images/VLOG_55.jpg",
+      "ALABAMA OUTDOOR ADVENTURES": "images/Alabama_Outdoor_001.jpg",
+      "PIC(K) OF THE WEEK #58 | ATTENTION TO DETAIL": "images/POTW_Attention_Detail.jpg",
+      "REARVIEW MIRROR: DECEMBER": "images/161208_NewYork_Snowstorm-009.jpg",
+    "UNCHARTED TERRITORY | PUERTO RICO": "images/Uncharted_Territory_Women.jpg",
+    "PIC(K) OF THE WEEK #45 | ATTACK OF THE BIRDS!": "images/POTW_Attack_Birds.jpg",
+    "WE DECIDED TO GO HOME": "images/160826_PuertoRico_Decided_001.jpg",
+    "PIC(K) OF THE WEEK #40 | WILDLIFE CROSSING": "images/POTW_Wildlife_Crossing.jpg",
+    "JOURNEY TO ALASKA | 5 DAYS ON THE $115 MILLION HIGHWAY": "",
+    "PIC(K) OF THE WEEK #41 | DODGING TOURISTS": "images/POTW_Dodging_Tourists.jpg",
+    "VLOG_53 | STATE #50!": "images/vlog-53-state-50.jpg",
+    "MODERN TRADITION": "images/Modern_Tradition_002.jpg",
+    "PIC(K) OF THE WEEK #57 | TOAST TO OUR 50TH STATE": "images/POTW_Toast.jpg",
+    "CROSSING THE FINISH LINE": "images/Crossing_003.jpg",
+    "PIC(K) OF THE WEEK #54 | IT’S ALWAYS SUMMER": "images/POTW_Always_Summer.jpg",
+    "UNITY IN D.C.": "images/Unity_DC.jpeg",
+    "FRICKE’S FLIGHTS | DOGFISH HEAD BREWERY | MILTON, DE": "images/Dogfish_Head.jpg",
+    "WORKING WITH THE MERRELL TEAM AT HQ": "images/Merrell_HQ.jpg",
+  "CLEVELAND ROCKS": "images/cleveland-rocks.jpg",
+    "PIC(K) OF THE WEEK #52 | CATCH OF THE DAY": "images/POTW_Catch_of_the_Day.jpg",
+    "GETTING OUTSIDE WITH THE MERRELL TEAM": "images/Getting_Outside.jpg",
+    "VLOG_48 | BTS AT MERRELL HQ!": "images/vlog48_thumb.webp",
+    "EXPLORING THE BEST OF MICHIGAN\u2019S UP": "images/161007_Michigan_UpperPeninsula-7413-1.jpg",
+    "PIC(K) OF THE WEEK #51 | CRAZY SHOE SHOT!": "images/POTW_Crazy_Shoe.jpg",
+    "THE INTERNET BRINGS PEOPLE TOGETHER IN WISCONSIN": "images/161005_Wisconsin_Madison-7060-1.jpg",
+    "VLOG_47 | FALLING FOR FALL IN MICHIGAN’S UPPER PENINSULA": "images/vlog47_thumb.jpg",
+    "REARVIEW MIRROR: SEPTEMBER": "images/160921_NorthDakota_Medora-6519-1.jpg",
+    "PIC(K) OF THE WEEK #50 | GATEWAY TO THE EAST": "images/POTW_Gateway_East.jpg",
+    "MIDWESTERN HOSPITALITY": "images/Midwestern_Hospitality.jpg",
+    "VLOG_46 | SPIDERMAN IN CHICAGO!": "images/vlog46_thumb.jpg",
+    "MOUNTAIN BIKING THE MAAH DAAH HEY TRAIL": "images/160921_NorthDakota_Medora-6645-1.jpg",
+    "THE ENCHANTED HIGHWAY": "images/160920_NorthDakota_EnchantedHighway-6397-1.jpg",
+    "PIC(K) OF THE WEEK #49 | LOSING CONTROL": "images/160921_NorthDakota_Medora-6645-1-1.jpg",
+    "FLOATING BY BISMARCK, NORTH DAKOTA": "images/160919_NorthDakota_KayakMissouriRiver-001.jpg",
+    "VLOG_45 | SWITCHFOOT WHISTLE SOLO!": "images/vlog45_thumb.jpg",
+    "GOOD DAY IN SOUTH DAKOTA’S BADLANDS": "images/AK8A9513.jpg",
+    "PIC(K) OF THE WEEK #48 | BADLANDS’ BIGHORNS": "images/POTW_Badlands.jpg",
+    "SOUTH DAKOTA HAS CLIMBING AND ALPACAS?": "images/160911_SouthDakota_Spearfish-9034-1.jpg",
+    "VLOG_44 | CHASING ALPACA!": "images/vlog44_thumb.jpg",
+      "VLOG_37 | SKATING THE ALASKA HIGHWAY!": "images/vlog37_thumb.jpg",
+      "PIC(K) OF THE WEEK #42 | FAT PUFFIN DON'T FLY": "images/pic-k-of-the-week-42-fat-puffin-don-t-fly.jpg",
+      "PIC(K) OF THE WEEK #39 | LIGHT UP THE SKY": "images/pic-k-of-the-week-39-light-up-the-sky.jpg",
+      "VLOG_36 | HERDING CATS IN CANADA": "images/Vlog_36.png",
+      "PIC(K) OF THE WEEK #42 | FAT PUFFIN DON'T FLY": "images/pic-k-of-the-week-42-fat-puffin-don-t-fly.jpg",
+      "FRICKE’S FLIGHTS | CHUCKANUT BREWERY | BELLINGHAM, WA": "images/frickes-flights-chuckanut-brewery-bellingham-wa.jpg",
+      "“WHAT BRINGS YOU TO CANADA, EH?”": "images/what-brings-you-to-canada-eh.jpg",
+    "LOTS OF PATIENCE AND SLEEPLESS NIGHTS | YELLOWSTONE & GRAND TETONS": "images/lots-of-patience-and-sleepless-nights-yellowstone.jpg",
+    "PIC(K) OF TH WEEK #47 | MOULTON BARN CONSTRUCTION": "images/pic-k-of-th-week-47-moulton-barn-construction.jpg",
+    "REARVIEW MIRROR: AUGUST": "images/rearview-mirror-august.jpg",
+    "PIC(K) OF THE WEEK #46 | HIDING FROM HAIL": "images/pic-k-of-the-week-46-hiding-from-hail.jpg",
+    "PIC(K) OF THE WEEK #55 | LEAVE YOUR COMFORT ZONE AT THE AIRPORT": "images/pic-k-of-the-week-55-leave-your-comfort-zone-at-th.jpg",
+    "VLOG_52 | WE TOOK A FRIEND ON THE ROAD!": "images/vlog-52-took-friend-road.jpg",
+    "PIC(K) OF THE WEEK #56 | KICKIN’ IT": "images/POTW_Kickin_It.jpg",
+    "3 GUYS, 1 VAN": "images/3_Guys_1_Van.jpg",
+  "VLOG_50 | THE HAWAII VLOG": "images/vlog-50-hawaii.jpg",
+  "VLOG_51 | SPLITTING WOOD IN CONNECTICU": "images/VLOG_51_161119_Connecticut_Voluntown-1521-1.jpg",
+  "BROTHERLY BONDING ON SENECA ROCKS": "images/Seneca_Rocks.jpg",
+  "A HAWAIIAN FRICKE FAMILY VACATION": "images/Hawaiian_001.jpg",
+  "PIC(K) OF THE WEEK #53 | PLEASE STAY INSIDE THE HELICOPTER": "images/POTW_HeliCopter.jpg",
+  "REVISITING OAHU’S SOUTH SHORE DECADES LATER": "images/Revisiting_Oahus.jpg",
+  "SURFING AND MORE ON OAHU’S NORTH SHORE": "images/Surfing_More.jpg",
+  "THE MOTLIEST CLIMBING CREW AT THE RED RIVER GORGE": "images/Red_River_Gorge.jpg",
+  "VLOG_49 | PULLED OVER BY THE COPS!": "images/Pulled_Over.jpg",
+    "REARVIEW MIRROR: NOVEMBER": "images/Rearview-Mirror_November.jpg",
+    "VLOG_38 | 5 STAR RESTAURANT": "images/vlog-38-5-star-restaurant.jpg",
+      "VLOG_39 | GLACIER HIKING IN ALASKA!": "images/vlog-39-glacier-hiking-alaska.jpg",
+    "HIKING ON ANCIENT ICE WITH EXIT GLACIER GUIDES": "images/160805_Alaska_Seward-3134-1.jpg",
+    "BACKPACKING THROUGH SUN & RAIN": "",
+    "CRUISING THE GULF OF ALASKA": "images/Favorite_State_Alaska.jpg",
+    "EASTER IN CALIFORNIA": "",
+    "REVIVED IN DEATH VALLEY": "",
+    "PIC(K) OF THE WEEK #25 | WASTING AWAY IN SANTA BARBARA": "",
+    "PIC(K) OF THE WEEK #28 | WE HAVE NO CHOICE": "",
+    "JOLENE’S HURT!": "",
+    "WORKING WITH FRIENDS, ISN’T WORKING": "",
+    "PIC(K) OF THE WEEK #29 | PRECISE TIMING AT DELICATE ARCH": "images/160424_Utah_Moab-9421-1.jpg",
+    "HOW I WISH I HAD A FISH": "images/MG_9996-1.jpg",
+    "PIC(K) OF THE WEEK #31 | CURVE SKATING YOSEMITE NATIONAL PARK": "images/160519_California_YosemiteNP-6296-1.jpg",
+    "THE UNSUNG HEROES OF OUR NATIONAL PARKS": "images/160521_California_SequoiaNP-1103-1.jpg",
+    "WINNING AND LOSING THE LOTTERY – MOUNT WHITNEY & THE WAVE": "",
+    "WELCOME TO THE WAVE": "",
+    "WHEN SH!T HITS THE FAN": "",
+    "PIC(K) OF THE WEEK #44 | CANADIAN HOSPITALITY": "images/POTW_Good_Days.jpg",
+    "“WAVE YOUR HANDS BACK AND FORTH IN PERFECT SYMMETRY”": "",
+    "FROM FLORIDA TO GLACIER NATIONAL PARK": "images/AK8A6026.jpg",
+    "VLOG_40 | HAIRCUTS ON THE ALASKA HIGHWAY": "images/vlog_40-haircuts-alaska-highway.jpg",
+    "6 WAYS TO BE THE GREATEST TOURIST OF ALL TIME": "",
+    "PIC(K) OF THE WEEK #43 | LATE NIGHT BY THE LAKE": "",
+    "REARVIEW MIRROR: JULY": "images/Rearview-Mirror_July.jpg",
+    "VLOG_41 | BOTTOMED OUT!": "images/vlog_41-bottomed-out.jpg",
+      "VLOG_42 | PHOTOSHOOT IN PUERTO RICO!": "images/vlog-42-photoshoot-puerto-rico.jpg",
+    "VLOG_43 | 3 NATIONAL PARKS IN ONE WEEK!": "images/vlog_43-3-national-parks-in-one-week.jpg",
+    "BAGGING SENDS AT RUMBLING BALD": ""
+    };
+    const titleKey = p.title;
+    const wb = builtPages[titleKey] || 'https://web.archive.org/web/20160101000000*/brod-trip.com';
+    const isBuilt = !!builtPages[titleKey];
+    const div=document.createElement('div');
+    div.className='post-entry';
+    const linkTarget = isBuilt ? '' : ' target="_blank"';
+    const linkLabel = isBuilt ? 'Read Post \u2192' : 'Read on Wayback Machine';
+    const builtBadge = isBuilt ? '<span style="margin-left:8px;color:#4caf50;font-weight:700;font-size:9px;letter-spacing:0.12em;font-family:Raleway,sans-serif;">\u2713 FULL POST</span>' : '';
+    const thumb = postThumbs[titleKey];
+    let thumbHtml = '';
+    if (thumb && thumb.startsWith('http')) {
+      // YouTube thumbnail with play button
+      thumbHtml = `<a href="${wb}"${linkTarget} class="post-thumb-link"><div class="post-thumb-wrap yt-thumb"><img src="${thumb}" alt="${p.title}" class="post-thumb"><div class="yt-play-overlay"><svg viewBox="0 0 68 48" width="48"><path d="M66.5 7.7c-.8-2.9-3-5.1-5.8-5.8C55.8 0 34 0 34 0S12.2 0 7.3 1.9C4.6 2.6 2.3 4.9 1.5 7.7 0 12.7 0 24 0 24s0 11.3 1.5 16.3c.8 2.9 3 5.1 5.8 5.8C12.2 48 34 48 34 48s21.8 0 26.7-1.9c2.8-.8 5-3 5.8-5.8C68 35.3 68 24 68 24s0-11.3-1.5-16.3z" fill="#ff0000"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg></div></div></a>`;
+    } else if (thumb) {
+      // Real photo thumbnail
+      thumbHtml = `<a href="${wb}"${linkTarget} class="post-thumb-link"><img src="${thumb}" alt="${p.title}" class="post-thumb"></a>`;
+    } else if (isBuilt) {
+      // Built post with photo — show a styled "View Post" card
+      const iconSvg = type === 'Vlog'
+        ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>'
+        : type === 'Photo'
+        ? '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'
+        : '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>';
+      thumbHtml = `<a href="${wb}"${linkTarget} class="post-thumb-link"><div class="post-thumb-placeholder">${iconSvg}<span class="thumb-cta">Read Full Post &rarr;</span></div></a>`;
+    }
+    div.innerHTML=`
+      <div class="post-title"><a href="${wb}"${linkTarget} style="color:inherit;text-decoration:none;">${p.title}</a>${type?`<span class="post-type-badge">${type}</span>`:''}</div>
+      <div class="post-byline">${ds}<span class="sep">by</span><span class="by-author">${p.author.toUpperCase()} FRICKE</span><span class="sep">//</span><a class="wayback-link" href="${wb}"${linkTarget}>${linkLabel}</a>${builtBadge}</div>
+      ${thumbHtml}
+      <div class="post-meta-tags"><b>CATEGORIES</b> // ${cat}&nbsp;&nbsp;&nbsp;<b>AUTHOR</b> // ${p.author.toUpperCase()} FRICKE</div>
+    `;
+    container.appendChild(div);
+  }
+  renderPaginationControls(currentPage, totalPages, total);
+  document.getElementById('resultsCount').textContent = total===posts.length ? `${total} posts` : `${total} of ${posts.length}`;
+  noR.classList.toggle('hidden', total>0);
+  container.classList.toggle('hidden', total===0);
+}
+
+// Recent posts
+const ul=document.getElementById('recentList');
+sorted.slice(0,7).forEach(p=>{
+  const li=document.createElement('li');
+  li.innerHTML=`<a href="https://web.archive.org/web/20160101000000*/brod-trip.com" target="_blank">${p.title}</a>`;
+  ul.appendChild(li);
+});
+document.getElementById('statPosts').textContent=posts.length;
+filterPosts();
+
+  // ── pagination controls (called from filterPosts) ────────────────────
+  function goToPage(p) { currentPage = p; filterPosts(); }
+
+  function getFilteredPosts_UNUSED() {
+    const q = searchInput.value.toLowerCase().trim();
+    const f = activeFilter;
+    return allPosts.filter(p => {
+      const matchSearch = !q || p.title.toLowerCase().includes(q) || (p.tags||'').toLowerCase().includes(q);
+      const matchFilter = f === 'all' || p.author === f || (f === 'vlog' && p.title.includes('VLOG')) || (f === 'pick' && p.title.includes('PIC(K)'));
+      return matchSearch && matchFilter;
+    });
+  }
+
+  function renderPage(page) {
+    currentPage = page;
+    filteredPostsCache = getFilteredPosts();
+    const total = filteredPostsCache.length;
+    const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
+    currentPage = Math.min(currentPage, totalPages);
+    const start = (currentPage - 1) * POSTS_PER_PAGE;
+    const slice = filteredPostsCache.slice(start, start + POSTS_PER_PAGE);
+
+    // Render cards
+    const postList = document.getElementById('postList');
+    postList.innerHTML = slice.map(p => {
+      const thumb = postThumbs[p.title];
+      const built = builtPages[p.title];
+      const thumbHtml = thumb
+        ? `<div class="post-thumb"><img src="${thumb}" alt="${p.title}" loading="lazy"></div>`
+        : `<div class="post-thumb post-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`;
+      const titleHtml = built
+        ? `<a href="${built}" class="post-title-link"><h2 class="post-title">${p.title}</h2></a>`
+        : `<h2 class="post-title">${p.title}</h2>`;
+      const badge = built ? `<span class="built-badge">✓ Full Post</span>` : '';
+      return `<div class="post-card">${thumbHtml}<div class="post-card-body"><div class="post-meta-header">${badge}${titleHtml}</div><p class="post-blurb">${p.blurb||''}</p></div></div>`;
+    }).join('');
+
+    // Render pagination controls
+    renderPaginationControls(currentPage, totalPages, total);
+
+    // Scroll to top of grid smoothly
+    postList.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  function renderPaginationControls(page, totalPages, total) {
+    const topEl = document.getElementById('pagination-top');
+    const botEl = document.getElementById('pagination-bottom');
+    if (!topEl || !botEl) return;
+
+    const startItem = (page - 1) * POSTS_PER_PAGE + 1;
+    const endItem = Math.min(page * POSTS_PER_PAGE, total);
+
+    function buildControls() {
+      const div = document.createElement('div');
+      div.className = 'pagination';
+
+      // Prev button
+      const prev = document.createElement('button');
+      prev.className = 'page-btn';
+      prev.textContent = '← Prev';
+      prev.disabled = page <= 1;
+      prev.onclick = () => goToPage(page - 1);
+      div.appendChild(prev);
+
+      // Page number buttons — show up to 7 around current
+      const range = [];
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= page - 2 && i <= page + 2)) {
+          range.push(i);
+        }
+      }
+      let last = 0;
+      range.forEach(i => {
+        if (last && i - last > 1) {
+          const ellipsis = document.createElement('span');
+          ellipsis.className = 'page-info';
+          ellipsis.textContent = '…';
+          div.appendChild(ellipsis);
+        }
+        const btn = document.createElement('button');
+        btn.className = 'page-btn' + (i === page ? ' active' : '');
+        btn.textContent = i;
+        btn.onclick = () => goToPage(i);
+        div.appendChild(btn);
+        last = i;
+      });
+
+      // Next button
+      const next = document.createElement('button');
+      next.className = 'page-btn';
+      next.textContent = 'Next →';
+      next.disabled = page >= totalPages;
+      next.onclick = () => goToPage(page + 1);
+      div.appendChild(next);
+
+      return div;
+    }
+
+    topEl.innerHTML = '';
+    botEl.innerHTML = '';
+
+    // Info line
+    const info = document.createElement('div');
+    info.className = 'page-info';
+    info.style.textAlign = 'center';
+    info.style.marginBottom = '16px';
+    info.textContent = `Showing ${startItem}–${endItem} of ${total} posts`;
+    botEl.appendChild(info.cloneNode(true));
+
+    topEl.appendChild(buildControls());
+    botEl.appendChild(buildControls());
+  }
+
+  </script>
+</body>
+</html>
+    "BAGGING SENDS AT RUMBLING BALD": "",

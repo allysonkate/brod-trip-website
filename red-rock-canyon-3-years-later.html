@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climbing and Exploring Red Rock Canyon 3 Years Later – The Bro'd Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff; --bg: #f8f8f8; --light-gray: #f0f0f0; --rule: #d8d8d8;
+    --text: #333333; --meta: #999999; --black: #111111;
+    --sidebar-header-bg: #1a1a1a; --accent: #c0392b; --border: #e5e5e5;
+  }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.8; }
+  a { text-decoration: none; color: inherit; }
+  a:hover { color: var(--accent); }
+  .site-wrapper { background: var(--white); max-width: 1200px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.07); }
+  .top-rule { border-top: 3px solid var(--black); }
+  .site-header { padding: 32px 50px 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; }
+  .nav-left { display: flex; justify-content: flex-start; }
+  .nav-right { display: flex; justify-content: flex-end; }
+  .nav-left a, .nav-right a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 4px 14px; white-space: nowrap; transition: color 0.2s; }
+  .nav-left a:first-child { padding-left: 0; }
+  .nav-right a:last-child { padding-right: 0; }
+  .nav-left a:hover, .nav-right a:hover { color: var(--accent); }
+  .logo-center { text-align: center; }
+  .nav-second { display: flex; justify-content: center; padding: 10px 50px 0; }
+  .nav-second a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 4px 20px; transition: color 0.2s; }
+  .nav-second a:hover { color: var(--accent); }
+  .header-rule { margin: 16px 50px 0; border: none; border-top: 1px solid var(--rule); }
+  .site-body { display: grid; grid-template-columns: 1fr 290px; padding: 0 50px 60px; align-items: start; }
+  .article { padding-top: 50px; border-right: 1px solid var(--border); padding-right: 52px; }
+  .post-series { text-align: center; font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--meta); margin-bottom: 8px; }
+  .post-title { font-family: 'Raleway', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; color: var(--black); line-height: 1.3; margin-bottom: 12px; }
+  .post-byline {text-align:center;font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta);margin-bottom:28px;}
+  .post-byline .by-author { color: var(--text); font-weight: 700; } .post-byline .sep {margin:0 5px;}
+  .post-body { font-size: 17px; line-height: 1.85; color: var(--text); }
+  .missing-photo{border:2px dashed var(--border);border-radius:2px;padding:48px 20px;text-align:center;margin:28px 0;background:#fafafa}
+  .missing-photo svg{margin-bottom:14px;opacity:0.4}
+  .missing-photo p{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--meta);margin:0}
+  .missing-photo .missing-filename{margin-top:8px;font-family:'Lato',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.05em;text-transform:none;color:var(--accent)}
+  .post-body p { margin-bottom: 22px; }
+  .post-body p:last-child { margin-bottom: 0; }
+  .post-body img { width: 100%; height: auto; display: block; margin-bottom: 36px; }
+  .post-meta-footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #aaa; line-height: 2.2; }
+  .post-meta-footer b { color: var(--text); }
+  .author-bio { margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--rule); display: flex; gap: 20px; align-items: flex-start; }
+  .author-bio img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--border); }
+  .author-bio-text { flex: 1; }
+  .author-bio-name { font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: var(--black); margin-bottom: 6px; }
+  .author-bio-quote { font-style: italic; font-size: 15px; color: var(--text); margin-bottom: 8px; line-height: 1.6; }
+  .author-bio-desc { font-size: 14px; color: var(--meta); line-height: 1.6; }
+  .post-nav { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+  .post-nav .nav-label { font-size: 9px; letter-spacing: 0.18em; color: var(--meta); display: block; margin-bottom: 4px; font-family: 'Raleway', sans-serif; text-transform: uppercase; }
+  .post-nav a { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); border-bottom: 2px solid var(--black); padding-bottom: 2px; transition: all 0.2s; display: inline-block; }
+  .post-nav a:hover { color: var(--accent); border-color: var(--accent); }
+  .post-nav-next { text-align: right; }
+  .sidebar { padding-top: 50px; padding-left: 40px; }
+  .sw { margin-bottom: 32px; }
+  .sw-head { background: var(--sidebar-header-bg); color: #fff; font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 13px 16px; text-align: center; }
+  .sw-body { border: 1px solid var(--border); border-top: none; padding: 20px; }
+  .sw-body img { width: 100%; height: auto; display: block; margin-bottom: 14px; }
+  .sw-body p { font-size: 14px; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+  .sw-link { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--black); border-bottom: 2px solid var(--black); padding-bottom: 1px; transition: all 0.2s; }
+  .sw-link:hover { color: var(--accent); border-color: var(--accent); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .stat-cell { background: var(--white); padding: 16px 8px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--black); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-lbl { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--meta); }
+  .site-footer { border-top: 3px solid var(--black); padding: 28px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--black); }
+  .footer-sub { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); margin-top: 3px; }
+  .footer-note { font-family: 'Raleway', sans-serif; font-size: 11px; color: var(--meta); text-align: right; }
+  .missing-photo { width: 100%; padding: 48px 20px; margin-bottom: 36px; background: #f5f5f5; border: 2px dashed #ddd; text-align: center; }
+  .missing-photo svg { display: block; margin: 0 auto 14px; }
+  .missing-photo p { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); }
+  .pic-specs { margin-top: 36px; padding: 24px 28px; border: 1px solid var(--border); background: #fafafa; }
+  .pic-specs-title { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--meta); margin-bottom: 14px; }
+  .pic-specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 20px; }
+  .spec-label { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--meta); display: block; margin-bottom: 2px; }
+  .spec-value { font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; color: var(--black); }
+  .comments-section { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--rule); }
+  .comments-heading { font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); margin-bottom: 28px; }
+  .comment { padding: 20px 0; border-bottom: 1px solid var(--light-gray); }
+  .comment:last-child { border-bottom: none; }
+  .comment-meta { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .comment-author { font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); }
+  .comment-date { font-family: 'Lato', sans-serif; font-size: 11px; color: var(--meta); }
+  .comment-body { font-size: 15px; line-height: 1.75; color: var(--text); }
+  @media (max-width: 820px) {
+    .site-header { grid-template-columns: 1fr; padding: 20px 24px 0; text-align: center; }
+    .nav-left, .nav-right { justify-content: center; flex-wrap: wrap; }
+    .nav-second, .header-rule { padding-left: 24px; padding-right: 24px; }
+    .site-body { grid-template-columns: 1fr; padding: 0 24px 40px; }
+    .article { border-right: none; padding-right: 0; }
+    .sidebar { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+<div class="top-rule"></div>
+<header>
+  <div class="site-header">
+    <nav class="nav-left"><a href="the-brothers.html">The Brothers</a><a href="index.html">The Road</a><a href="#">Contact</a></nav>
+    <div class="logo-center"><a href="index.html"><img src="images/brod-trip-logo.png" alt="The Bro'd Trip" style="max-width:240px;height:auto;display:block;margin:0 auto;"></a></div>
+    <nav class="nav-right">
+      <a href="in-the-news.html">In The News</a>
+      <a href="sponsors.html">Sponsors</a><a href="#">Store</a></nav>
+  </div>
+  <nav class="nav-second"><a href="index.html">Get in the Van</a><a href="index.html">Through the Lens</a></nav>
+  <hr class="header-rule">
+</header>
+<div class="site-body"><article class="article">
+  <h1 class="post-title">Climbing and Exploring Red Rock Canyon 3 Years Later</h1>
+  <p class="post-byline">04.21.2016<span class="sep">/</span>By <span class="by-author">Justin Fricke</span><span class="sep">/</span>The Road</p>
+
+  <div class="missing-photo"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><p>Photo · Adam Fricke hiking the Sandstone Quarry Trail at Red Rock Canyon</p></div>
+
+  <div class="post-body">
+    <p>Three years ago I flew to Las Vegas with a fresh new sport coat, a snazzy haircut, and a finely trimmed mustache. I was going to Sin City on my very first business trip and I was a stoked little 23 year old with an entry level position. As I pulled back the shades of my hotel room at the MGM Grand I saw the sandstone desert mountains off in the distance. I pulled my phone out of my pocket, snapped a picture of those mountains, and proceeded to text that picture to my girlfriend at the time with the words <em>I wish I was exploring those mountains.</em></p>
+    <p>A free trip to Vegas to exhibit at a trade show was awesome, but I couldn't stand the city. I wanted to be out in those mountains, climbing, hiking, and exploring. Fast forward three years and I finally got to do that.</p>
+    <p>Red Rock Canyon is a gem outside of Las Vegas. You can see it in the distance and throughout Red Rock Canyon you can see the Vegas Strip. There's a 13-mile loop that takes you to various turnouts and trailheads and it seems like there's an endless opportunity to explore, and that's what we did.</p>
+    <p>We woke up on a Tuesday morning in the parking lot of a 50's style diner, with a "dinersaur" attraction behind the joint, in southeast California. We loaded up on delicious diner food before setting out for Red Rock Canyon. In true Bro'd Trip fashion we said we'd get up early, grab breakfast, and be at Red Rock Canyon by 9:00am, 10:00am at the latest. At about 12:00pm we pulled up to the Visitor Center to find a mob of tourists from all over the country, and world, engulfing the area.</p>
+    <p>Once our bowels were relieved we got a lay of the land and proceeded to head out to the Sandstone Quarry Trailhead where the kind lady at the Information Desk said we could grab some great views. The parking lot was jammed. We came looking for beautiful, crowd free, landscapes to get some video and pictures and it looked like that'd be a wash. Rather than turn around we decided to hop on the trail and within five minutes we were by ourselves.</p>
+    <p>As we were <a href="vlog-24-living-the-vegas-high-life.html">filming</a> I couldn't help but notice the potential for some bouldering and the sport climbs caught my eye. Knowing we'd be there for only one more day I knew we had to get the local beta for the climbs later that evening.</p>
+  </div>
+
+  <div class="missing-photo"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><p>Photo · Adam Fricke looking at the Vegas Strip from the Sandstone Quarry Trail</p></div>
+
+  <div class="post-body">
+    <p>I started getting tired and the sun was kicking my butt. Adam pushed on forward while I caught some shade behind a rock. A few people bypassed me and after 10 minutes of sitting and waiting, Adam was a no show. I grabbed my Glidecam and camera and went looking for him. Right when I crossed over the boulder that gave me shade, I found him. He was across from a natural spring. He snapped a couple photos of me sitting there. I thought he'd seen enough and he told me I needed to come to where he was. My eyes lit up and found a second wind of energy when I saw the Vegas Strip sitting out in the distance.</p>
+    <p>Later that night we stopped by the REI not too far from Red Rock Canyon. The cute sales associate showed us some fun looking sport routes on Mountain Project and kindly tried to sway us away from our bouldering plans. I still took a few pictures of some pages in the bouldering guidebook, just in case we decided to climb some boulders.</p>
+    <p>The next morning we woke up in a Las Vegas parking lot two blocks off the strip. Once again in true Bro'd Trip fashion we talked about being at Red Rock Canyon by 7:00am. We got up and I drove us to Red Rock Canyon at 9:30am. With time against us, we made the call to use those phone pictures and stick to bouldering.</p>
+    <p>We stopped at the Sandstone Quarry Trailhead first since I knew exactly where the boulder sat. I hate slab, but after one look at this V3 slab problem, I took a shot at it and nailed it first go. Adam was quick to follow and then we looked at this highball V0. A V0's easy, but add extra height to the equation and that changes everything. The entire route was a breeze until the top out. I'm from Florida and learned to climb in the gym. Top outs aren't my friend and then factor in slopey holds with a slight overhang and my Elvis Leg gets shaking. It took a few minutes to figure out the beta up there, but I didn't fall from 25+ feet.</p>
+    <p>Our next stop was the Willow Springs Trailhead. There were lots of people using the picnic areas, but once we navigated our way to the Big Brown Boulder we found solitude. I quickly found my project for the day, an unnamed V4 problem that came with a sit start and a big reach out to tiny crimps on a blank face. Adam and I worked out the moves on the ground and I got to work. My first go at it got me 3/4 of the way up the route until my feet blew out and I toppled down to the crash pads.</p>
+  </div>
+
+  <div class="missing-photo"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><p>Photo · Justin Fricke on the Unnamed V4 on the Big Brown Boulder</p></div>
+
+  <div class="post-body">
+    <p>I took a quick breather while Adam got into a new photo spot and I made quick work back to where I fell. I found new, better, crimps and made a big lunge for the top. I stuck it, but the top out threw a curveball at me. Adam gave me some quick beta to get a high left foot and before I knew it I was mantling onto the boulder. It only took two goes to bag the send!</p>
+  </div>
+
+  <div class="missing-photo"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><p>Photo · Justin Fricke topping out the Unnamed V4 on Big Brown Boulder</p></div>
+
+  <div class="post-body">
+    <p>Adam was up next and he looked strong on the lower half of the route. My height played into my favor as I could reach for better crimps before moving to better feet. Those crimps were just a little too far out of Adam's reach and with the approaching clouds and strengthening wind, we decided to call it a day before he could lock in the beta.</p>
+  </div>
+
+  <div class="missing-photo"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><p>Photo · Adam Fricke on the Unnamed V4 Big Brown Boulder</p></div>
+
+  <div class="post-body">
+    <p>I think we need to make a trip back to Red Rock Canyon soon!</p>
+    <p>We rounded out the day with some beer and shareables at a bar with my friend, George, whom I'd met a couple years ago when we ran the Hood to Coast Relay together. Within two hours Adam and I went from looking like nasty climbers in shorts and tees covered in chalk, to mildly presentable. The perks of Vanlife, am I right?</p>
+  </div>
+
+  <div class="post-meta-footer">
+    <b>Tags:</b> Red Rock Canyon &nbsp;·&nbsp; The Bro'd Trip
+  </div>
+
+  <div class="author-bio">
+    <img src="images/adam-fricke-bio-b.jpg" alt="Adam Fricke">
+    <div class="author-bio-text">
+      <div class="author-bio-name">About Adam Fricke</div>
+      <div class="author-bio-quote">Although my destination may be uncertain, my direction is Always Forward. Photography, Videography, Writing, Music, Surfing, Beer. Not necessarily in that order. Follow me @AdamFricke</div>
+    </div>
+  </div>
+  <nav class="post-nav">
+    <div><span class="nav-label">&larr; Previous</span><a href="pick-of-the-week-26-be-careful-of-your-knee.html">Pic(k) of the Week #26 | Be Careful of Your Knee!</a></div>
+    <div class="post-nav-next"><span class="nav-label">Next &rarr;</span><a href="a-moab-way-of-life.html">A Moab Way of Life</a></div>
+  </nav>
+</article>
+<aside class="sidebar">
+    <div class="sw"><div class="sw-head">What is the Bro'd Trip?</div>
+      <div class="sw-body"><img src="images/151024_VanPickup-042-300x200.jpg" alt="The Bro'd Trip Van"><p>We're two brothers fighting the pull of the post-college desk job. Traveling all 50 states by van, we're seeking meaningful work that we love.</p><a class="sw-link" href="the-brothers.html">Read more...</a></div></div>
+    <div class="sw"><div class="sw-head">Trip Stats</div>
+      <div class="stats-grid">
+        <div class="stat-cell"><span class="stat-num">50</span><span class="stat-lbl">States</span></div>
+        <div class="stat-cell"><span class="stat-num">366</span><span class="stat-lbl">Days</span></div>
+        <div class="stat-cell"><span class="stat-num">240</span><span class="stat-lbl">Posts</span></div>
+        <div class="stat-cell"><span class="stat-num">2</span><span class="stat-lbl">Brothers</span></div>
+      </div></div>
+  </aside>
+</div>
+<footer class="site-footer">
+  <div><div class="footer-brand">The Bro'd Trip</div><div class="footer-sub">2 Brothers · 4 Wheels · 50 States · 1 Year · 2015–2017</div></div>
+  <div class="footer-note">Site rebuilt with love &amp; preserved for posterity.</div>
+</footer>
+</div>
+</body>
+</html>
