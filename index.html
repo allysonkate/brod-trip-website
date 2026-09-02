@@ -223,6 +223,14 @@
   /* Post card grid (index page renderPage) */
   .post-card { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
   .post-card:last-child { border-bottom: none; margin-bottom: 0; }
+
+  @keyframes cardFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .post-entry {
+    animation: cardFadeUp 0.45s cubic-bezier(.22,.68,0,1.1) both;
+  }
   .post-card-body { }
   .post-meta-header { margin-bottom: 10px; }
   .post-blurb { font-size: 15px; line-height: 1.7; color: var(--meta); margin-top: 12px; }
@@ -888,6 +896,7 @@ function filterPosts() {
     const isBuilt = !!builtPages[titleKey];
     const div=document.createElement('div');
     div.className='post-entry';
+    div.style.animationDelay = Math.min((count-1)*0.06, 0.54) + 's';
     const linkTarget = isBuilt ? '' : ' target="_blank"';
     const linkLabel = isBuilt ? 'Read Post \u2192' : 'Read on Wayback Machine';
     const builtBadge = '';
