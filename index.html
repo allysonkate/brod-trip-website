@@ -72,8 +72,10 @@
     display: none; align-items: center; gap: 8px;
     font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+    opacity: 0; transform: translateX(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
-  .author-chip.visible { display: flex; }
+  .author-chip.visible { display: flex; opacity: 1; transform: translateX(0); }
   .author-chip-x {
     background: none; border: none; cursor: pointer; padding: 0;
     color: var(--meta); font-size: 14px; line-height: 1; transition: color 0.15s;
@@ -109,6 +111,10 @@
   .site-body { display: grid; grid-template-columns: 1fr 290px; padding: 0 50px 60px; align-items: start; }
   .main-content { padding-top: 44px; border-right: 1px solid var(--border); padding-right: 52px; }
 
+  /* POST LIST FADE */
+  #postList { transition: opacity 0.15s ease; }
+  #postList.fading { opacity: 0; }
+
   /* POST ENTRY */
   .post-entry { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
   .post-entry:last-child { border-bottom: none; margin-bottom: 0; }
@@ -117,6 +123,11 @@
     letter-spacing: 0.15em; text-transform: uppercase; text-align: center;
     color: var(--black); line-height: 1.3; margin-bottom: 10px; cursor: default;
   }
+  .post-title a {
+    text-decoration: underline; text-decoration-color: transparent;
+    text-underline-offset: 4px; transition: text-decoration-color 0.25s ease;
+  }
+  .post-title a:hover { text-decoration-color: currentColor; }
   .post-type-badge {
     display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
     text-transform: uppercase; padding: 3px 7px; border: 1px solid var(--border);
@@ -187,10 +198,10 @@
     transition: opacity 0.2s;
   }
   .post-thumb:hover { opacity: 0.92; }
-  .post-thumb-link { display: block; margin: 14px 0 6px; text-decoration: none; }
-  .post-thumb-wrap { position: relative; }
-  .post-thumb { width: 100%; max-height: 320px; object-fit: cover; display: block; transition: opacity 0.2s; }
-  .post-thumb-link:hover .post-thumb { opacity: 0.88; }
+  .post-thumb-link { display: block; margin: 14px 0 6px; text-decoration: none; overflow: hidden; }
+  .post-thumb-wrap { position: relative; overflow: hidden; }
+  .post-thumb { width: 100%; max-height: 320px; object-fit: cover; display: block; transition: opacity 0.3s ease, transform 0.4s ease; }
+  .post-thumb-link:hover .post-thumb { opacity: 1; transform: scale(1.03); }
   .yt-play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
   .post-thumb-placeholder {
     width: 100%; padding: 32px 20px; background: #f5f5f5; border: 1px solid #eee;
@@ -225,12 +236,11 @@
   .post-card:last-child { border-bottom: none; margin-bottom: 0; }
 
   @keyframes cardFadeUp {
-    from { opacity: 0; translate: 0 18px; }
-    to   { opacity: 1; translate: 0 0; }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .post-entry {
-    will-change: transform, opacity;
-    animation: cardFadeUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: cardFadeUp 0.55s ease-out both;
   }
   @media (prefers-reduced-motion: reduce) {
     .post-entry { animation: none; }
@@ -385,22 +395,34 @@ let activeType='all', activeAuthor='all';
 let currentPage = 1;
 const POSTS_PER_PAGE = 20;
 
+function fadeFilterPosts(callback) {
+  const list = document.getElementById('postList');
+  list.classList.add('fading');
+  setTimeout(() => { callback(); filterPosts(); list.classList.remove('fading'); }, 150);
+}
 function setType(t,btn) {
   activeType=t;
   document.querySelectorAll('.type-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); currentPage=1; filterPosts();
+  btn.classList.add('active'); currentPage=1;
+  fadeFilterPosts(() => {});
 }
 function setAuthorHash(a) {
-  activeAuthor = a;
   const chip = document.getElementById('authorChip');
   const label = document.getElementById('authorChipLabel');
+  const wasAll = activeAuthor === 'all';
+  activeAuthor = a;
+  currentPage=1;
   if (a !== 'all') {
     label.textContent = a.charAt(0).toUpperCase()+a.slice(1)+' Fricke';
-    chip.classList.add('visible');
+    if (wasAll) {
+      chip.style.display = 'flex';
+      requestAnimationFrame(() => chip.classList.add('visible'));
+    }
   } else {
     chip.classList.remove('visible');
+    chip.addEventListener('transitionend', () => { chip.style.display = 'none'; }, { once: true });
   }
-  currentPage=1; filterPosts();
+  fadeFilterPosts(() => {});
 }
 function clearAuthor() {
   history.pushState(null,'',window.location.pathname);
@@ -900,7 +922,7 @@ function filterPosts() {
     const isBuilt = !!builtPages[titleKey];
     const div=document.createElement('div');
     div.className='post-entry';
-    div.style.animationDelay = Math.min((count-1)*0.06, 0.54) + 's';
+    div.style.animationDelay = Math.min((count-1)*0.08, 0.72) + 's';
     const linkTarget = isBuilt ? '' : ' target="_blank"';
     const linkLabel = isBuilt ? 'Read Post \u2192' : 'Read on Wayback Machine';
     const builtBadge = '';
@@ -922,7 +944,7 @@ function filterPosts() {
       thumbHtml = `<a href="${wb}"${linkTarget} class="post-thumb-link"><div class="post-thumb-placeholder">${iconSvg}<span class="thumb-cta">Read Full Post &rarr;</span></div></a>`;
     }
     div.innerHTML=`
-      <div class="post-title"><a href="${wb}"${linkTarget} style="color:inherit;text-decoration:none;">${p.title}</a></div>
+      <div class="post-title"><a href="${wb}"${linkTarget} style="color:inherit;">${p.title}</a></div>
       <div class="post-byline">${ds}<span class="sep">by</span><a class="by-author" href="#${p.author.toLowerCase()}" onclick="event.preventDefault();history.pushState(null,'','#${p.author.toLowerCase()}');setAuthorHash('${p.author.toLowerCase()}')">${p.author.toUpperCase()} FRICKE</a><span class="sep">//</span><a class="wayback-link" href="${wb}"${linkTarget}>${linkLabel}</a></div>
       ${thumbHtml}
       <div class="post-meta-tags"><b>CATEGORIES</b> // ${cat}&nbsp;&nbsp;&nbsp;<b>AUTHOR</b> // ${p.author.toUpperCase()} FRICKE</div>
