@@ -137,10 +137,12 @@
   .comment-author{display:block;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);}
   .comment-date{display:block;font-family:'Lato',sans-serif;font-size:11px;color:var(--meta);margin-top:2px;}
   .comment-body{font-size:15px;line-height:1.75;color:var(--text);}
-  .missing-photo{border:2px dashed var(--border);border-radius:2px;padding:48px 20px;text-align:center;margin:28px 0;background:#fafafa}
-  .missing-photo svg{margin-bottom:14px;opacity:0.4}
-  .missing-photo p{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--meta);margin:0}
-  .missing-photo .missing-filename{margin-top:8px;font-family:'Lato',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.05em;text-transform:none;color:var(--accent)}</style>
+  .missing-photo { background: #f7f6f4; border-top: 1px solid #d8d5d0; border-bottom: 1px solid #d8d5d0; padding: 36px 0; margin: 28px 0; }
+  .missing-photo .mp-rule { border: none; border-top: 1px solid #d0ccc7; margin: 0 0 24px; }
+  .missing-photo .mp-label { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #aaa; margin: 0 0 14px; }
+  .missing-photo .mp-filename { font-family: 'Courier New', Courier, monospace; font-size: 20px; color: #333; margin: 0 0 16px; word-break: break-all; line-height: 1.3; }
+  .missing-photo .mp-from { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin: 0; }
+  </style>
 </head>
 <body>
 <div class="site-wrapper">
@@ -166,12 +168,10 @@
     <div class="post-body">
       <p>No amount of research or planning can substitute for first-hand experience. This is why you learn to swim in the pool, not from the top step. We worried so much about preparing and leaving, that we didn’t give much thought to the trials and tribulations that we might face while adapting to a new lifestyle.</p>
       <div class="missing-photo">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-        </svg>
-        <p>Original photo lost in the archive</p>
-        <p class="missing-filename">Expected file: 160109_NorthCarolina_OuterBanks-008.jpg</p>
-      </div>
+    <p class="mp-label">Original Photo Lost in the Archive</p>
+    <p class="mp-filename">160109_NorthCarolina_OuterBanks-008.jpg</p>
+    <p class="mp-from">From // Diving Into Van Life</p>
+  </div>
       <p>We didn’t dip our toes in. Nope, we climbed straight up to the high dive, threw our towel aside, and did the damn thing. After a week of treading water, here’s what we’ve learned:</p>
 
       <div class="two-views-heading">We Annoy Each Other</div>
