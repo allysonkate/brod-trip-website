@@ -41,6 +41,10 @@
   .missing-photo p{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--meta);margin:0}
   .missing-photo .missing-filename{margin-top:8px;font-family:'Lato',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.05em;text-transform:none;color:var(--accent)}
   .post-body p:last-child { margin-bottom:0; }
+  .post-pullquote{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;line-height:1.4;color:var(--black);max-width:28em;margin:48px auto;padding:0 12px;text-align:center}
+  .post-pullquote::before,.post-pullquote::after{content:'';display:block;width:40px;height:2px;background:var(--black);margin-left:auto;margin-right:auto}
+  .post-pullquote::before{margin-bottom:24px}
+  .post-pullquote::after{margin-top:24px}
   .post-body img { width:100%; height:auto; display:block; margin-bottom:36px; }
   .post-section-heading { font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--black); margin:32px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--border); }
   .rearview-stat { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:16px; }
@@ -107,6 +111,7 @@
     .site-body { grid-template-columns:1fr; padding:0 24px 40px; }
     .article { border-right:none; padding-right:0; }
     .sidebar { padding-left:0; }
+    .post-pullquote{margin:36px 0;font-size:20px;max-width:none}
   }
 
   /* ── Extra classes from session posts ── */
@@ -176,10 +181,10 @@
       <div class="post-byline">June 23, 2016 &nbsp;&bull;&nbsp; Adam Fricke</div>
       <div class="post-body">
         <p>A year ago, working weekends for me consisted of waiting tables. Working double shifts wasn't my favorite thing to do, but it paid the bills. Every weekend was someone else's schedule, someone else's demands.</p>
-        <blockquote>"Can I get this out of the way for you?"</blockquote>
+        <div class="post-pullquote">“Can I get this out of the way for you?”</div>
         <p>Now, working weekends looks a little different.</p>
         <p>We decide who we want to work with. We name our price. We call the shots.</p>
-        <blockquote><strong>We love work.</strong></blockquote>
+        <div class="post-pullquote">We love work.</div>
         <p>But notice we still call it work. It's not easy, especially when you're calling the shots. Our clients aren't just paying for a final product &mdash; they're paying for our judgment, our eye, and our ability to tell a story.</p>
         <p>After deciding that the relationship is a benefit to everyone involved, we begin planning. This includes scouting locations, coordinating logistics, and making sure every detail is dialed in before we roll camera.</p>
         <p>Running the show comes with a lot of risk. When you're calling the shots it all falls on you if something goes wrong. There's no manager to blame, no policy to hide behind. You either deliver or you don't.</p>

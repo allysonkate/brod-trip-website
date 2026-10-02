@@ -51,10 +51,10 @@
   .post-body p:last-child { margin-bottom: 0; }
   .post-body em { font-style: italic; }
   .post-body strong { font-weight: 700; }
-  .post-body blockquote {
-    border-left: 3px solid var(--rule); margin: 28px 0; padding: 4px 24px;
-    font-style: italic; color: #666; font-size: 18px; line-height: 1.7;
-  }
+  .post-pullquote{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;line-height:1.4;color:var(--black);max-width:28em;margin:48px auto;padding:0 12px;text-align:center}
+  .post-pullquote::before,.post-pullquote::after{content:'';display:block;width:40px;height:2px;background:var(--black);margin-left:auto;margin-right:auto}
+  .post-pullquote::before{margin-bottom:24px}
+  .post-pullquote::after{margin-top:24px}
   .post-meta-footer {
     margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--rule);
     font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 0.13em;
@@ -132,6 +132,7 @@
     .site-body { grid-template-columns: 1fr; padding: 0 24px 40px; }
     .article { border-right: none; padding-right: 0; }
     .sidebar { padding-left: 0; }
+    .post-pullquote{margin:36px 0;font-size:20px;max-width:none}
     .site-footer { padding: 24px; }
   }
 
@@ -194,7 +195,7 @@
       <p>Truth is, I've had an idea for quite some time. You guessed it, it's The Bro'd Trip. The reason I've been so vague in answering the question you were really asking, "Do you have your shit together?" is because when I tell people what Justin and I are doing, they just don't get it. In fact, some think I've lost my shit altogether, let alone have it congregated into one area. And I don't hold it against them. See, there's a certain level of difficulty in describing our unconventional life decision without sounding like a total Looney Tune. But I'll give it a shot anyway….</p>
       <img src="images/Taking-a-year-off.jpg" alt="Taking a Year Off to Work" class="post-img">
 
-      <blockquote>After college, I'm going to live in a van with my brother. We're going to visit all 50 states in 1 year. And it's going to be awesome.</blockquote>
+      <div class="post-pullquote">After college, I&#8217;m going to live in a van with my brother. We&#8217;re going to visit all 50 states in 1 year. And it&#8217;s going to be awesome.</div>
 
       <p>The most common response is a doozy: "Oh, so you're taking a year off?" If you uttered these words I'm sure I made a weird face accompanied by a weird "ehhhh" sound as I quietly died inside.</p>
 
