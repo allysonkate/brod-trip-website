@@ -41,10 +41,9 @@
   .missing-photo p{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--meta);margin:0}
   .missing-photo .missing-filename{margin-top:8px;font-family:'Lato',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.05em;text-transform:none;color:var(--accent)}
   .post-body p:last-child { margin-bottom:0; }
-  .post-pullquote{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;line-height:1.4;color:var(--black);max-width:28em;margin:48px auto;padding:0 12px;text-align:center}
-  .post-pullquote::before,.post-pullquote::after{content:'';display:block;width:40px;height:2px;background:var(--black);margin-left:auto;margin-right:auto}
-  .post-pullquote::before{margin-bottom:24px}
-  .post-pullquote::after{margin-top:24px}
+  .post-pullquote{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;line-height:1.4;color:var(--black);max-width:28em;margin:0 auto;padding:48px 12px;text-align:center}
+  .post-pullquote::before{content:'';display:block;width:66px;height:27px;margin:0 auto 12px;background:url('images/icon-pull-quotes.svg') center/66px 27px no-repeat}
+  .post-pullquote::after{content:none;display:none}
   .post-body img { width:100%; height:auto; display:block; margin-bottom:36px; }
   .post-section-heading { font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--black); margin:32px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--border); }
   .rearview-stat { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:16px; }
@@ -111,7 +110,7 @@
     .site-body { grid-template-columns:1fr; padding:0 24px 40px; }
     .article { border-right:none; padding-right:0; }
     .sidebar { padding-left:0; }
-    .post-pullquote{margin:36px 0;font-size:20px;max-width:none}
+    .post-pullquote{padding:36px 12px;font-size:20px;max-width:none}
   }
 
   /* ── Extra classes from session posts ── */
